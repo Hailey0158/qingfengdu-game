@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# WorkBuddy internal (keep memory logs but ignore temp)
+.workbuddy/memory/*.tmp
+
+# Build output
+dist/
+build/
+*.log
