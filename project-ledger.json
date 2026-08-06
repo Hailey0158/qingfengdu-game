@@ -1,0 +1,187 @@
+{
+  "project": {
+    "name": "清风渡",
+    "engine": "Godot 4.x",
+    "total_weeks": 14,
+    "repo": "https://github.com/Hailey0158/qingfengdu-game",
+    "start_date": null,
+    "current_phase": "P0",
+    "last_updated": "2026-08-06T21:41:35+08:00"
+  },
+  "summary": {
+    "total_tasks": 46,
+    "completed": 2,
+    "in_progress": 0,
+    "not_started": 44,
+    "blocked": 0,
+    "overall_progress": "4.3%"
+  },
+  "milestones": [
+    {"id": "M1", "name": "MVP 可玩", "phase": "P1", "week": "W4", "status": "not_started"},
+    {"id": "M2", "name": "内测通过", "phase": "P4", "week": "W10", "status": "not_started"},
+    {"id": "M3", "name": "Demo 发布", "phase": "P5", "week": "W11", "status": "not_started"},
+    {"id": "M4", "name": "正式发布", "phase": "P7", "week": "W14", "status": "not_started"}
+  ],
+  "phases": [
+    {
+      "phase_id": "P0",
+      "phase_name": "立项·Godot验证",
+      "weeks": "W1",
+      "milestone": null,
+      "status": "in_progress",
+      "tasks": [
+        {
+          "task_id": "P0-T1",
+          "task_name": "PRD/PDD 定稿",
+          "owner": "producer",
+          "status": "completed",
+          "deliverables": ["PRD.md", "PDD.md"],
+          "dependencies": [],
+          "completed_date": "2026-08-06",
+          "notes": "v1.1 含完整世界观、角色档案、分支树、结局总览、Godot技术架构"
+        },
+        {
+          "task_id": "P0-T2",
+          "task_name": "Godot 引擎能力验证",
+          "owner": "tech-director + system-engineer",
+          "status": "not_started",
+          "deliverables": ["godot-prototype-report.md"],
+          "dependencies": ["P0-T1"],
+          "notes": "验证 Control节点UI、ResourceSaver存档、AudioBus混音、CJK字体渲染、Tween动画"
+        },
+        {
+          "task_id": "P0-T3",
+          "task_name": "美术风格验证（1角色概念图）",
+          "owner": "art-director + ui-ux-designer",
+          "status": "not_started",
+          "deliverables": ["style-concept.png"],
+          "dependencies": ["P0-T1"],
+          "notes": "选定1位主角做完整概念图，统一半厚涂+水墨晕染风格"
+        },
+        {
+          "task_id": "P0-T4",
+          "task_name": "音频方向验证（1首BGM样稿）",
+          "owner": "art-director + audio-designer",
+          "status": "not_started",
+          "deliverables": ["bgm_sample.ogg"],
+          "dependencies": ["P0-T1"],
+          "notes": "制作雨夜引子BGM样稿，验证古琴+箫+雨声混音方向"
+        },
+        {
+          "task_id": "P0-T5",
+          "task_name": "技术架构设计",
+          "owner": "tech-director",
+          "status": "completed",
+          "deliverables": ["PDD.md 第七部分·补"],
+          "dependencies": ["P0-T1"],
+          "completed_date": "2026-08-06",
+          "notes": "Godot项目结构、节点架构、GDScript代码示例、导出配置已在PDD中定义"
+        }
+      ]
+    },
+    {
+      "phase_id": "P1",
+      "phase_name": "MVP",
+      "weeks": "W2-4",
+      "milestone": "M1",
+      "status": "not_started",
+      "tasks": [
+        {"task_id": "P1-T1", "task_name": "Godot 工程搭建", "owner": "system-engineer", "status": "not_started", "deliverables": ["project.godot", "scenes/main.tscn"], "dependencies": ["P0-T2", "P0-T5"], "notes": "搭建项目骨架、AutoLoad单例、场景管理器"},
+        {"task_id": "P1-T2", "task_name": "柳陆书线场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/001_rain.scene.md", "scenes/010_meet.scene.md", "scenes/020_liu_day1.scene.md"], "dependencies": ["P0-T1"], "notes": "开场+初识+1天日常（柳陆书线）"},
+        {"task_id": "P1-T3", "task_name": "柳陆书线分支树", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["branch-tree-mvp.json"], "dependencies": ["P1-T2"], "notes": "仅柳陆书线的分支与状态机"},
+        {"task_id": "P1-T4", "task_name": "基础UI实现", "owner": "ui-ux-designer", "status": "not_started", "deliverables": ["dialogue_box.tscn", "choice_panel.tscn", "status_bar.tscn"], "dependencies": ["P1-T1"], "notes": "对话框+选项面板+状态条，使用Control节点"},
+        {"task_id": "P1-T5", "task_name": "基础存档系统", "owner": "system-engineer", "status": "not_started", "deliverables": ["save_manager.gd"], "dependencies": ["P1-T1", "P1-T3"], "notes": "ResourceSaver+JSON，多槽位+自动存档"},
+        {"task_id": "P1-T6", "task_name": "占位立绘+背景", "owner": "ui-ux-designer", "status": "not_started", "deliverables": ["placeholder_sprites/"], "dependencies": ["P1-T1"], "notes": "简单色块占位，后续P3替换为最终立绘"},
+        {"task_id": "P1-T7", "task_name": "柳陆书线文案润色", "owner": "copywriter", "status": "not_started", "deliverables": ["final-dialogue/mvp/"], "dependencies": ["P1-T2"], "notes": "润色柳线全部台词与旁白"},
+        {"task_id": "P1-T8", "task_name": "MVP 集成测试", "owner": "qa-tester", "status": "not_started", "deliverables": ["test-report-mvp.md"], "dependencies": ["P1-T1","P1-T2","P1-T3","P1-T4","P1-T5","P1-T6","P1-T7"], "notes": "验证核心循环可玩，无Blocker"}
+      ]
+    },
+    {
+      "phase_id": "P2",
+      "phase_name": "增量期·内容",
+      "weeks": "W4-7",
+      "milestone": null,
+      "status": "not_started",
+      "tasks": [
+        {"task_id": "P2-T1", "task_name": "黎客颍线场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/li_*.scene.md"], "dependencies": ["P1-T2"], "notes": "黎客颍线全部场景"},
+        {"task_id": "P2-T2", "task_name": "归汉线场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/gui_*.scene.md"], "dependencies": ["P1-T2"], "notes": "归汉线全部场景"},
+        {"task_id": "P2-T3", "task_name": "全9时段行动池脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/day*_slot*.scene.md"], "dependencies": ["P2-T1","P2-T2"], "notes": "3天×3时段=9个行动时段"},
+        {"task_id": "P2-T4", "task_name": "全分支树实现", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["branch-tree.json"], "dependencies": ["P2-T1","P2-T2","P2-T3"], "notes": "三线全量分支，覆盖所有选择点"},
+        {"task_id": "P2-T5", "task_name": "全状态机实现", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["state-machine.json"], "dependencies": ["P2-T4"], "notes": "好感度/洞察值/碎片/状态标志"},
+        {"task_id": "P2-T6", "task_name": "伙计暗线+隐藏线", "owner": "story-designer + branch-logic-engineer", "status": "not_started", "deliverables": ["scenes/innkeeper_*.scene.md", "scenes/tea_ending.scene.md"], "dependencies": ["P2-T3","P2-T4"], "notes": "得闲饮茶隐藏线+伙计杀人暗线"},
+        {"task_id": "P2-T7", "task_name": "全结局判定逻辑", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["endings-map.json"], "dependencies": ["P2-T4","P2-T5"], "notes": "6类20+结局的判定流程"},
+        {"task_id": "P2-T8", "task_name": "走水夜事件脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/fire_night.scene.md"], "dependencies": ["P2-T3"], "notes": "归汉房间着火，柳冲进去救人，黎在下面接应"},
+        {"task_id": "P2-T9", "task_name": "最终对峙场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/100_confrontation.scene.md", "scenes/101_solo.scene.md"], "dependencies": ["P2-T3"], "notes": "合作线5选项+独行线3选项"},
+        {"task_id": "P2-T10", "task_name": "全剧本文案润色", "owner": "copywriter", "status": "not_started", "deliverables": ["final-dialogue/"], "dependencies": ["P2-T1","P2-T2","P2-T3","P2-T8","P2-T9"], "notes": "保留原作者短句留白笔感"}
+      ]
+    },
+    {
+      "phase_id": "P3",
+      "phase_name": "资产量产",
+      "weeks": "W5-8",
+      "milestone": null,
+      "status": "not_started",
+      "tasks": [
+        {"task_id": "P3-T1", "task_name": "3角色立绘(各3表情)", "owner": "ui-ux-designer + art-director", "status": "not_started", "deliverables": ["assets/sprites/"], "dependencies": ["P0-T3"], "notes": "柳陆书/黎客颍/归汉 各3种表情=9张PNG"},
+        {"task_id": "P3-T2", "task_name": "6+场景背景图", "owner": "ui-ux-designer + art-director", "status": "not_started", "deliverables": ["assets/backgrounds/"], "dependencies": ["P0-T3"], "notes": "客栈外景/大堂/客房/后院/雨夜山道/观澜阁"},
+        {"task_id": "P3-T3", "task_name": "UI最终视觉", "owner": "ui-ux-designer + art-director", "status": "not_started", "deliverables": ["ui-final/"], "dependencies": ["P0-T3","P1-T4"], "notes": "仿古卷轴+水墨晕染+印章图标"},
+        {"task_id": "P3-T4", "task_name": "12首BGM", "owner": "audio-designer", "status": "not_started", "deliverables": ["assets/audio/bgm/"], "dependencies": ["P0-T4"], "notes": "雨夜引子/日常/三角色主题/紧张/真相/结局曲"},
+        {"task_id": "P3-T5", "task_name": "12个SFX", "owner": "audio-designer", "status": "not_started", "deliverables": ["assets/audio/sfx/"], "dependencies": ["P0-T4"], "notes": "雨声/推门/倒茶/扇子/剑出鞘/脚步等"},
+        {"task_id": "P3-T6", "task_name": "3套环境音", "owner": "audio-designer", "status": "not_started", "deliverables": ["assets/audio/ambient/"], "dependencies": ["P0-T4"], "notes": "白天客栈/雨夜客栈/山间户外"}
+      ]
+    },
+    {
+      "phase_id": "P4",
+      "phase_name": "集成·内测",
+      "weeks": "W9-10",
+      "milestone": "M2",
+      "status": "not_started",
+      "tasks": [
+        {"task_id": "P4-T1", "task_name": "占位→最终资产替换", "owner": "system-engineer", "status": "not_started", "deliverables": ["integration-build-v1/"], "dependencies": ["P2-T4","P2-T5","P2-T7","P3-T1","P3-T2","P3-T3","P3-T4","P3-T5","P3-T6"], "notes": "全量资产集成到Godot工程"},
+        {"task_id": "P4-T2", "task_name": "全分支覆盖测试", "owner": "qa-tester", "status": "not_started", "deliverables": ["coverage-report.json"], "dependencies": ["P4-T1"], "notes": "遍历所有分支路径，覆盖率≥95%"},
+        {"task_id": "P4-T3", "task_name": "存档系统测试", "owner": "qa-tester", "status": "not_started", "deliverables": ["save-test-report.md"], "dependencies": ["P4-T1"], "notes": "存档完整性/读档恢复/多槽位管理"},
+        {"task_id": "P4-T4", "task_name": "音频集成测试", "owner": "qa-tester", "status": "not_started", "deliverables": ["audio-test-report.md"], "dependencies": ["P4-T1"], "notes": "BGM触发/SFX时机/无爆音延迟"},
+        {"task_id": "P4-T5", "task_name": "Bug修复", "owner": "all-roles", "status": "not_started", "deliverables": ["bug-fixes.md"], "dependencies": ["P4-T2","P4-T3","P4-T4"], "notes": "按severity分派修复"}
+      ]
+    },
+    {
+      "phase_id": "P5",
+      "phase_name": "Demo",
+      "weeks": "W11",
+      "milestone": "M3",
+      "status": "not_started",
+      "tasks": [
+        {"task_id": "P5-T1", "task_name": "Demo内容筛选", "owner": "producer", "status": "not_started", "deliverables": ["demo-build/"], "dependencies": ["P4-T5"], "notes": "开场+初识+1天日常+1结局"},
+        {"task_id": "P5-T2", "task_name": "外部测试反馈收集", "owner": "producer + qa-tester", "status": "not_started", "deliverables": ["demo-feedback.md"], "dependencies": ["P5-T1"], "notes": "收集外部玩家反馈"},
+        {"task_id": "P5-T3", "task_name": "性能验证", "owner": "system-engineer", "status": "not_started", "deliverables": ["perf-report.md"], "dependencies": ["P5-T1"], "notes": "首屏≤5s/场景切换≤1s/Web导出兼容"}
+      ]
+    },
+    {
+      "phase_id": "P6",
+      "phase_name": "优化期",
+      "weeks": "W12-13",
+      "milestone": null,
+      "status": "not_started",
+      "tasks": [
+        {"task_id": "P6-T1", "task_name": "Demo反馈修复", "owner": "all-roles", "status": "not_started", "deliverables": ["bug-fixes-v2.md"], "dependencies": ["P5-T2"], "notes": "根据外部反馈修复"},
+        {"task_id": "P6-T2", "task_name": "内容调整", "owner": "story-designer + copywriter", "status": "not_started", "deliverables": ["content-revisions/"], "dependencies": ["P5-T2"], "notes": "根据反馈调整剧情节奏与文本"},
+        {"task_id": "P6-T3", "task_name": "UI/UX打磨", "owner": "ui-ux-designer", "status": "not_started", "deliverables": ["ui-polish/"], "dependencies": ["P5-T2"], "notes": "动效/配色/字体微调"},
+        {"task_id": "P6-T4", "task_name": "音频混音平衡", "owner": "audio-designer", "status": "not_started", "deliverables": ["audio-mix-final/"], "dependencies": ["P5-T2"], "notes": "BGM/SFX/环境音音量平衡"},
+        {"task_id": "P6-T5", "task_name": "性能优化", "owner": "system-engineer", "status": "not_started", "deliverables": ["perf-optimized/"], "dependencies": ["P5-T3"], "notes": "资源压缩/场景优化/导出优化"}
+      ]
+    },
+    {
+      "phase_id": "P7",
+      "phase_name": "验收",
+      "weeks": "W14",
+      "milestone": "M4",
+      "status": "not_started",
+      "tasks": [
+        {"task_id": "P7-T1", "task_name": "终极QA", "owner": "qa-tester", "status": "not_started", "deliverables": ["final-test-report.md"], "dependencies": ["P6-T1","P6-T2","P6-T3","P6-T4","P6-T5"], "notes": "全量回归测试，无Blocker"},
+        {"task_id": "P7-T2", "task_name": "分支覆盖率100%验证", "owner": "qa-tester", "status": "not_started", "deliverables": ["coverage-final.json"], "dependencies": ["P7-T1"], "notes": "确认所有分支可达"},
+        {"task_id": "P7-T3", "task_name": "多平台导出", "owner": "system-engineer", "status": "not_started", "deliverables": ["export-web/", "export-win/", "export-mac/"], "dependencies": ["P7-T1"], "notes": "Web+Win+Mac三平台导出"},
+        {"task_id": "P7-T4", "task_name": "发布准备", "owner": "producer", "status": "not_started", "deliverables": ["release-package/"], "dependencies": ["P7-T2","P7-T3"], "notes": "Steam页面/Web部署/宣传素材"}
+      ]
+    }
+  ]
+}
