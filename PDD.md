@@ -709,7 +709,7 @@ audio:
 
 ### 一、整体布局
 
-参考橙光游戏 + 《他和他的明月夜》视觉风格：
+参考橙光风格视觉小说 + 《他和他的明月夜》质感（Godot Control 节点系统实现）：
 
 ```
 ┌─────────────────────────────────────────┐
@@ -934,6 +934,174 @@ audio:
 
 ---
 
+## 第七部分·补：Godot 技术架构（engine-config.json 对应内容）
+
+### 一、引擎版本与项目结构
+
+```
+qingfengdu/
+├── project.godot              # Godot 项目配置
+├── scenes/
+│   ├── main.tscn              # 主场景（场景管理器）
+│   ├── dialogue_box.tscn      # 对话框 UI（Control + RichTextLabel）
+│   ├── choice_panel.tscn      # 选项面板（VBoxContainer + Button）
+│   ├── save_load.tscn         # 存档/读档界面
+│   └── character_sprite.tscn  # 立绘容器（Sprite2D + Tween）
+├── scripts/
+│   ├── game_state_manager.gd  # 全局状态管理（AutoLoad 单例）
+│   ├── dialogue_system.gd     # 对话系统（打字机 + 情绪切换）
+│   ├── branch_engine.gd       # 分支引擎（读取 branch-tree.json）
+│   ├── save_manager.gd        # 存档管理器（ResourceSaver + JSON）
+│   ├── audio_manager.gd       # 音频管理器（AudioBus 控制）
+│   └── ui_controller.gd       # UI 控制器（好感度/状态显示）
+├── data/
+│   ├── branch-tree.json        # 分支决策树
+│   ├── character-profiles.json # 角色档案
+│   ├── endings-map.json       # 结局映射
+│   └── audio-triggers.json    # 音频触发规则
+├── assets/
+│   ├── sprites/               # 立绘 PNG
+│   ├── backgrounds/           # 背景图 PNG
+│   ├── audio/bgm/            # BGM 音频
+│   ├── audio/sfx/            # SFX 音频
+│   └── audio/ambient/        # 环境音
+└── fonts/
+    └── SourceHanSerif.otf    # 嵌入中文字体
+```
+
+### 二、核心节点架构
+
+```
+Main (Node2D)
+├── GameStateManager (AutoLoad 单例) — 全局状态、好感度、洞察值、标志位
+├── SceneManager (Node2D) — 场景加载与切换
+│   ├── BackgroundLayer (TextureRect) — 背景图，Tween 淡入淡出
+│   ├── CharacterLayer (Node2D) — 立绘层
+│   │   ├── CharacterSprite_Liu (Sprite2D) — 柳陆书立绘
+│   │   ├── CharacterSprite_Li (Sprite2D) — 黎客颍立绘
+│   │   └── CharacterSprite_Gui (Sprite2D) — 归汉立绘
+│   ├── DialogueBox (Control) — 对话框
+│   │   ├── SpeakerName (Label) — 角色名
+│   │   ├── DialogueText (RichTextLabel) — 打字机文本
+│   │   └── ContinueIndicator (TextureRect) — 继续提示
+│   ├── ChoicePanel (VBoxContainer) — 选项面板
+│   │   └── ChoiceButton (Button) × N — 选项按钮
+│   └── StatusBar (HBoxContainer) — 顶部状态条
+│       ├── DayIndicator (Label) — 天数/时段
+│       ├── InsightIndicator (Label) — 洞察值
+│       └── SaveButton (TextureButton) — 存档按钮
+├── AudioManager (AutoLoad 单例) — 音频总线管理
+│   ├── BGMPlayer (AudioStreamPlayer) — BGM 播放
+│   ├── SFXPlayer (AudioStreamPlayer) — SFX 播放
+│   └── AmbientPlayer (AudioStreamPlayer) — 环境音播放
+└── SaveManager (AutoLoad 单例) — 存档管理
+```
+
+### 三、关键技术实现
+
+#### 3.1 对话系统（dialogue_system.gd）
+
+```gdscript
+# 打字机效果：利用 RichTextLabel.visible_characters
+func show_text(text: String, speed: float = 0.05):
+    dialogue_text.text = text
+    dialogue_text.visible_ratio = 0.0
+    var tween = create_tween()
+    tween.tween_property(dialogue_text, "visible_ratio", 1.0, text.length() * speed)
+    tween.tween_callback(func(): continue_indicator.show())
+
+# 立绘表情切换：Tween 淡入淡出
+func switch_expression(character: String, expression: String):
+    var sprite = get_node("CharacterLayer/CharacterSprite_" + character)
+    var tween = create_tween()
+    tween.tween_property(sprite, "modulate:a", 0.0, 0.2)
+    tween.tween_callback(func(): sprite.texture = load("res://assets/sprites/%s_%s.png" % [character, expression]))
+    tween.tween_property(sprite, "modulate:a", 1.0, 0.2)
+```
+
+#### 3.2 分支引擎（branch_engine.gd）
+
+```gdscript
+# 从 JSON 加载分支树，根据 state 判定可选选项
+func load_branch_tree():
+    var file = FileAccess.open("res://data/branch-tree.json", FileAccess.READ)
+    branch_tree = JSON.parse_string(file.get_as_text())
+
+func get_choices(node_id: String) -> Array:
+    var node = branch_tree[node_id]
+    var available = []
+    for choice in node.choices:
+        if check_conditions(choice.conditions):
+            available.append(choice)
+    return available
+
+func apply_effects(choice: Dictionary):
+    for effect in choice.effects:
+        GameStateManager.set_var(effect.var, effect.value)
+```
+
+#### 3.3 存档系统（save_manager.gd）
+
+```gdscript
+# Godot ResourceSaver 存档
+func save_game(slot_id: String):
+    var save_data = SaveData.new()
+    save_data.scene_id = current_scene
+    save_data.day = GameStateManager.day
+    save_data.insight = GameStateManager.insight
+    save_data.fragments = GameStateManager.fragments
+    save_data.liu_affection = GameStateManager.liu_affection
+    save_data.li_affection = GameStateManager.li_affection
+    save_data.gui_affection = GameStateManager.gui_affection
+    save_data.flags = GameStateManager.flags
+    ResourceSaver.save(save_data, "user://saves/%s.tres" % slot_id)
+
+func load_game(slot_id: String):
+    var save_data = ResourceSaver.load("user://saves/%s.tres" % slot_id)
+    GameStateManager.restore(save_data)
+    SceneManager.goto_scene(save_data.scene_id)
+```
+
+#### 3.4 音频管理（audio_manager.gd）
+
+```gdscript
+# AudioBus 三总线分离混音
+const BGM_BUS = "BGM"
+const SFX_BUS = "SFX"
+const AMBIENT_BUS = "Ambient"
+
+func play_bgm(bgm_id: String):
+    var stream = load("res://assets/audio/bgm/%s.ogg" % bgm_id)
+    bgm_player.stream = stream
+    bgm_player.bus = BGM_BUS
+    # Tween 淡入
+    var tween = create_tween()
+    AudioServer.set_bus_volume_db(AudioServer.get_bus_index(BGM_BUS), -40)
+    bgm_player.play()
+    tween.tween_method(func(v): AudioServer.set_bus_volume_db(AudioServer.get_bus_index(BGM_BUS), v), -40.0, 0.0, 1.0)
+```
+
+### 四、Godot 导出配置
+
+| 平台 | 导出预设 | 关键设置 |
+|------|---------|---------|
+| **Web (HTML5)** | Web | Extension: .html, Threads: off, Optimize size: on |
+| **Windows** | Windows Desktop | Architecture: x86_64, Console: off |
+| **macOS** | macOS | Architecture: universal, Code signing: off (debug) |
+| **Linux** | Linux | Architecture: x86_64 |
+| **Android** (后期) | Android | Min SDK: 24, Orientations: portrait |
+
+### 五、Godot 特有注意事项
+
+1. **中文字体**：必须嵌入中文 TTF/OTF（推荐思源宋体），Godot 默认不含 CJK 字形
+2. **打字机效果**：使用 `RichTextLabel.visible_ratio`（Godot 4.x）而非逐字追加，性能更优
+3. **存档路径**：Web 导出使用 `user://` 映射到浏览器 localStorage；桌面版映射到用户目录
+4. **音频格式**：推荐 OGG Vorbis（Godot 原生支持流式播放），SFX 可用 WAV（短音效低延迟）
+5. **立绘尺寸**：Godot Sprite2D 支持 2K+ 分辨率，建议 1600×2000 PNG 透明背景
+6. **场景切换**：使用 `SceneManager.change_scene()` + Tween 过渡，避免硬切
+
+---
+
 ## 第八部分：结局总览（endings-map.json 对应内容）
 
 ### 一、角色线结局（CP / CB 双轨）
@@ -1062,7 +1230,7 @@ audio:
 | 客栈、观澜阁背景图               | UI/交互设计师      | P1  |
 | BGM 全套（12 首）            | 音频设计师         | P1  |
 | SFX 全套（12 个）            | 音频设计师         | P1  |
-| 引擎集成（橙光/Ren'Py）         | 系统工程师         | P1  |
+| Godot 引擎集成（场景组装 + 导出）     | 系统工程师         | P1  |
 | 文案润色（全剧本）               | 文案润色师         | P1  |
 | 集成测试                    | 测试工程师         | P2  |
 
