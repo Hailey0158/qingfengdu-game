@@ -9,11 +9,14 @@ qingfengdu-game/
 ├── GameStudio.md          # 游戏开发工作室配置（12角色四层架构）
 ├── PRD.md                 # 产品需求文档
 ├── PDD.md                 # 产品设计文档（世界观/角色/分支/场景/UI/音频/存档/结局）
+├── project-ledger.json    # 项目台账（8阶段46任务进度追踪）
 ├── skills/
-│   └── game-studio/       # TextAdventure Game Studio skill
-│       ├── SKILL.md
-│       └── references/
-│           └── game-studio.md
+│   ├── game-studio/       # TextAdventure Game Studio skill
+│   │   ├── SKILL.md
+│   │   └── references/
+│   │       └── game-studio.md
+│   └── project-ledger/    # 台账追踪 skill（与 game-studio 配套：读台账/更新台账）
+│       └── SKILL.md
 └── .workbuddy/
     └── memory/            # 工作日志
 ```
@@ -25,6 +28,14 @@ qingfengdu-game/
 | **PRD.md** | 产品定位、目标用户、核心玩法、美术/音频方向、技术要求、里程碑 |
 | **PDD.md** | 世界观设定、角色档案、分支树、场景脚本、UI规格、音频设计、存档系统、结局总览 |
 | **GameStudio.md** | 12角色四层架构（制作人→3总监→6执行→2产出），8阶段开发工作流 |
+| **project-ledger.json** | 项目台账：8 阶段（P0–P7）46 任务的状态/依赖/产出物/完成日期，与 game-studio skill 配套使用 |
+
+## Skill 体系
+
+| Skill | 用途 |
+|-------|------|
+| `game-studio` | 激活 12 角色开发工作室，执行场景脚本/分支树/UI/音频/存档/集成等任务开发 |
+| `project-ledger` | 台账追踪 — 开发前读 `project-ledger.json` 了解当前阶段与待办，验收后更新任务状态/完成日期/产出物 |
 
 ## 游戏概况
 

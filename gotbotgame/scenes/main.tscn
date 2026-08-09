@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://d3rcnfjsmul1"]
+
+[ext_resource type="Script" uid="uid://bvvvmjvly306a" path="res://scripts/mvp_ui_controller.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://scenes/dialogue_box.tscn" id="2_dialogue"]
+[ext_resource type="PackedScene" path="res://scenes/choice_panel.tscn" id="3_choice"]
+[ext_resource type="PackedScene" path="res://scenes/status_bar.tscn" id="4_status"]
+[ext_resource type="PackedScene" path="res://scenes/fade_transition.tscn" id="5_transition"]
+[ext_resource type="PackedScene" path="res://scenes/character_sprite.tscn" id="6_sprite"]
+[ext_resource type="Texture2D" uid="uid://dsvqcc3rwbmgx" path="res://assets/placeholder_sprites/bg_rain_night.png" id="7_bg"]
+[ext_resource type="Script" uid="uid://b5ut4s2ukywd" path="res://init_font.gd" id="8_font"]
+[ext_resource type="Script" uid="uid://dtpojie8t52d4" path="res://scripts/mvp_scene_runner.gd" id="8_runner"]
+[ext_resource type="Texture2D" path="res://assets/sprites/mvp/dehazed/gui_han_calm_transparent.png" id="9_gui"]
+[ext_resource type="Texture2D" path="res://assets/sprites/mvp/dehazed/li_keying_calm_transparent.png" id="10_li"]
+[ext_resource type="Texture2D" path="res://assets/sprites/mvp/dehazed/innkeeper_calm_v2.png" id="11_inn"]
+
+[node name="Main" type="Node" unique_id=1833745335]
+script = ExtResource("8_font")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=456461926]
+
+[node name="Root" type="Control" parent="CanvasLayer" unique_id=333108282]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_controller")
+
+[node name="CharacterLayer" type="Control" parent="CanvasLayer/Root" unique_id=1504326069]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LiuPortrait" parent="CanvasLayer/Root/CharacterLayer" unique_id=715667326 instance=ExtResource("6_sprite")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 780.0
+offset_top = 20.0
+offset_right = 1260.0
+offset_bottom = 680.0
+
+[node name="LiPortrait" type="TextureRect" parent="CanvasLayer/Root/CharacterLayer" unique_id=2052409766]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 780.0
+offset_top = 20.0
+offset_right = 1260.0
+offset_bottom = 680.0
+mouse_filter = 2
+texture = ExtResource("10_li")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GuiPortrait" type="TextureRect" parent="CanvasLayer/Root/CharacterLayer" unique_id=509127782]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 780.0
+offset_top = 20.0
+offset_right = 1260.0
+offset_bottom = 680.0
+mouse_filter = 2
+texture = ExtResource("9_gui")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InnkeeperPortrait" type="TextureRect" parent="CanvasLayer/Root/CharacterLayer" unique_id=1087926424]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 780.0
+offset_top = 20.0
+offset_right = 1260.0
+offset_bottom = 680.0
+mouse_filter = 2
+texture = ExtResource("11_inn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StatusBar" parent="CanvasLayer/Root" unique_id=1232593701 instance=ExtResource("4_status")]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 16.0
+offset_right = 760.0
+offset_bottom = 78.0
+
+[node name="ChoicePanel" parent="CanvasLayer/Root" unique_id=2119417014 instance=ExtResource("3_choice")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 82.0
+offset_right = 620.0
+offset_bottom = 368.0
+
+[node name="DialogueBox" parent="CanvasLayer/Root" unique_id=1341177701 instance=ExtResource("2_dialogue")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 370.0
+offset_right = 1208.0
+offset_bottom = 680.0
+
+[node name="Transition" parent="CanvasLayer/Root" unique_id=1674803636 instance=ExtResource("5_transition")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="MvpSceneRunner" type="Node" parent="CanvasLayer/Root" unique_id=1154160217]
+script = ExtResource("8_runner")
+
+[node name="BackgroundLayer" type="TextureRect" parent="." unique_id=332329790]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_bg")
+expand_mode = 1
+stretch_mode = 6

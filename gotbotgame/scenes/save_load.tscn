@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/status_bar.tscn" id="1_status"]
+
+[node name="SaveLoadPrototype" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="."]
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 28
+text = "存档 / 读档原型验证"
+
+[node name="StatusBar" parent="." instance=ExtResource("1_status")]
+offset_left = 60.0
+offset_top = 140.0
+offset_right = 780.0
+offset_bottom = 188.0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/choice_panel.gd" id="1_choices"]
+
+[node name="ChoicePanel" type="VBoxContainer"]
+custom_minimum_size = Vector2(518, 150)
+theme_override_constants/separation = 10
+script = ExtResource("1_choices")

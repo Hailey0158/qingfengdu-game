@@ -1,0 +1,15 @@
+asset_id=bgm_rain_intro
+version=sample-v0.1
+source=programmatic_mix_for_direction_validation
+sample_rate=48000
+channels=2
+bit_depth=24
+sample_duration_seconds=120.000
+loop_start_seconds=8.000
+loop_end_seconds=120.000
+entry_fade_seconds=1.200
+exit_fade_seconds=1.200
+scene_fade_out_seconds=1.200
+next_track=bgm_inn_daily
+bus=BGM
+notes=雨声不烘焙进BGM主文件；独立文件位于res://assets/audio/ambient/sfx_rain_continuous_sample.wav，运行时接入Ambient总线。

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/status_bar.gd" id="1_status"]
+
+[node name="StatusBar" type="HBoxContainer"]
+theme_override_constants/separation = 18
+script = ExtResource("1_status")
+
+[node name="DayLabel" type="Label" parent="."]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 20
+text = "第 1 天 · 时段 1"
+
+[node name="InsightLabel" type="Label" parent="."]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 20
+text = "洞察：0"
+
+[node name="SaveButton" type="Button" parent="."]
+text = "验证存档"
+
+[node name="LoadButton" type="Button" parent="."]
+text = "验证读档"
+
+[node name="SaveHint" type="Label" parent="."]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 16
+
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="LoadButton" to="." method="_on_load_pressed"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui_controller.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://scenes/dialogue_box.tscn" id="2_dialogue"]
+[ext_resource type="PackedScene" path="res://scenes/choice_panel.tscn" id="3_choice"]
+[ext_resource type="PackedScene" path="res://scenes/status_bar.tscn" id="4_status"]
+[ext_resource type="PackedScene" path="res://scenes/fade_transition.tscn" id="5_transition"]
+[ext_resource type="PackedScene" path="res://scenes/character_sprite.tscn" id="6_sprite"]
+
+[node name="Main" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Root" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_controller")
+
+[node name="BackgroundLayer" type="ColorRect" parent="CanvasLayer/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.047, 0.075, 0.082, 1)
+mouse_filter = 2
+
+[node name="CharacterLayer" type="Control" parent="CanvasLayer/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PrototypePortrait" parent="CanvasLayer/Root/CharacterLayer" instance=ExtResource("6_sprite")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 865.0
+offset_top = 88.0
+offset_right = 1120.0
+offset_bottom = 455.0
+
+[node name="StatusBar" parent="CanvasLayer/Root" instance=ExtResource("4_status")]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 28.0
+offset_right = 760.0
+offset_bottom = 72.0
+
+[node name="ChoicePanel" parent="CanvasLayer/Root" instance=ExtResource("3_choice")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 270.0
+offset_right = 590.0
+offset_bottom = 420.0
+
+[node name="DialogueBox" parent="CanvasLayer/Root" instance=ExtResource("2_dialogue")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 470.0
+offset_right = 1208.0
+offset_bottom = 654.0
+
+[node name="Transition" parent="CanvasLayer/Root" instance=ExtResource("5_transition")]
+unique_name_in_owner = true
+layout_mode = 1

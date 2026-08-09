@@ -11,6 +11,12 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Godot editor cache (machine-local, never commit)
+.godot/
+
+# Temp files
+*.tmp
+
 # WorkBuddy internal (keep memory logs but ignore temp)
 .workbuddy/memory/*.tmp
 
@@ -18,3 +24,6 @@ Thumbs.db
 dist/
 build/
 *.log
+
+# Office temp files
+~$*

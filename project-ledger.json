@@ -5,16 +5,16 @@
     "total_weeks": 14,
     "repo": "https://github.com/Hailey0158/qingfengdu-game",
     "start_date": null,
-    "current_phase": "P0",
-    "last_updated": "2026-08-06T21:41:35+08:00"
+    "current_phase": "P1",
+    "last_updated": "2026-08-09T01:20:00+08:00"
   },
   "summary": {
-    "total_tasks": 46,
-    "completed": 2,
+    "total_tasks": 47,
+    "completed": 19,
     "in_progress": 0,
-    "not_started": 44,
-    "blocked": 0,
-    "overall_progress": "4.3%"
+    "not_started": 27,
+    "blocked": 1,
+    "overall_progress": "40.4%"
   },
   "milestones": [
     {"id": "M1", "name": "MVP 可玩", "phase": "P1", "week": "W4", "status": "not_started"},
@@ -28,7 +28,7 @@
       "phase_name": "立项·Godot验证",
       "weeks": "W1",
       "milestone": null,
-      "status": "in_progress",
+      "status": "completed",
       "tasks": [
         {
           "task_id": "P0-T1",
@@ -44,28 +44,31 @@
           "task_id": "P0-T2",
           "task_name": "Godot 引擎能力验证",
           "owner": "tech-director + system-engineer",
-          "status": "not_started",
-          "deliverables": ["godot-prototype-report.md"],
-          "dependencies": ["P0-T1"],
-          "notes": "验证 Control节点UI、ResourceSaver存档、AudioBus混音、CJK字体渲染、Tween动画"
+"status": "completed",
+        "deliverables": ["godot-prototype-report.md", "gotbotgame/GODOT_4_7_1_FIX_GUIDE.md", "gotbotgame/build/web/index.html"],
+        "dependencies": ["P0-T1"],
+        "completed_date": "2026-08-07",
+        "notes": "Godot 4.7.1 桌面实机验证已完成：17/17 自动检查通过。2026-08-07 已修复编辑器批量解析错误：规范 AudioBusLayout 资源头、为5个AutoLoad添加 Qingfengdu 前缀 class_name、将跨脚本访问改为 /root/<AutoLoad> 强类型获取、补齐变量类型，并将一次性 p0_verification_runner.gd 归档至 tests/disabled。Godot 4.7.1 重新导入和主场景启动均无解析错误；详见 gotbotgame/GODOT_4_7_1_FIX_GUIDE.md。2026-08-07 Web中文方框修复：将 init_font.gd 挂到主场景，运行时递归为所有 Control 设置项目内 CMSFont-Bold.TTF 的 font/normal_font/bold_font 覆盖；当前原型字符覆盖检查通过，Web构建已重新导出。2026-08-07 人工校验发现音频无声，已定位并修复：P0 主场景预加载 BGM/雨声 OGG，首次点击验证选项时在同一用户手势启动 BGM+Ambient，两条 OGG 设置循环播放；Godot 4.7.1 重新导入、主场景启动和 Web 导出通过。仍待 Chrome/微信内置浏览器强制刷新后确认点击选项可听到音频、中文字体外观、跨刷新存档与首屏加载后再正式验收。"
         },
         {
           "task_id": "P0-T3",
           "task_name": "美术风格验证（1角色概念图）",
           "owner": "art-director + ui-ux-designer",
-          "status": "not_started",
-          "deliverables": ["style-concept.png"],
+          "status": "completed",
+          "deliverables": ["gotbotgame/assets/sprites/style-concept.png"],
           "dependencies": ["P0-T1"],
-          "notes": "选定1位主角做完整概念图，统一半厚涂+水墨晕染风格"
+          "completed_date": "2026-08-07",
+          "notes": "美术总监评审通过：柳陆书单人平静表情风格稿，青衫折扇、墨竹扇面、黑发高髻；低饱和冷调半厚涂与水墨晕染方向已确认。文件为1600×2000 RGBA透明PNG，可作为P3三位角色立绘统一基准。"
         },
         {
           "task_id": "P0-T4",
           "task_name": "音频方向验证（1首BGM样稿）",
           "owner": "art-director + audio-designer",
-          "status": "not_started",
-          "deliverables": ["bgm_sample.ogg"],
+          "status": "completed",
+          "deliverables": ["rain-night-intro-audio-spec.md", "gotbotgame/assets/audio/bgm/bgm_rain_intro_sample.ogg", "gotbotgame/assets/audio/ambient/sfx_rain_continuous_sample.ogg", "gotbotgame/assets/audio/bgm/bgm_rain_intro_sample.wav", "gotbotgame/assets/audio/ambient/sfx_rain_continuous_sample.wav", "gotbotgame/assets/audio/bgm/rain-night-intro-loop-notes.txt"],
           "dependencies": ["P0-T1"],
-          "notes": "制作雨夜引子BGM样稿，验证古琴+箫+雨声混音方向"
+          "completed_date": "2026-08-07",
+          "notes": "音频设计与艺术总监评审通过方向验证小样：箫+古琴为BGM主层，连续雨声独立接入Ambient；小样120秒，48kHz立体声，BGM OGG约395KB、雨声OGG约1.4MB；已定义循环区间与Godot淡入/切场逻辑。该小样为程序化方向验证，不是最终作曲成品。"
         },
         {
           "task_id": "P0-T5",
@@ -84,16 +87,17 @@
       "phase_name": "MVP",
       "weeks": "W2-4",
       "milestone": "M1",
-      "status": "not_started",
+      "status": "in_progress",
       "tasks": [
-        {"task_id": "P1-T1", "task_name": "Godot 工程搭建", "owner": "system-engineer", "status": "not_started", "deliverables": ["project.godot", "scenes/main.tscn"], "dependencies": ["P0-T2", "P0-T5"], "notes": "搭建项目骨架、AutoLoad单例、场景管理器"},
-        {"task_id": "P1-T2", "task_name": "柳陆书线场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/001_rain.scene.md", "scenes/010_meet.scene.md", "scenes/020_liu_day1.scene.md"], "dependencies": ["P0-T1"], "notes": "开场+初识+1天日常（柳陆书线）"},
-        {"task_id": "P1-T3", "task_name": "柳陆书线分支树", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["branch-tree-mvp.json"], "dependencies": ["P1-T2"], "notes": "仅柳陆书线的分支与状态机"},
-        {"task_id": "P1-T4", "task_name": "基础UI实现", "owner": "ui-ux-designer", "status": "not_started", "deliverables": ["dialogue_box.tscn", "choice_panel.tscn", "status_bar.tscn"], "dependencies": ["P1-T1"], "notes": "对话框+选项面板+状态条，使用Control节点"},
-        {"task_id": "P1-T5", "task_name": "基础存档系统", "owner": "system-engineer", "status": "not_started", "deliverables": ["save_manager.gd"], "dependencies": ["P1-T1", "P1-T3"], "notes": "ResourceSaver+JSON，多槽位+自动存档"},
-        {"task_id": "P1-T6", "task_name": "占位立绘+背景", "owner": "ui-ux-designer", "status": "not_started", "deliverables": ["placeholder_sprites/"], "dependencies": ["P1-T1"], "notes": "简单色块占位，后续P3替换为最终立绘"},
-        {"task_id": "P1-T7", "task_name": "柳陆书线文案润色", "owner": "copywriter", "status": "not_started", "deliverables": ["final-dialogue/mvp/"], "dependencies": ["P1-T2"], "notes": "润色柳线全部台词与旁白"},
-        {"task_id": "P1-T8", "task_name": "MVP 集成测试", "owner": "qa-tester", "status": "not_started", "deliverables": ["test-report-mvp.md"], "dependencies": ["P1-T1","P1-T2","P1-T3","P1-T4","P1-T5","P1-T6","P1-T7"], "notes": "验证核心循环可玩，无Blocker"}
+        {"task_id": "P1-T1", "task_name": "Godot 工程搭建", "owner": "system-engineer", "status": "completed", "deliverables": ["project.godot", "scenes/main.tscn", "scripts/scene_manager.gd", "scripts/mvp_scene_runner.gd", "scripts/mvp_ui_controller.gd"], "dependencies": ["P0-T2", "P0-T5"], "started_date": "2026-08-07", "completed_date": "2026-08-07", "notes": "在现有 gotbotgame 原型上完成 P1 MVP 主场景骨架、SceneManager AutoLoad、场景 ID 路由和 MVP UI/运行器接入；Godot 4.7.1 重新导入、主场景启动、Web 导出通过。"},
+        {"task_id": "P1-T2", "task_name": "柳陆书线场景脚本", "owner": "story-designer", "status": "completed", "deliverables": ["scenes/001_rain.scene.md", "scenes/010_meet.scene.md", "scenes/020_liu_day1.scene.md"], "dependencies": ["P0-T1"], "completed_date": "2026-08-07", "notes": "已完成雨夜开场、客栈初识、柳陆书第一天场景脚本，并接入 MVP 场景运行器；保留柳陆书散漫通透、以玩笑试探的角色语气，全量三天九时段和结局逻辑留待 P2。"},
+        {"task_id": "P1-T3", "task_name": "柳陆书线分支树", "owner": "branch-logic-engineer", "status": "completed", "deliverables": ["branch-tree-mvp.json", "scenes/001_rain.scene.md", "scenes/010_meet.scene.md", "scenes/020_liu_day1.scene.md"], "dependencies": ["P1-T2"], "started_date": "2026-08-07", "completed_date": "2026-08-07", "notes": "产品设计总监初审与制作人终审通过。MVP 分支树包含 7 个可达节点、13 个选择、2 个终止节点：保留 PDD 开场 A/B/C、前方无路彩蛋、初识人物视觉锚点、洞察门槛和柳陆书好感变化；未越界加入 P2 全量内容或 PRD 禁止系统。技术总监复核 JSON 图无断链，Godot 4.7.1 解析和主场景启动通过。"},
+        {"task_id": "P1-T4", "task_name": "基础UI实现", "owner": "ui-ux-designer", "status": "completed", "deliverables": ["dialogue_box.tscn", "choice_panel.tscn", "status_bar.tscn"], "dependencies": ["P1-T1"], "started_date": "2026-08-07", "completed_date": "2026-08-07", "notes": "产品设计总监与制作人评审通过。对话框、选项面板、状态条已从 P0 验证语义收口为 P1 MVP 叙事 UI，落实 PDD 卷轴/水墨配色、角色名/旁白接口、选项左侧引导符、悬停朱砂反馈、天数/时段/洞察状态展示；Godot 4.7.1 与 Web 构建验证通过。"},
+        {"task_id": "P1-T5", "task_name": "基础存档系统", "owner": "system-engineer", "status": "completed", "deliverables": ["save_manager.gd", "game_state_manager.gd"], "dependencies": ["P1-T1", "P1-T3"], "started_date": "2026-08-07", "completed_date": "2026-08-07", "notes": "技术总监复审与制作人终审通过。已实现 10 个手动槽位、slot_auto、slot_day_end、JSON user:// 持久化、原子临时文件替换、PDD 完整状态快照、槽位摘要、场景进入自动存档；Godot 4.7.1 主场景启动、自动存档实际落盘、Web 导出均通过。主菜单启动恢复流程留待后续集成。"},
+        {"task_id": "P1-T6", "task_name": "占位立绘+背景", "owner": "ui-ux-designer", "status": "blocked", "deliverables": ["placeholder_sprites/"], "dependencies": ["P1-T1"], "started_date": "2026-08-07", "notes": "已完成三组背景占位和用户确认的三位角色 MVP 立绘静态接入。三张原始 1122×1402 RGB 图保留在 assets/generated_portraits；通过 tools/prepare_mvp_portraits.py 做边缘连通背景分离、等比裁放与透明安全区补齐，生成 assets/sprites/mvp/gui_han_calm_transparent.png、li_keying_calm_transparent.png、liu_lushu_calm_transparent.png，均为 1600×2000 RGBA；PNG 色彩类型为6，四角与整圈外缘 Alpha 均为0，已确认是真实透明底而非烘焙棋盘格。main.tscn 按 1280×720 画面设置三人约64%屏高、统一脚底基线，大堂左中右显示归汉/黎客颍/柳陆书，窗边节点仅显示柳陆书。静态检查通过：三张 PNG Alpha 有效、res:// 引用无断链、角色节点存在、6个JSON可解析、无孤立 .import；评审见 gotbotgame/P1-T6_MVP_PORTRAIT_INTEGRATION_REVIEW.md。用户确认归汉黑发版进入 MVP，PRD/PDD 已同步墨黑长发视觉锚点。技术总监仅确认静态接入；Godot 4.7.1 headless 既有 first_scan_filesystem 16% 挂起未在本轮重试，图形化编辑器人工验收未完成，因此 P1-T6 继续 blocked，不代表 Web 构建通过。2026-08-08 追加：Web 选项乱码已完成源码级修复，新增 fonts/NotoSansCJKsc-Regular.otf 并让 init_font.gd 覆盖动态新增 Control、choice_panel.gd 显式绑定动态 Button 字体；选项引导符改为 ASCII >，fontTools 验证当前工程585个非ASCII字符在新字体中0缺字。另基于三张确认立绘与《目前.docx》生成客栈初识三人 16:9 候选图 assets/generated_scenes/inn_first_meet_three_characters_16x9.png，原图水印已通过裁剪移除；美术总监认为人物身份和场景氛围基本符合，但柳陆书“半条腿搭凳”动作仍需二次修正后才能作为最终正式图。复核见 gotbotgame/P1_WEB_TEXT_AND_INN_SCENE_REVIEW.md。"},
+        {"task_id": "P1-T7", "task_name": "柳陆书线文案润色", "owner": "copywriter", "status": "completed", "deliverables": ["data/final-dialogue/mvp/liu_lushu_day1.json"], "dependencies": ["P1-T2"], "started_date": "2026-08-07", "completed_date": "2026-08-07", "notes": "严格依据《目前.docx》中雨夜开场、豪客试探、客栈初识、窗边柳陆书线的原稿，完成 P1 MVP 文案数据层；与 branch-tree-mvp.json 解耦，覆盖 10 个 MVP 节点与柳陆书三类回应。产品设计总监复审通过：短句留白、柳陆书半文半白的玩笑试探均符合 PRD/PDD，未提前泄露二十年前真相、未扩展 P2 三天九时段或结局内容。制作人终审通过。JSON 解析成功；运行时验证受 P1-T6 的 Godot headless 引擎崩溃影响，待后续 P1-T8 综合验证。"},
+        {"task_id": "P1-T8", "task_name": "MVP 集成测试", "owner": "qa-tester", "status": "not_started", "deliverables": ["test-report-mvp.md"], "dependencies": ["P1-T1","P1-T2","P1-T3","P1-T4","P1-T5","P1-T6","P1-T7"], "notes": "验证核心循环可玩，无Blocker"},
+        {"task_id": "P1-T9", "task_name": "文案分支显示+UI布局+数值状态栏修正", "owner": "ui-ux-designer + branch-logic-engineer", "status": "completed", "deliverables": ["scripts/mvp_ui_controller.gd", "scripts/mvp_scene_runner.gd", "scripts/status_bar.gd", "scripts/choice_panel.gd", "scenes/main.tscn", "scenes/status_bar.tscn", "scenes/choice_panel.tscn", "data/final-dialogue/mvp/liu_lushu_day1.json", "P1_ROUND4_UI_TEXT_STATUS_REVIEW.md", "tools/verify_round4.py", "tools/simulate_flow.py", "tools/check_gd_balance.py"], "dependencies": ["P1-T3", "P1-T4", "P1-T7"], "started_date": "2026-08-09", "completed_date": "2026-08-09", "notes": "依据《清风渡-MVP文案总汇》修正：1) 补全32个选项→对应对白分支节点映射并新增「回应→继续→目标节点」流程，分支内容（标题=说话人+文案）在选择后正确展示；2) 选项面板上移加高(82-368, 286px)、按钮40px/间距8px，5选项232px不再被对话框遮挡；3) 状态栏重构为双行：时间随节点推进(第一二章隐藏)，新增碎片与柳/黎/归好感计数，li_clue_b=黎好感+15/碎片+1 累加正确；4) 附修：闲逛入口文本拆分(新增scene_daily_explore_backyard)、action_count双写修复存档快照失真、旧死代码映射清理。产品设计/技术/美术三总监+制作人终审通过；Godot headless受P1-T6挂起影响待图形化编辑器人工验收。2026-08-09 追加修复：_show_choice_response 原以无类型数组字面量调用 render_choices（强类型 Array[Dictionary] 参数），触发运行时类型校验错误；改为调用侧构造 var continue_choices: Array[Dictionary] 后传入，业务逻辑与JSON解析未改动。"}
       ]
     },
     {
@@ -103,15 +107,15 @@
       "milestone": null,
       "status": "not_started",
       "tasks": [
-        {"task_id": "P2-T1", "task_name": "黎客颍线场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/li_*.scene.md"], "dependencies": ["P1-T2"], "notes": "黎客颍线全部场景"},
-        {"task_id": "P2-T2", "task_name": "归汉线场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/gui_*.scene.md"], "dependencies": ["P1-T2"], "notes": "归汉线全部场景"},
-        {"task_id": "P2-T3", "task_name": "全9时段行动池脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/day*_slot*.scene.md"], "dependencies": ["P2-T1","P2-T2"], "notes": "3天×3时段=9个行动时段"},
-        {"task_id": "P2-T4", "task_name": "全分支树实现", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["branch-tree.json"], "dependencies": ["P2-T1","P2-T2","P2-T3"], "notes": "三线全量分支，覆盖所有选择点"},
-        {"task_id": "P2-T5", "task_name": "全状态机实现", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["state-machine.json"], "dependencies": ["P2-T4"], "notes": "好感度/洞察值/碎片/状态标志"},
-        {"task_id": "P2-T6", "task_name": "伙计暗线+隐藏线", "owner": "story-designer + branch-logic-engineer", "status": "not_started", "deliverables": ["scenes/innkeeper_*.scene.md", "scenes/tea_ending.scene.md"], "dependencies": ["P2-T3","P2-T4"], "notes": "得闲饮茶隐藏线+伙计杀人暗线"},
-        {"task_id": "P2-T7", "task_name": "全结局判定逻辑", "owner": "branch-logic-engineer", "status": "not_started", "deliverables": ["endings-map.json"], "dependencies": ["P2-T4","P2-T5"], "notes": "6类20+结局的判定流程"},
-        {"task_id": "P2-T8", "task_name": "走水夜事件脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/fire_night.scene.md"], "dependencies": ["P2-T3"], "notes": "归汉房间着火，柳冲进去救人，黎在下面接应"},
-        {"task_id": "P2-T9", "task_name": "最终对峙场景脚本", "owner": "story-designer", "status": "not_started", "deliverables": ["scenes/100_confrontation.scene.md", "scenes/101_solo.scene.md"], "dependencies": ["P2-T3"], "notes": "合作线5选项+独行线3选项"},
+        {"task_id": "P2-T1", "task_name": "黎客颍线场景脚本", "owner": "story-designer", "status": "completed", "deliverables": ["scenes/030_li_day1.scene.md"], "dependencies": ["P1-T2"], "completed_date": "2026-08-08", "notes": "黎客颍初识场景（4选项），文本严格基于《目前8.8.docx》已写内容。"},
+        {"task_id": "P2-T2", "task_name": "归汉线场景脚本", "owner": "story-designer", "status": "completed", "deliverables": ["scenes/040_gui_day1.scene.md"], "dependencies": ["P1-T2"], "completed_date": "2026-08-08", "notes": "归汉初识场景（4选项），文本严格基于《目前8.8.docx》已写内容。"},
+        {"task_id": "P2-T3", "task_name": "全9时段行动池脚本", "owner": "story-designer", "status": "completed", "deliverables": ["data/branch-tree-mvp.json（内嵌9个daily时段节点）", "data/final-dialogue/mvp/liu_lushu_day1.json（时段卡+行动入口文案）", "scenes/day*_slot*.scene.md（独立场景脚本文档，可选补）"], "dependencies": ["P2-T1","P2-T2"], "completed_date": "2026-08-08", "notes": "内容已于2026-08-08内嵌完成（用户确认与P2-T4并行完成）：branch-tree-mvp.json含9个时段节点（day1_01~day3_03）各5行动选项/效果/归汉双段条件/返回路由/三日收束，liu_lushu_day1.json含9张时段卡与6个行动入口文案，运行时已接入（mvp_scene_runner+mvp_ui_controller，三天九时段可玩，2026-08-09 P1-T9 已修复其UI与路由）。2026-08-09 复核确认：内容已开发完成，仅独立 scenes/day*_slot*.scene.md 文档未单独产出（文档完备性补充，非开发缺口）。"},
+        {"task_id": "P2-T4", "task_name": "全分支树实现", "owner": "branch-logic-engineer", "status": "completed", "deliverables": ["data/branch-tree.json"], "dependencies": ["P2-T1","P2-T2","P2-T3"], "completed_date": "2026-08-08", "notes": "26节点分支树与numerical-design条件键名一致。P2-T3内嵌于branch-tree daily节点，用户确认并行完成。"},
+        {"task_id": "P2-T5", "task_name": "全状态机实现", "owner": "branch-logic-engineer", "status": "completed", "deliverables": ["data/numerical-design.json"], "dependencies": ["P2-T4"], "completed_date": "2026-08-08", "notes": "4变量20标志20结局条件10组选择映射+优先级算法。用户确认并行启动。"},
+        {"task_id": "P2-T6", "task_name": "伙计暗线+隐藏线", "owner": "story-designer + branch-logic-engineer", "status": "completed", "deliverables": ["scenes/innkeeper_secret.scene.md", "scenes/innkeeper_third_explore.scene.md", "scenes/tea_ending.scene.md", "data/numerical-design.json", "tools/verify_p2t6.py", "P2_T6_INNKEEPER_REVIEW.md"], "dependencies": ["P2-T3","P2-T4"], "started_date": "2026-08-09", "completed_date": "2026-08-09", "notes": "得闲饮茶隐藏线+伙计杀人暗线完成，三总监+制作人终审通过（P2_T6_INNKEEPER_REVIEW.md）。基于PDD伙计完整身份(4.1-4.6)编写三份场景脚本：掌柜秘密/第三次闲逛风险判定/得闲饮茶结局，文本取自《目前8.8.docx》已写内容零改写。修复numerical-design数据缺口：补齐observed_account_book/solo_night_explore/sacrifice_choice/survived四flag定义（原被ending_conditions引用但未登记）。校验：flags对齐/结局条件对齐/场景字段完整/零改动抽查全部通过。"},
+        {"task_id": "P2-T7", "task_name": "全结局判定逻辑", "owner": "branch-logic-engineer", "status": "completed", "deliverables": ["data/endings-full.json", "data/numerical-design.json"], "dependencies": ["P2-T4","P2-T5"], "completed_date": "2026-08-08", "notes": "20结局完整尾声。ending_conditions在numerical-design.json中。对峙场景100/101补全叙事。"},
+        {"task_id": "P2-T8", "task_name": "走水夜事件脚本", "owner": "story-designer", "status": "completed", "deliverables": ["scenes/fire_night.scene.md", "tools/verify_p2t8.py", "P2_T8_FIRE_NIGHT_REVIEW.md"], "dependencies": ["P2-T3"], "started_date": "2026-08-09", "completed_date": "2026-08-09", "notes": "走水夜事件完成，三总监+制作人终审通过（P2_T8_FIRE_NIGHT_REVIEW.md）。叙事严格基于PDD角色档案走水夜细节（柳第一个冲进去/扇骨燎黑了也没松手/黎搬水湿毛巾刀背接应/归汉剑尖点地落地/事后拆剑穗丝线塞柳门缝补扇）；玩家4选项参与+fire_night_warned灯油痕迹差分；衔接隐藏线【得闲饮茶】（走水夜后探第三张桌）与死亡结局【替人挡了刀】触发说明。校验通过：PDD细节12项关键词全覆盖、字段完整、结局文案存在。"},
+        {"task_id": "P2-T9", "task_name": "最终对峙场景脚本", "owner": "story-designer", "status": "completed", "deliverables": ["scenes/100_confrontation.scene.md", "scenes/101_confront_outcome.scene.md"], "dependencies": ["P2-T3"], "completed_date": "2026-08-08", "notes": "对峙五路选择A-E→对应五行叙事+结局路由。文本基于《目前8.8.docx》框架补写过渡与结尾。"},
         {"task_id": "P2-T10", "task_name": "全剧本文案润色", "owner": "copywriter", "status": "not_started", "deliverables": ["final-dialogue/"], "dependencies": ["P2-T1","P2-T2","P2-T3","P2-T8","P2-T9"], "notes": "保留原作者短句留白笔感"}
       ]
     },

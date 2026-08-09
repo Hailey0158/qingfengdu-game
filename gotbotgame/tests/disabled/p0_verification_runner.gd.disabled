@@ -1,0 +1,86 @@
+extends Node
+## P0-T2 automated runtime validation. Uses only prototype data and assets.
+
+var failures: Array[String] = []
+var check_count := 0
+
+func expect(condition: bool, label: String) -> void:
+	check_count += 1
+	if condition:
+		print("PASS | %s" % label)
+	else:
+		failures.append(label)
+		push_error("FAIL | %s" % label)
+
+func _ready() -> void:
+	await get_tree().process_frame
+	await _run_checks()
+	print("P0-T2_RUNTIME_SUMMARY | passed=%d | failed=%d" % [check_count - failures.size(), failures.size()])
+	if not failures.is_empty():
+		print("P0-T2_RUNTIME_FAILURES | %s" % ", ".join(failures))
+	get_tree().quit(0 if failures.is_empty() else 1)
+
+func _run_checks() -> void:
+	var main_scene := load("res://scenes/main.tscn") as PackedScene
+	expect(main_scene != null, "主场景可加载")
+	if main_scene == null:
+		return
+	var main := main_scene.instantiate()
+	get_tree().root.add_child(main)
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	var dialogue := main.get_node_or_null("CanvasLayer/Root/DialogueBox")
+	var dialogue_text := main.get_node_or_null("CanvasLayer/Root/DialogueBox/Margin/Content/DialogueText") as RichTextLabel
+	expect(dialogue != null and dialogue_text != null, "Control 对话框节点实例化")
+	if dialogue_text != null:
+		expect(dialogue_text.text.contains("清风渡") and dialogue_text.text.contains("中文"), "中文技术文本被 RichTextLabel 接收")
+		DialogueSystem.type_text(dialogue_text, "中文打字机验证", 0.001)
+		await get_tree().create_timer(0.25).timeout
+		expect(dialogue_text.visible_ratio >= 0.99, "visible_ratio 打字机完成")
+		DialogueSystem.skip(dialogue_text)
+		expect(dialogue_text.visible_ratio == 1.0, "打字机跳过立即补全")
+
+	GameStateManager.reset()
+	var loaded_tree := BranchEngine.load_tree()
+	expect(loaded_tree and BranchEngine.get_available_choices("prototype").size() == 1, "JSON 分支读取及条件过滤")
+	BranchEngine.apply_effects({"insight": 1})
+	expect(GameStateManager.insight == 1 and BranchEngine.get_available_choices("prototype").size() == 2, "分支效果写入状态并解锁条件选项")
+	expect(SaveManager.save_slot(0), "user:// JSON 存档写入")
+	GameStateManager.insight = 7
+	var loaded_save := SaveManager.load_slot(0)
+	expect(loaded_save and GameStateManager.insight == 1, "JSON 读档恢复状态")
+	expect(FileAccess.file_exists("user://saves/prototype_slot_00.json"), "存档文件实际存在")
+
+	var bgm_index := AudioServer.get_bus_index("BGM")
+	var sfx_index := AudioServer.get_bus_index("SFX")
+	var ambient_index := AudioServer.get_bus_index("Ambient")
+	expect(bgm_index >= 0 and sfx_index >= 0 and ambient_index >= 0, "BGM/SFX/Ambient 三条 AudioBus 已加载")
+	var bgm_stream := load("res://assets/audio/bgm/bgm_rain_intro_sample.ogg") as AudioStream
+	var ambient_stream := load("res://assets/audio/ambient/sfx_rain_continuous_sample.ogg") as AudioStream
+	expect(bgm_stream != null and ambient_stream != null, "BGM 与环境音 OGG 资源可加载")
+	if bgm_stream != null:
+		AudioManager.play_bgm_fade_in(bgm_stream, 0.15)
+		await get_tree().create_timer(0.25).timeout
+		expect(AudioManager.bgm_player.playing and AudioServer.get_bus_volume_db(bgm_index) > -7.0, "BGM 淡入播放至目标音量")
+	if ambient_stream != null:
+		AudioManager.ambient_player.stream = ambient_stream
+		AudioManager.ambient_player.play()
+		expect(AudioManager.ambient_player.playing and AudioManager.ambient_player.bus == &"Ambient", "环境音独立接入 Ambient 总线")
+
+	var portrait := main.get_node_or_null("CanvasLayer/Root/CharacterLayer/PrototypePortrait") as CanvasItem
+	expect(portrait != null, "立绘占位节点实例化")
+	if portrait != null:
+		DialogueSystem.fade_in(portrait, 0.2)
+		await get_tree().create_timer(0.3).timeout
+		expect(portrait.modulate.a >= 0.99, "立绘 Tween 200ms 淡入")
+	var transition := main.get_node_or_null("CanvasLayer/Root/Transition")
+	if transition != null:
+		transition.play_transition(0.1)
+		await get_tree().create_timer(1.25).timeout
+		expect(not transition.visible, "黑屏转场淡入停留淡出完成")
+	else:
+		expect(false, "黑屏转场节点实例化")
+
+	if is_instance_valid(main):
+		main.queue_free()

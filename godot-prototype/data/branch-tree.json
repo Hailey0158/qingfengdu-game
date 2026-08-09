@@ -1,0 +1,18 @@
+{
+  "prototype": {
+    "choices": [
+      {
+        "id": "gain_insight",
+        "text": "验证选项：洞察 +1",
+        "conditions": {},
+        "effects": {"insight": 1}
+      },
+      {
+        "id": "requires_insight",
+        "text": "验证选项：洞察达到 1 后可见",
+        "conditions": {"min_insight": 1},
+        "effects": {"prototype_branch_verified": true}
+      }
+    ]
+  }
+}

@@ -20,6 +20,24 @@ agent_created: true
 - "设计一个多结局的视觉小说"
 - "开发一个分支叙事的 AVG 游戏"
 
+## 清风渡项目约束（强制）
+
+在工作区 `C:\\Users\\gh604\\WorkBuddy\\game-02` 开发《清风渡》时，必须同步加载 `qingfengdu-vibe-dev`。该约束层要求每次 Godot、剧情、UI、美术、音频或资产任务开始前读取 `PRD.md`、`PDD.md` 和 `project-ledger.json`，并禁止脱离既定世界观、角色、视听风格、Godot 4.x 技术架构及台账范围自由发挥。
+
+- 规范来源与优先级：`project-ledger.json` → `PRD.md` → `PDD.md` → 本工作室规范。
+- 若需求与既定规范冲突：先明确冲突内容，再等待用户批准修订 PRD/PDD；不得用新产出隐性改写设定。
+- 任务交付前：必须完成对应总监收口评审，并按 `qingfengdu-vibe-dev` 验收清单复核。
+
+## Ledger 集成（配套 project-ledger skill）
+
+本 skill 与 `project-ledger` skill **强耦合**。每次使用本 skill 进行任务开发时，**必须同步使用 project-ledger**，形成"读台账 → 开发 → 更新台账"闭环：
+
+1. **开发前**：先调用 `project-ledger` skill 读取 `project-ledger.json`，了解当前阶段（P0–P7）、待办任务、依赖关系，并向用户简要汇报当前进度与下一步行动；**选定任务后必须校验其 `dependencies` 是否全部 `completed`，未就绪则拦截不启动**（详见 project-ledger skill「启动任务前的依赖校验」）
+2. **开发中**：按 game-studio 角色流程（12 角色 4 层架构）执行任务（启动前依赖已校验通过）
+3. **验收后**：任务通过验收，调用 `project-ledger` skill 更新对应任务的 `status`（→ `completed`）、`completed_date`、`deliverables`，并重算 `summary` 与必要时切换 `current_phase`
+
+> 两个 skill 一起用，缺一不可。台账是项目进度的唯一事实来源（single source of truth）。
+
 ## How to Use
 
 ### 1. Load the Studio Specification

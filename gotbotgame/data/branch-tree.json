@@ -1,0 +1,271 @@
+{
+  "schema_version": "qingfengdu.branch-tree.2",
+  "task_id": "P2-T4",
+  "route": "full",
+  "scope": "全量分支：第一章开篇→第二章三线初识→第三章三天九时段日常→第四章走水夜→第五章秘境对峙→结局判定",
+
+  "nodes": {
+    "scene_001a_rain_lantern": {
+      "node_id": "scene_001a_rain_lantern",
+      "location": "山道 → 清风渡门口",
+      "speaker": "旁白",
+      "plot_tags": ["opening", "rain_night"],
+      "save_point": true,
+      "choices": [{"choice_id": "rain_continue", "text": "继续", "target_node": "scene_001b_innkeeper", "effects": {}}]
+    },
+    "scene_001b_innkeeper": {
+      "node_id": "scene_001b_innkeeper",
+      "location": "清风渡门口",
+      "speaker": "客栈伙计",
+      "plot_tags": ["opening", "innkeeper"],
+      "save_point": false,
+      "choices": [{"choice_id": "innkeeper_continue", "text": "继续", "target_node": "scene_001c_choices", "effects": {}}]
+    },
+    "scene_001c_choices": {
+      "node_id": "scene_001c_choices",
+      "location": "清风渡门口",
+      "speaker": "旁白",
+      "plot_tags": ["opening", "choice_branch"],
+      "save_point": false,
+      "choices": [
+        {"choice_id": "open_enter_inn", "text": "终于有个能休息的地方了，进去坐会！", "target_node": "scene_010_meet", "effects": {"insight": 1, "action_count": 1}},
+        {"choice_id": "open_keep_walking", "text": "荒郊野岭，还是走到前面的镇子上再说吧。", "target_node": "scene_002_path", "effects": {"watched": true, "action_count": 1}},
+        {"choice_id": "open_pay_all", "text": "他怎么知道我是侠客？全场消费由我买单！", "target_node": "scene_003_pay_all", "effects": {"liu_invited": true, "action_count": 1}}
+      ]
+    },
+    "scene_002_path": {
+      "node_id": "scene_002_path",
+      "location": "清风渡外·雨夜山道",
+      "speaker": "旁白",
+      "plot_tags": ["opening_branch_A"],
+      "save_point": false,
+      "choices": [
+        {"choice_id": "path_turn_back", "text": "停一停，还是回清风渡。", "target_node": "scene_010_meet", "effects": {"insight": 1}},
+        {"choice_id": "path_keep_to_town", "text": "既然出来了，就一直走到底。", "target_node": "ending_front_no_road", "effects": {"chose_path_to_end": true}}
+      ]
+    },
+    "scene_003_pay_all": {
+      "node_id": "scene_003_pay_all",
+      "location": "清风渡大堂门口",
+      "speaker": "客栈伙计",
+      "plot_tags": ["opening_branch_C"],
+      "save_point": false,
+      "choices": [
+        {"choice_id": "pay_all_retract", "text": "咳，方才只是说笑，找张桌子坐下。", "target_node": "scene_010_meet", "effects": {"liu_invited": false}},
+        {"choice_id": "pay_all_join_liu", "text": "既然有人请客了，那就不客气地过去蹭一顿。", "target_node": "scene_020_liu_day1", "effects": {"liu_met": true, "liu_affection": 5}}
+      ]
+    },
+
+    "scene_010_meet": {
+      "node_id": "scene_010_meet",
+      "location": "清风渡客栈大堂",
+      "speaker": "旁白",
+      "plot_tags": ["first_meet"],
+      "save_point": true,
+      "choices": [
+        {"choice_id": "meet_liu", "text": "走向窗边男子", "target_node": "scene_020_liu_day1", "effects": {"liu_met": true, "liu_affection": 2}},
+        {"choice_id": "meet_li", "text": "走向右边桌子", "target_node": "scene_030_li_day1", "effects": {"li_met": true, "li_affection": 2}},
+        {"choice_id": "meet_gui", "text": "走向里侧桌子", "target_node": "scene_040_gui_day1", "effects": {"gui_met": true, "gui_affection": 2}}
+      ]
+    },
+    "scene_020_liu_day1": {
+      "node_id": "scene_020_liu_day1",
+      "location": "清风渡客栈·窗边",
+      "speaker": "柳陆书",
+      "plot_tags": ["liu_route", "day_1"],
+      "save_point": true,
+      "choices": [
+        {"choice_id": "liu_a1_joke_back", "text": "笑着接话：'那我赌自己活得过。'", "target_node": "scene_daily_start", "effects": {"liu_affection": 0, "action_count": 1}},
+        {"choice_id": "liu_a2_challenge", "text": "反问：'你凭什么这么说？'", "target_node": "scene_daily_start", "effects": {"liu_affection": 10, "insight": 1, "action_count": 1}},
+        {"choice_id": "liu_a3_ask_secret", "text": "直接问正事：'我听说你知道秘境的事。'", "target_node": "scene_daily_start", "effects": {"liu_affection": -20, "exposed": true, "action_count": 1}},
+        {"choice_id": "liu_a4_silence", "text": "沉默，等他继续说", "target_node": "scene_daily_start", "effects": {"liu_affection": -10, "action_count": 1}}
+      ]
+    },
+    "scene_030_li_day1": {
+      "node_id": "scene_030_li_day1",
+      "location": "清风渡客栈·右边桌",
+      "speaker": "黎客颍",
+      "plot_tags": ["li_route", "day_1"],
+      "save_point": true,
+      "choices": [
+        {"choice_id": "li_b1_name", "text": "道谢坐下，问他叫什么", "target_node": "scene_daily_start", "effects": {"li_affection": 15, "action_count": 1}},
+        {"choice_id": "li_b2_weapon", "text": "注意到他的刀：'你是刀客？'", "target_node": "scene_daily_start", "effects": {"li_affection": 0, "insight": 1, "action_count": 1}},
+        {"choice_id": "li_b3_ask_purpose", "text": "直接问他：'你来这里做什么？'", "target_node": "scene_daily_start", "effects": {"li_affection": -10, "watched": true, "action_count": 1}},
+        {"choice_id": "li_b4_silent_tea", "text": "不说话，安静喝他的茶", "target_node": "scene_daily_start", "effects": {"li_affection": 0, "action_count": 1}}
+      ]
+    },
+    "scene_040_gui_day1": {
+      "node_id": "scene_040_gui_day1",
+      "location": "清风渡客栈·里侧桌",
+      "speaker": "归汉",
+      "plot_tags": ["gui_route", "day_1"],
+      "save_point": true,
+      "choices": [
+        {"choice_id": "gui_c1_found_out", "text": "……你发现了？", "target_node": "scene_daily_start", "effects": {"gui_affection": 5, "action_count": 1}},
+        {"choice_id": "gui_c2_sword", "text": "我在看你的剑。", "target_node": "scene_daily_start", "effects": {"gui_affection": 10, "insight": 1, "action_count": 1}},
+        {"choice_id": "gui_c3_scenery", "text": "我只是看看风景。", "target_node": "scene_daily_start", "effects": {"gui_affection": -10, "watched": true, "action_count": 1}},
+        {"choice_id": "gui_c4_sit_down", "text": "不说话，直接在她对面坐下", "target_node": "scene_daily_start", "effects": {"gui_affection": 0, "action_count": 1}}
+      ]
+    },
+
+    "scene_daily_start": {
+      "node_id": "scene_daily_start",
+      "location": "清风渡客栈",
+      "speaker": "旁白",
+      "plot_tags": ["daily", "transition"],
+      "save_point": true,
+      "note": "每日行动池入口。action_count<9时循环，=9时进入结局。",
+      "choices": [
+        {"choice_id": "daily_liu_tea", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}, "conditions": {"liu_refused": {"op": "neq", "value": true}}},
+        {"choice_id": "daily_li_clues", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}, "conditions": {"li_refused": {"op": "neq", "value": true}}},
+        {"choice_id": "daily_gui_sit", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_refused": {"op": "neq", "value": true}}},
+        {"choice_id": "daily_explore", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
+        {"choice_id": "daily_innkeeper", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+      ],
+      "on_enter_effects": {"note": "检查 private_invite 触发条件，若满足则在choices中追加私下邀约选项"}
+    },
+
+    "scene_daily_liu_tea": {
+      "node_id": "scene_daily_liu_tea",
+      "location": "清风渡客栈·窗边",
+      "speaker": "柳陆书",
+      "plot_tags": ["daily", "liu"],
+      "note": "首次与后续对话分支不同，由 action_count 或 flag 判断",
+      "choices": [
+        {"choice_id": "liu_a_joke", "text": "跟他讲笑话", "target_node": "scene_daily_return", "effects": {"liu_affection": 5, "action_count": 1}},
+        {"choice_id": "liu_b_return", "text": "上次你请客，这次我请回来。", "target_node": "scene_daily_return", "effects": {"liu_affection": 0, "action_count": 1}, "conditions": {"liu_invited": true}},
+        {"choice_id": "liu_c_rude", "text": "地方一共就这么大，我来坐坐怎么了。", "target_node": "scene_daily_return", "effects": {"liu_affection": -10, "action_count": 1}},
+        {"choice_id": "liu_repeat_a_remember", "text": "你想起来什么了？", "target_node": "scene_daily_return", "effects": {"liu_affection": 10, "fragments": 1, "action_count": 1}, "note": "后续互动"},
+        {"choice_id": "liu_repeat_b_mirror", "text": "那你觉得我是哪一种？", "target_node": "scene_daily_return", "effects": {"liu_affection": 10, "action_count": 1}, "note": "后续互动"},
+        {"choice_id": "liu_repeat_c_listen", "text": "你自己心底有答案。", "target_node": "scene_daily_return", "effects": {"liu_affection": 15, "insight": 1, "action_count": 1}, "note": "后续互动"},
+        {"choice_id": "liu_repeat_d_weather", "text": "这雨确实下太久了。", "target_node": "scene_daily_return", "effects": {"liu_affection": -10, "action_count": 1}, "note": "后续互动"},
+        {"choice_id": "liu_repeat_e_ask", "text": "秘境的事，你能再说说吗？", "target_node": "scene_daily_return", "effects": {"liu_affection": -20, "liu_refused": true, "action_count": 1}, "note": "选择后无法再互动"}
+      ]
+    },
+
+    "scene_daily_li_clues": {
+      "node_id": "scene_daily_li_clues",
+      "location": "清风渡客栈·右边桌",
+      "speaker": "黎客颍",
+      "plot_tags": ["daily", "li"],
+      "choices": [
+        {"choice_id": "li_a_read", "text": "接过来，顺畅地读出来", "target_node": "scene_daily_return", "effects": {"li_affection": -20, "watched": true, "fragments": 1, "action_count": 1}},
+        {"choice_id": "li_b_unclear", "text": "皱眉：这个字不太清楚", "target_node": "scene_daily_return", "effects": {"li_affection": 15, "fragments": 1, "action_count": 1}},
+        {"choice_id": "li_c_ask_who", "text": "没看纸先问：你在找人？", "target_node": "scene_daily_return", "effects": {"li_affection": 0, "action_count": 1}},
+        {"choice_id": "li_d_cant_read", "text": "看了一眼就还给他", "target_node": "scene_daily_return", "effects": {"li_affection": -10, "li_refused": true, "action_count": 1}}
+      ]
+    },
+
+    "scene_daily_gui_sit": {
+      "node_id": "scene_daily_gui_sit",
+      "location": "清风渡客栈·里侧桌",
+      "speaker": "归汉",
+      "plot_tags": ["daily", "gui"],
+      "note": "连续坐两个时段后触发对话",
+      "choices": [
+        {"choice_id": "gui_a_when_ready", "text": "你想说的时候自然会说", "target_node": "scene_daily_return", "effects": {"gui_affection": 10, "fragments": 1, "insight": 1, "action_count": 1}},
+        {"choice_id": "gui_b_ask_purpose", "text": "那你来干什么？", "target_node": "scene_daily_return", "effects": {"gui_affection": 0, "action_count": 1}},
+        {"choice_id": "gui_c_sit_with", "text": "我不好奇这个。就是想和你坐一会。", "target_node": "scene_daily_return", "effects": {"gui_affection": 15, "action_count": 1}},
+        {"choice_id": "gui_d_rude", "text": "谁在乎你来做什么。", "target_node": "scene_daily_return", "effects": {"gui_affection": -15, "gui_refused": true, "action_count": 1}}
+      ]
+    },
+
+    "scene_daily_explore": {
+      "node_id": "scene_daily_explore",
+      "location": "清风渡客栈各处",
+      "speaker": "旁白",
+      "plot_tags": ["daily", "explore"],
+      "note": "首次闲逛必触发，第二次选a/b/c，第三次根据状态分叉",
+      "choices": [
+        {"choice_id": "explore_first", "text": "初次闲逛（必触发）", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "watched": true, "action_count": 1}},
+        {"choice_id": "explore_firewood", "text": "去柴火堆", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "fire_night_warned": true, "innkeeper_alert": true, "action_count": 1}},
+        {"choice_id": "explore_hall", "text": "去大堂看看伙计在做什么", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "recognized_scar": true, "innkeeper_alert": true, "action_count": 1}},
+        {"choice_id": "explore_corridor", "text": "上三楼走廊转转", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "innkeeper_alert": true, "action_count": 1}},
+        {"choice_id": "explore_third", "text": "第三次闲逛", "target_node": "scene_explore_third", "effects": {}, "note": "跳转到第三次闲逛判定节点"}
+      ]
+    },
+
+    "scene_explore_third": {
+      "node_id": "scene_explore_third",
+      "location": "清风渡客栈",
+      "speaker": "旁白",
+      "plot_tags": ["daily", "explore", "risk"],
+      "note": "根据 exposed/watched/recognized_scar 状态分叉到不同路线",
+      "choices": [
+        {"choice_id": "explore_third_safe", "text": "继续", "target_node": "scene_daily_return", "effects": {"action_count": 1}, "note": "安全路线"},
+        {"choice_id": "explore_third_survive", "text": "继续", "target_node": "scene_daily_return", "effects": {"action_count": 1}, "note": "逃生路线"},
+        {"choice_id": "explore_third_death", "text": "继续", "target_node": "ending_curiosity_death", "effects": {}, "conditions": {"exposed": true, "recognized_scar": false}, "note": "死亡路线"}
+      ],
+      "on_enter_effects": {"note": "检查 hidden_line: 若洞察≥4 且存活，解锁隐藏线标志"}
+    },
+
+    "scene_daily_innkeeper": {
+      "node_id": "scene_daily_innkeeper",
+      "location": "清风渡客栈·柜台",
+      "speaker": "客栈伙计",
+      "plot_tags": ["daily", "innkeeper", "trap"],
+      "choices": [
+        {"choice_id": "inn_a_curious", "text": "真的？在哪儿？你跟我说说。", "target_node": "scene_daily_return", "effects": {"bait_marked": true, "action_count": 1}},
+        {"choice_id": "inn_b_pretend", "text": "是吗，听着怪吓人的。", "target_node": "scene_daily_return", "effects": {"insight": 1, "action_count": 1}},
+        {"choice_id": "inn_c_scar", "text": "你右手虎口那道疤是怎么回事？", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "recognized_scar": true, "action_count": 1}},
+        {"choice_id": "inn_d_disinterest", "text": "我不好奇那些。", "target_node": "scene_daily_return", "effects": {"action_count": 1}}
+      ]
+    },
+
+    "scene_daily_return": {
+      "node_id": "scene_daily_return",
+      "location": "清风渡客栈",
+      "speaker": "旁白",
+      "plot_tags": ["daily", "return"],
+      "save_point": true,
+      "choices": [
+        {"choice_id": "daily_next", "text": "继续下一时段", "target_node": "scene_daily_start", "effects": {}, "conditions": {"action_count": {"op": "lt", "value": 9}}},
+        {"choice_id": "daily_to_confrontation", "text": "秘境异动，该去了。", "target_node": "scene_100_confrontation", "effects": {}, "conditions": {"action_count": {"op": "gte", "value": 9}}}
+      ],
+      "on_enter_effects": {"note": "每晚结算：检查好感≥30触发私下邀约（单角色不重复）。若触发，追加私下邀约选择。检查 exposed/watched/bait_marked 触发夜间事件。"}
+    },
+
+    "scene_100_confrontation": {
+      "node_id": "scene_100_confrontation",
+      "location": "观澜阁秘境深处",
+      "speaker": "旁白",
+      "plot_tags": ["confrontation", "climax"],
+      "save_point": true,
+      "choices": [
+        {"choice_id": "confront_a_persuade_gui", "text": "劝归汉出手：'你拦的不是他，是古玉。'", "target_node": "scene_101_confront_outcome", "effects": {"gui_affection": 10, "insight": 2}},
+        {"choice_id": "confront_b_let_gui_decide", "text": "让归汉自己做决定", "target_node": "scene_101_confront_outcome", "effects": {"gui_affection": 5, "insight": 1}},
+        {"choice_id": "confront_c_save_xie", "text": "趁其他人缠斗时，自己去救谢前辈", "target_node": "scene_101_confront_outcome", "effects": {"li_affection": 15}, "conditions": {"li_met": true}},
+        {"choice_id": "confront_d_point_jade", "text": "别打他了——打碎古玉！", "target_node": "scene_101_confront_outcome", "effects": {"truth_route_ready": true, "insight": 3}, "conditions": {"insight": {"op": "gte", "value": 6}, "fragments": {"op": "gte", "value": 8}}},
+        {"choice_id": "confront_e_observe", "text": "在一旁看着", "target_node": "scene_101_confront_outcome", "effects": {"liu_affection": -5, "li_affection": -5, "gui_affection": -5, "insight": 1}}
+      ]
+    },
+
+    "scene_101_confront_outcome": {
+      "node_id": "scene_101_confront_outcome",
+      "location": "观澜阁秘境",
+      "speaker": "旁白",
+      "plot_tags": ["resolution"],
+      "note": "根据 confront_a/b/c/d/e 选择展示不同叙事，然后进入结局判定路由",
+      "choices": [
+        {"choice_id": "confront_end", "text": "继续", "target_node": "scene_ending_router", "effects": {}}
+      ]
+    },
+
+    "scene_ending_router": {
+      "node_id": "scene_ending_router",
+      "location": "结局判定",
+      "speaker": "旁白",
+      "plot_tags": ["ending", "router"],
+      "terminal": true,
+      "note": "根据 accumulated affection/fragments/insight/flags 判定结局。优先级: death > easter_egg > hidden > truth > cp > cb > neutral > distant。",
+      "choices": []
+    },
+
+    "ending_front_no_road": {"node_id": "ending_front_no_road", "terminal": true, "choices": [], "note": "彩蛋结局·前方无路"},
+    "ending_curiosity_death": {"node_id": "ending_curiosity_death", "terminal": true, "choices": [], "note": "死亡·淹死在自己的好奇心里"},
+    "ending_wrong_trust": {"node_id": "ending_wrong_trust", "terminal": true, "choices": [], "note": "死亡·信错了人"},
+    "ending_sacrifice": {"node_id": "ending_sacrifice", "terminal": true, "choices": [], "note": "死亡·替人挡了刀"},
+    "ending_qingfeng_guest": {"node_id": "ending_qingfeng_guest", "terminal": true, "choices": [], "note": "清风过客"},
+    "ending_truth": {"node_id": "ending_truth", "terminal": true, "choices": [], "note": "真相达成/转入CP/CB判定"}
+  }
+}

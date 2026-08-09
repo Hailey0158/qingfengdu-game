@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[node name="CharacterSprite" type="ColorRect"]
+custom_minimum_size = Vector2(255, 367)
+color = Color(0.25, 0.36, 0.38, 1)
+modulate = Color(1, 1, 1, 0)
+mouse_filter = 2

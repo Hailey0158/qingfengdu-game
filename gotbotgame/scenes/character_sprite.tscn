@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/mvp/dehazed/liu_lushu_calm_transparent.png" id="1_liu"]
+
+[node name="CharacterSprite" type="TextureRect"]
+custom_minimum_size = Vector2(255, 367)
+offset_right = 255.0
+offset_bottom = 367.0
+texture = ExtResource("1_liu")
+expand_mode = 1
+stretch_mode = 5
+modulate = Color(1, 1, 1, 0)
+mouse_filter = 2

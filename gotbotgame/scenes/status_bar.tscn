@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/status_bar.gd" id="1_status"]
+
+[node name="StatusBar" type="VBoxContainer"]
+theme_override_constants/separation = 4
+script = ExtResource("1_status")
+
+[node name="Row1" type="HBoxContainer" parent="."]
+theme_override_constants/separation = 18
+
+[node name="DayLabel" type="Label" parent="Row1"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(0.92, 0.91, 0.85, 1)
+theme_override_font_sizes/font_size = 18
+text = "第 1 天 · 上午"
+
+[node name="SaveButton" type="Button" parent="Row1"]
+theme_override_colors/font_color = Color(0.92, 0.91, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+text = "记下进度"
+
+[node name="LoadButton" type="Button" parent="Row1"]
+theme_override_colors/font_color = Color(0.92, 0.91, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+text = "恢复进度"
+
+[node name="SaveHint" type="Label" parent="Row1"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(0.82, 0.75, 0.62, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="Row2" type="HBoxContainer" parent="."]
+theme_override_constants/separation = 26
+
+[node name="InsightLabel" type="Label" parent="Row2"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(0.88, 0.79, 0.56, 1)
+theme_override_font_sizes/font_size = 17
+text = "洞察  0"
+
+[node name="FragmentLabel" type="Label" parent="Row2"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(0.74, 0.86, 0.82, 1)
+theme_override_font_sizes/font_size = 17
+text = "碎片  0"
+
+[node name="AffectionLabel" type="Label" parent="Row2"]
+unique_name_in_owner = true
+theme_override_colors/font_color = Color(0.9, 0.8, 0.72, 1)
+theme_override_font_sizes/font_size = 17
+text = "柳 0   黎 0   归 0"
+
+[connection signal="pressed" from="Row1/SaveButton" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Row1/LoadButton" to="." method="_on_load_pressed"]
