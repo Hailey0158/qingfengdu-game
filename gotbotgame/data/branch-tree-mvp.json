@@ -183,8 +183,7 @@
           "text": "终于有个能休息的地方了，进去坐会！",
           "target_node": "ch2_title",
           "effects": {
-            "insight": 1,
-            "action_count": 1
+            "insight": 1
           }
         },
         {
@@ -192,8 +191,7 @@
           "text": "荒郊野岭，还是走到前面的镇子上再说吧。",
           "target_node": "scene_002_path",
           "effects": {
-            "watched": true,
-            "action_count": 1
+            "watched": true
           }
         },
         {
@@ -201,8 +199,7 @@
           "text": "他怎么知道我是侠客？全场消费由我买单！",
           "target_node": "scene_003_pay_all",
           "effects": {
-            "liu_invited": true,
-            "action_count": 1
+            "liu_invited": true
           }
         }
       ],
@@ -497,8 +494,7 @@
           "text": "笑着接话：那我赌自己活得过。",
           "target_node": "ch3_title",
           "effects": {
-            "liu_affection": 0,
-            "action_count": 1
+            "liu_affection": 0
           }
         },
         {
@@ -507,8 +503,7 @@
           "target_node": "ch3_title",
           "effects": {
             "liu_affection": 10,
-            "insight": 1,
-            "action_count": 1
+            "insight": 1
           }
         },
         {
@@ -518,8 +513,7 @@
           "effects": {
             "liu_affection": -20,
             "liu_guarded": true,
-            "exposed": true,
-            "action_count": 1
+            "exposed": true
           }
         },
         {
@@ -527,8 +521,7 @@
           "text": "沉默，等他继续说",
           "target_node": "ch3_title",
           "effects": {
-            "liu_affection": -10,
-            "action_count": 1
+            "liu_affection": -10
           }
         }
       ],
@@ -564,8 +557,7 @@
           "text": "道谢坐下，问他叫什么",
           "target_node": "ch3_title",
           "effects": {
-            "li_affection": 15,
-            "action_count": 1
+            "li_affection": 15
           }
         },
         {
@@ -573,8 +565,7 @@
           "text": "注意到他的刀：你是刀客？",
           "target_node": "ch3_title",
           "effects": {
-            "insight": 1,
-            "action_count": 1
+            "insight": 1
           }
         },
         {
@@ -583,17 +574,14 @@
           "target_node": "scene_night2_watched",
           "effects": {
             "li_affection": -10,
-            "watched": true,
-            "action_count": 1
+            "watched": true
           }
         },
         {
           "choice_id": "li_b4_silence",
           "text": "不说话，安静喝他的茶",
           "target_node": "ch3_title",
-          "effects": {
-            "action_count": 1
-          }
+          "effects": {}
         }
       ],
       "audio": {
@@ -628,8 +616,7 @@
           "text": "……你发现了？",
           "target_node": "ch3_title",
           "effects": {
-            "gui_affection": 5,
-            "action_count": 1
+            "gui_affection": 5
           }
         },
         {
@@ -638,8 +625,7 @@
           "target_node": "ch3_title",
           "effects": {
             "gui_affection": 10,
-            "insight": 1,
-            "action_count": 1
+            "insight": 1
           }
         },
         {
@@ -648,8 +634,7 @@
           "target_node": "scene_night2_watched",
           "effects": {
             "gui_affection": -10,
-            "watched": true,
-            "action_count": 1
+            "watched": true
           }
         },
         {
@@ -657,8 +642,7 @@
           "text": "不说话，直接在她对面坐下",
           "target_node": "ch3_title",
           "effects": {
-            "gui_affection": 0,
-            "action_count": 1
+            "gui_affection": 0
           }
         }
       ],
