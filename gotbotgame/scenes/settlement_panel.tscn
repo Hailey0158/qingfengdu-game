@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/settlement_panel.gd" id="1_settle"]
+
+[sub_resource type="StyleBoxFlat" id="StyleSettle"]
+bg_color = Color(0.957, 0.949, 0.922, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.38, 0.42, 0.39, 0.75)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 36.0
+content_margin_top = 26.0
+content_margin_right = 36.0
+content_margin_bottom = 26.0
+
+[node name="SettlementPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_settle")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 90.0
+offset_right = 1040.0
+offset_bottom = 660.0
+theme_override_styles/panel = SubResource("StyleSettle")
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Content" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="Panel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.13, 0.12, 1)
+theme_override_font_sizes/font_size = 28
+text = "三 日 · 结 算"
+
+[node name="SubTitleLabel" type="Label" parent="Panel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32, 0.3, 0.26, 1)
+theme_override_font_sizes/font_size = 16
+text = "三日一瞬。你坐在灯下，把这几日的人和事，细细理了一遍。"
+autowrap_mode = 2
+
+[node name="StatsLabel" type="Label" parent="Panel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.3, 0.2, 1)
+theme_override_font_sizes/font_size = 20
+text = "洞察  0    线索·碎片  0"
+
+[node name="AffectionLabel" type="Label" parent="Panel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.3, 0.2, 1)
+theme_override_font_sizes/font_size = 20
+text = "柳陆书  0    黎客颍  0    归汉  0"
+
+[node name="Divider" type="HSeparator" parent="Panel/Margin/Content"]
+layout_mode = 2
+
+[node name="FindingsLabel" type="Label" parent="Panel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.34, 0.32, 1)
+theme_override_font_sizes/font_size = 16
+text = ""
+autowrap_mode = 2
+
+[node name="HintLabel" type="Label" parent="Panel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.4, 0.3, 1)
+theme_override_font_sizes/font_size = 16
+text = "天亮就该动身去观澜阁了。可这一夜，注定不太平。"
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="Panel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.13, 0.12, 1)
+theme_override_font_sizes/font_size = 20
+text = "熄 灯 睡 下"
+
+[connection signal="pressed" from="Panel/Margin/Content/ContinueButton" to="." method="_on_continue_pressed"]

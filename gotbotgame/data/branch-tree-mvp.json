@@ -12,12 +12,54 @@
   ],
   "state_schema": {
     "numeric": {
-      "insight": {"initial": 0, "range": [0, 99], "description": "洞察值"},
-      "liu_affection": {"initial": 0, "range": [-100, 100], "description": "柳陆书好感度"},
-      "li_affection": {"initial": 0, "range": [-100, 100], "description": "黎客颍好感度"},
-      "gui_affection": {"initial": 0, "range": [-100, 100], "description": "归汉好感度"},
-      "gui_sit_count": {"initial": 0, "range": [0, 9], "description": "坐归汉旁边的累计次数，≥1时她才开口"},
-      "action_count": {"initial": 0, "range": [0, 9], "description": "行动次数，三天九时段上限为9"}
+      "insight": {
+        "initial": 0,
+        "range": [
+          0,
+          99
+        ],
+        "description": "洞察值"
+      },
+      "liu_affection": {
+        "initial": 0,
+        "range": [
+          -100,
+          100
+        ],
+        "description": "柳陆书好感度"
+      },
+      "li_affection": {
+        "initial": 0,
+        "range": [
+          -100,
+          100
+        ],
+        "description": "黎客颍好感度"
+      },
+      "gui_affection": {
+        "initial": 0,
+        "range": [
+          -100,
+          100
+        ],
+        "description": "归汉好感度"
+      },
+      "gui_sit_count": {
+        "initial": 0,
+        "range": [
+          0,
+          9
+        ],
+        "description": "坐归汉旁边的累计次数，≥1时她才开口"
+      },
+      "action_count": {
+        "initial": 0,
+        "range": [
+          0,
+          9
+        ],
+        "description": "行动次数，三天九时段上限为9"
+      }
     },
     "flags": {
       "watched": false,
@@ -40,14 +82,26 @@
       "location": "—",
       "speaker": "旁白",
       "mood_tag": "章节·标题",
-      "plot_tags": ["chapter_title", "ch1"],
+      "plot_tags": [
+        "chapter_title",
+        "ch1"
+      ],
       "save_point": false,
       "character_appearances": [],
       "note": "第一章标题节点，橙光式章节卡。自动跳转。",
       "choices": [
-        {"choice_id": "ch1_start", "text": "继续", "target_node": "scene_001a_rain_lantern", "effects": {}}
+        {
+          "choice_id": "ch1_start",
+          "text": "继续",
+          "target_node": "scene_001a_rain_lantern",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_rain_intro", "ambient": "sfx_rain_continuous", "sfx": []}
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": []
+      }
     },
     "scene_001a_rain_lantern": {
       "node_id": "scene_001a_rain_lantern",
@@ -55,13 +109,27 @@
       "location": "山道 → 清风渡门口",
       "speaker": "旁白",
       "mood_tag": "孤独·悬疑",
-      "plot_tags": ["opening", "rain_night"],
+      "plot_tags": [
+        "opening",
+        "rain_night"
+      ],
       "save_point": true,
       "character_appearances": [],
       "choices": [
-        {"choice_id": "rain_continue", "text": "继续", "target_node": "scene_001b_innkeeper", "effects": {}}
+        {
+          "choice_id": "rain_continue",
+          "text": "继续",
+          "target_node": "scene_001b_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_rain_intro", "ambient": "sfx_rain_continuous", "sfx": ["sfx_footstep_wet"]}
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
     },
     "scene_001b_innkeeper": {
       "node_id": "scene_001b_innkeeper",
@@ -69,13 +137,33 @@
       "location": "清风渡门口",
       "speaker": "客栈伙计",
       "mood_tag": "试探·滑稽",
-      "plot_tags": ["opening", "innkeeper"],
-      "save_point": false,
-      "character_appearances": [{"character": "innkeeper", "pose": "弹出半张脸", "expression": "满脸堆笑"}],
-      "choices": [
-        {"choice_id": "innkeeper_continue", "text": "继续", "target_node": "scene_001c_choices", "effects": {}}
+      "plot_tags": [
+        "opening",
+        "innkeeper"
       ],
-      "audio": {"bgm": "bgm_rain_intro", "ambient": "sfx_rain_continuous", "sfx": ["sfx_door_open"]}
+      "save_point": false,
+      "character_appearances": [
+        {
+          "character": "innkeeper",
+          "pose": "弹出半张脸",
+          "expression": "满脸堆笑"
+        }
+      ],
+      "choices": [
+        {
+          "choice_id": "innkeeper_continue",
+          "text": "继续",
+          "target_node": "scene_001c_choices",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": [
+          "sfx_door_open"
+        ]
+      }
     },
     "scene_001c_choices": {
       "node_id": "scene_001c_choices",
@@ -83,15 +171,46 @@
       "location": "清风渡门口",
       "speaker": "旁白",
       "mood_tag": "抉择",
-      "plot_tags": ["opening", "choices"],
+      "plot_tags": [
+        "opening",
+        "choices"
+      ],
       "save_point": false,
       "character_appearances": [],
       "choices": [
-        {"choice_id": "open_enter_inn", "text": "终于有个能休息的地方了，进去坐会！", "target_node": "ch2_title", "effects": {"insight": 1, "action_count": 1}},
-        {"choice_id": "open_keep_walking", "text": "荒郊野岭，还是走到前面的镇子上再说吧。", "target_node": "scene_002_path", "effects": {"watched": true, "action_count": 1}},
-        {"choice_id": "open_pay_all", "text": "他怎么知道我是侠客？全场消费由我买单！", "target_node": "scene_003_pay_all", "effects": {"liu_invited": true, "action_count": 1}}
+        {
+          "choice_id": "open_enter_inn",
+          "text": "终于有个能休息的地方了，进去坐会！",
+          "target_node": "ch2_title",
+          "effects": {
+            "insight": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "open_keep_walking",
+          "text": "荒郊野岭，还是走到前面的镇子上再说吧。",
+          "target_node": "scene_002_path",
+          "effects": {
+            "watched": true,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "open_pay_all",
+          "text": "他怎么知道我是侠客？全场消费由我买单！",
+          "target_node": "scene_003_pay_all",
+          "effects": {
+            "liu_invited": true,
+            "action_count": 1
+          }
+        }
       ],
-      "audio": {"bgm": "bgm_rain_intro", "ambient": "sfx_rain_continuous", "sfx": []}
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": []
+      }
     },
     "scene_002_path": {
       "node_id": "scene_002_path",
@@ -100,13 +219,62 @@
       "speaker": "旁白",
       "text": "你转身继续往前。雨幕很快吞掉了客栈的灯，前方只剩一条看不见尽头的山路。",
       "mood_tag": "警觉·空寂",
-      "plot_tags": ["opening_branch_A"],
+      "plot_tags": [
+        "opening_branch_A"
+      ],
       "save_point": false,
       "choices": [
-        {"choice_id": "path_turn_back", "text": "停一停，还是回清风渡。", "target_node": "ch2_title", "effects": {"insight": 1}},
-        {"choice_id": "path_keep_to_town", "text": "既然出来了，就一直走到底。", "target_node": "ending_front_no_road", "effects": {}}
+        {
+          "choice_id": "path_turn_back",
+          "text": "停一停，还是回清风渡。",
+          "target_node": "scene_002_path_return",
+          "effects": {
+            "insight": 1,
+            "returned_early": true
+          }
+        },
+        {
+          "choice_id": "path_keep_to_town",
+          "text": "既然出来了，就一直走到底。",
+          "target_node": "ending_front_no_road",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_rain_intro", "ambient": "sfx_rain_continuous", "sfx": ["sfx_footstep_wet"]}
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
+    },
+    "scene_002_path_return": {
+      "node_id": "scene_002_path_return",
+      "scene_ref": "mvp-inline:scene_002_path_return",
+      "location": "清风渡外·雨夜山道 → 客栈门口",
+      "speaker": "旁白",
+      "mood_tag": "折返·余温",
+      "plot_tags": [
+        "opening_branch_A1"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "note": "A1 折返：回到客栈，错过第一天。返回第二章前，情感线解锁难度上升（flags.returned_early）。",
+      "choices": [
+        {
+          "choice_id": "path_return_continue",
+          "text": "推门进去",
+          "target_node": "ch2_title",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": [
+          "sfx_door_open"
+        ]
+      }
     },
     "scene_003_pay_all": {
       "node_id": "scene_003_pay_all",
@@ -115,488 +283,1789 @@
       "speaker": "客栈伙计",
       "text": "伙计的笑停了一瞬，又很快堆回脸上：客官阔气。只是这雨夜，茶不该这样请。",
       "mood_tag": "滑稽·试探",
-      "plot_tags": ["opening_branch_C"],
+      "plot_tags": [
+        "opening_branch_C"
+      ],
       "save_point": false,
       "choices": [
-        {"choice_id": "pay_all_retract", "text": "咳，方才只是说笑，找张桌子坐下。", "target_node": "ch2_title", "effects": {"liu_invited": false}},
-        {"choice_id": "pay_all_join_liu", "text": "既然有人请客了，过去蹭一顿。", "target_node": "scene_020_liu_day1", "effects": {"liu_met": true, "liu_affection": 5}}
+        {
+          "choice_id": "pay_all_retract",
+          "text": "咳，方才只是说笑，找张桌子坐下。",
+          "target_node": "scene_003_pay_all_retract",
+          "effects": {
+            "liu_invited": false
+          }
+        },
+        {
+          "choice_id": "pay_all_join_liu",
+          "text": "既然有人请客了，过去蹭一顿。",
+          "target_node": "scene_003_pay_all_join",
+          "effects": {
+            "liu_met": true,
+            "liu_affection": 5
+          }
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": ["sfx_tea_pour"]}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_tea_pour"
+        ]
+      }
     },
-
+    "scene_003_pay_all_retract": {
+      "node_id": "scene_003_pay_all_retract",
+      "scene_ref": "mvp-inline:scene_003_pay_all_retract",
+      "location": "清风渡大堂",
+      "speaker": "柳陆书",
+      "mood_tag": "C1·收敛",
+      "plot_tags": [
+        "opening_branch_C1"
+      ],
+      "save_point": false,
+      "character_appearances": [
+        {
+          "character": "liu_lushu",
+          "pose": "扇子半开",
+          "expression": "含笑"
+        }
+      ],
+      "note": "C1 缩回去：柳让伙计送花生赔罪。",
+      "choices": [
+        {
+          "choice_id": "c1_continue",
+          "text": "继续",
+          "target_node": "ch2_title",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_tea_pour"
+        ]
+      }
+    },
+    "scene_003_pay_all_join": {
+      "node_id": "scene_003_pay_all_join",
+      "scene_ref": "mvp-inline:scene_003_pay_all_join",
+      "location": "清风渡大堂·窗边",
+      "speaker": "柳陆书",
+      "mood_tag": "C2·快意",
+      "plot_tags": [
+        "opening_branch_C2"
+      ],
+      "save_point": false,
+      "character_appearances": [
+        {
+          "character": "liu_lushu",
+          "pose": "举杯",
+          "expression": "快意"
+        }
+      ],
+      "note": "C2 蹭一顿：直接进柳陆书线，触发成就【低山臭水遇噪音】。",
+      "choices": [
+        {
+          "choice_id": "c2_continue",
+          "text": "继续",
+          "target_node": "scene_020_liu_day1",
+          "effects": {
+            "ach_meet_noise": true
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_liu_theme",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_tea_pour"
+        ]
+      }
+    },
     "ch2_title": {
       "node_id": "ch2_title",
       "scene_ref": "mvp-inline:ch2_title",
       "location": "—",
       "speaker": "旁白",
       "mood_tag": "章节·标题",
-      "plot_tags": ["chapter_title", "ch2"],
+      "plot_tags": [
+        "chapter_title",
+        "ch2"
+      ],
       "save_point": false,
       "character_appearances": [],
       "note": "第二章标题节点。自动跳转到客栈大堂初识。",
       "choices": [
-        {"choice_id": "ch2_start", "text": "继续", "target_node": "scene_010_meet", "effects": {}}
+        {
+          "choice_id": "ch2_start",
+          "text": "继续",
+          "target_node": "scene_010_meet",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_010_meet": {
       "node_id": "scene_010_meet",
       "scene_ref": "scenes/010_meet.scene.md",
       "location": "清风渡客栈大堂",
       "speaker": "旁白",
       "mood_tag": "试探·好奇",
-      "plot_tags": ["first_meet"],
+      "plot_tags": [
+        "first_meet"
+      ],
       "save_point": true,
       "character_appearances": [
-        {"character": "liu_lushu", "pose": "歪在椅子里", "expression": "微微含笑"},
-        {"character": "li_keying", "pose": "端坐看纸", "expression": "温和无波"},
-        {"character": "gui_han", "pose": "端坐如常", "expression": "冷淡出尘"}
+        {
+          "character": "liu_lushu",
+          "pose": "歪在椅子里",
+          "expression": "微微含笑"
+        },
+        {
+          "character": "li_keying",
+          "pose": "端坐看纸",
+          "expression": "温和无波"
+        },
+        {
+          "character": "gui_han",
+          "pose": "端坐如常",
+          "expression": "冷淡出尘"
+        }
       ],
       "choices": [
-        {"choice_id": "meet_liu", "text": "走向窗边男子", "target_node": "scene_020_liu_day1", "effects": {"liu_met": true}},
-        {"choice_id": "meet_li", "text": "走向右边桌子", "target_node": "scene_030_li_day1", "effects": {"li_met": true}},
-        {"choice_id": "meet_gui", "text": "走向里侧桌子", "target_node": "scene_040_gui_day1", "effects": {"gui_met": true}}
+        {
+          "choice_id": "meet_liu",
+          "text": "走向窗边男子",
+          "target_node": "scene_020_liu_day1",
+          "effects": {
+            "liu_met": true
+          }
+        },
+        {
+          "choice_id": "meet_li",
+          "text": "走向右边桌子",
+          "target_node": "scene_030_li_day1",
+          "effects": {
+            "li_met": true
+          }
+        },
+        {
+          "choice_id": "meet_gui",
+          "text": "走向里侧桌子",
+          "target_node": "scene_040_gui_day1",
+          "effects": {
+            "gui_met": true
+          }
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": ["sfx_tea_pour", "sfx_candle_crackle"]}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_tea_pour",
+          "sfx_candle_crackle"
+        ]
+      }
     },
-
     "scene_020_liu_day1": {
       "node_id": "scene_020_liu_day1",
       "scene_ref": "scenes/020_liu_day1.scene.md",
       "location": "清风渡客栈·窗边",
       "speaker": "柳陆书",
       "mood_tag": "散漫·试探",
-      "plot_tags": ["liu_route", "day_1"],
-      "save_point": true,
-      "character_appearances": [{"character": "liu_lushu", "pose": "扇子半开半合", "expression": "含笑试探"}],
-      "choices": [
-        {"choice_id": "liu_a1_joke", "text": "笑着接话：那我赌自己活得过。", "target_node": "ch3_title", "effects": {"liu_affection": 0, "action_count": 1}},
-        {"choice_id": "liu_a2_challenge", "text": "反问：你凭什么这么说？", "target_node": "ch3_title", "effects": {"liu_affection": 10, "insight": 1, "action_count": 1}},
-        {"choice_id": "liu_a3_ask_secret", "text": "直接问正事：我听说你知道秘境的事。", "target_node": "ch3_title", "effects": {"liu_affection": -20, "liu_guarded": true, "action_count": 1}},
-        {"choice_id": "liu_a4_silence", "text": "沉默，等他继续说", "target_node": "ch3_title", "effects": {"liu_affection": -10, "action_count": 1}}
+      "plot_tags": [
+        "liu_route",
+        "day_1"
       ],
-      "audio": {"bgm": "bgm_liu_theme", "ambient": "amb_inn_night", "sfx": ["sfx_fan_open"]}
+      "save_point": true,
+      "character_appearances": [
+        {
+          "character": "liu_lushu",
+          "pose": "扇子半开半合",
+          "expression": "含笑试探"
+        }
+      ],
+      "choices": [
+        {
+          "choice_id": "liu_a1_joke",
+          "text": "笑着接话：那我赌自己活得过。",
+          "target_node": "ch3_title",
+          "effects": {
+            "liu_affection": 0,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "liu_a2_challenge",
+          "text": "反问：你凭什么这么说？",
+          "target_node": "ch3_title",
+          "effects": {
+            "liu_affection": 10,
+            "insight": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "liu_a3_ask_secret",
+          "text": "直接问正事：我听说你知道秘境的事。",
+          "target_node": "scene_night2_exposed",
+          "effects": {
+            "liu_affection": -20,
+            "liu_guarded": true,
+            "exposed": true,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "liu_a4_silence",
+          "text": "沉默，等他继续说",
+          "target_node": "ch3_title",
+          "effects": {
+            "liu_affection": -10,
+            "action_count": 1
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_liu_theme",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_fan_open"
+        ]
+      }
     },
-
     "scene_030_li_day1": {
       "node_id": "scene_030_li_day1",
       "scene_ref": "scenes/030_li_day1.scene.md",
       "location": "清风渡客栈·右边桌",
       "speaker": "黎客颍",
       "mood_tag": "温和·试探",
-      "plot_tags": ["li_route", "day_1"],
-      "save_point": true,
-      "character_appearances": [{"character": "li_keying", "pose": "端坐", "expression": "温和浅笑"}],
-      "choices": [
-        {"choice_id": "li_b1_name", "text": "道谢坐下，问他叫什么", "target_node": "ch3_title", "effects": {"li_affection": 15, "action_count": 1}},
-        {"choice_id": "li_b2_weapon", "text": "注意到他的刀：你是刀客？", "target_node": "ch3_title", "effects": {"insight": 1, "action_count": 1}},
-        {"choice_id": "li_b3_ask", "text": "直接问他：你来这里做什么？", "target_node": "ch3_title", "effects": {"li_affection": -10, "watched": true, "action_count": 1}},
-        {"choice_id": "li_b4_silence", "text": "不说话，安静喝他的茶", "target_node": "ch3_title", "effects": {"action_count": 1}}
+      "plot_tags": [
+        "li_route",
+        "day_1"
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": ["sfx_tea_pour"]}
+      "save_point": true,
+      "character_appearances": [
+        {
+          "character": "li_keying",
+          "pose": "端坐",
+          "expression": "温和浅笑"
+        }
+      ],
+      "choices": [
+        {
+          "choice_id": "li_b1_name",
+          "text": "道谢坐下，问他叫什么",
+          "target_node": "ch3_title",
+          "effects": {
+            "li_affection": 15,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "li_b2_weapon",
+          "text": "注意到他的刀：你是刀客？",
+          "target_node": "ch3_title",
+          "effects": {
+            "insight": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "li_b3_ask",
+          "text": "直接问他：你来这里做什么？",
+          "target_node": "scene_night2_watched",
+          "effects": {
+            "li_affection": -10,
+            "watched": true,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "li_b4_silence",
+          "text": "不说话，安静喝他的茶",
+          "target_node": "ch3_title",
+          "effects": {
+            "action_count": 1
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_tea_pour"
+        ]
+      }
     },
-
     "scene_040_gui_day1": {
       "node_id": "scene_040_gui_day1",
       "scene_ref": "scenes/040_gui_day1.scene.md",
       "location": "清风渡客栈·里侧桌",
       "speaker": "归汉",
       "mood_tag": "冷淡·试探",
-      "plot_tags": ["gui_route", "day_1"],
-      "save_point": true,
-      "character_appearances": [{"character": "gui_han", "pose": "端坐如常", "expression": "冷淡审视"}],
-      "choices": [
-        {"choice_id": "gui_c1_found", "text": "……你发现了？", "target_node": "ch3_title", "effects": {"gui_affection": 5, "action_count": 1}},
-        {"choice_id": "gui_c2_sword", "text": "我在看你的剑。", "target_node": "ch3_title", "effects": {"gui_affection": 10, "insight": 1, "action_count": 1}},
-        {"choice_id": "gui_c3_scenery", "text": "我只是看看风景。", "target_node": "ch3_title", "effects": {"gui_affection": -10, "watched": true, "action_count": 1}},
-        {"choice_id": "gui_c4_sit", "text": "不说话，直接在她对面坐下", "target_node": "ch3_title", "effects": {"gui_affection": 0, "action_count": 1}}
+      "plot_tags": [
+        "gui_route",
+        "day_1"
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": ["sfx_tea_pour"]}
+      "save_point": true,
+      "character_appearances": [
+        {
+          "character": "gui_han",
+          "pose": "端坐如常",
+          "expression": "冷淡审视"
+        }
+      ],
+      "choices": [
+        {
+          "choice_id": "gui_c1_found",
+          "text": "……你发现了？",
+          "target_node": "ch3_title",
+          "effects": {
+            "gui_affection": 5,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "gui_c2_sword",
+          "text": "我在看你的剑。",
+          "target_node": "ch3_title",
+          "effects": {
+            "gui_affection": 10,
+            "insight": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "gui_c3_scenery",
+          "text": "我只是看看风景。",
+          "target_node": "scene_night2_watched",
+          "effects": {
+            "gui_affection": -10,
+            "watched": true,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "gui_c4_sit",
+          "text": "不说话，直接在她对面坐下",
+          "target_node": "ch3_title",
+          "effects": {
+            "gui_affection": 0,
+            "action_count": 1
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_tea_pour"
+        ]
+      }
     },
-
+    "scene_night2_exposed": {
+      "node_id": "scene_night2_exposed",
+      "scene_ref": "mvp-inline:scene_night2_exposed",
+      "location": "清风渡客栈·客房",
+      "speaker": "旁白",
+      "mood_tag": "当夜·警觉",
+      "plot_tags": [
+        "ch2_night_event",
+        "exposed"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "note": "初识 A3 追问过猛：当夜有人摸进房间，第二天外衫被人动过 → 状态【已暴露】。",
+      "choices": [
+        {
+          "choice_id": "night2_exposed_continue",
+          "text": "继续",
+          "target_node": "ch3_title",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_door_open"
+        ]
+      }
+    },
+    "scene_night2_watched": {
+      "node_id": "scene_night2_watched",
+      "scene_ref": "mvp-inline:scene_night2_watched",
+      "location": "清风渡客栈·客房",
+      "speaker": "旁白",
+      "mood_tag": "当夜·警觉",
+      "plot_tags": [
+        "ch2_night_event",
+        "watched"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "note": "初识 B3/C3 追问过猛：当夜被暗处盯上，及时警觉 → 状态【被盯上了】。",
+      "choices": [
+        {
+          "choice_id": "night2_watched_continue",
+          "text": "继续",
+          "target_node": "ch3_title",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
+    },
     "ch3_title": {
       "node_id": "ch3_title",
       "scene_ref": "mvp-inline:ch3_title",
       "location": "—",
       "speaker": "旁白",
       "mood_tag": "章节·标题",
-      "plot_tags": ["chapter_title", "ch3"],
+      "plot_tags": [
+        "chapter_title",
+        "ch3"
+      ],
       "save_point": false,
       "character_appearances": [],
       "note": "第三章标题节点。初识阶段结束后进入日常。自动跳转到行动池。",
       "choices": [
-        {"choice_id": "ch3_start", "text": "继续", "target_node": "scene_daily_day1_01", "effects": {}}
+        {
+          "choice_id": "ch3_start",
+          "text": "继续",
+          "target_node": "scene_daily_day1_01",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_day1_01": {
       "node_id": "scene_daily_day1_01",
       "scene_ref": "mvp-inline:scene_daily_day1_01",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·上午",
-      "plot_tags": ["daily", "day1", "slot1", "morning"],
+      "plot_tags": [
+        "daily",
+        "day1",
+        "slot1",
+        "morning"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第一天·上午（时段1）。行动池入口。",
       "choices": [
-        {"choice_id": "daily_liu_tea", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "daily_li_clues", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "daily_gui_sit", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "daily_gui_sit_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "daily_explore", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "daily_innkeeper", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "daily_liu_tea",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_li_clues",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_gui_sit",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "daily_gui_sit_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "daily_explore",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_innkeeper",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_day1_02": {
       "node_id": "scene_daily_day1_02",
       "scene_ref": "mvp-inline:scene_daily_day1_02",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·下午",
-      "plot_tags": ["daily", "day1", "slot2", "afternoon"],
+      "plot_tags": [
+        "daily",
+        "day1",
+        "slot2",
+        "afternoon"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第一天·下午（时段2）。",
       "choices": [
-        {"choice_id": "daily_liu_tea_2", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "daily_li_clues_2", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "daily_gui_sit_2", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "daily_gui_sit_2_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "daily_explore_2", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "daily_innkeeper_2", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "daily_liu_tea_2",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_li_clues_2",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_gui_sit_2",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "daily_gui_sit_2_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "daily_explore_2",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_innkeeper_2",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_day1_03": {
       "node_id": "scene_daily_day1_03",
       "scene_ref": "mvp-inline:scene_daily_day1_03",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·夜",
-      "plot_tags": ["daily", "day1", "slot3", "night"],
+      "plot_tags": [
+        "daily",
+        "day1",
+        "slot3",
+        "night"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第一天·夜（时段3）。",
       "choices": [
-        {"choice_id": "daily_liu_tea_3", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "daily_li_clues_3", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "daily_gui_sit_3", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "daily_gui_sit_3_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "daily_explore_3", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "daily_innkeeper_3", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "daily_liu_tea_3",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_li_clues_3",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_gui_sit_3",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "daily_gui_sit_3_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "daily_explore_3",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "daily_innkeeper_3",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_night", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
     },
-
     "scene_daily_day2_01": {
       "node_id": "scene_daily_day2_01",
       "scene_ref": "mvp-inline:scene_daily_day2_01",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·上午",
-      "plot_tags": ["daily", "day2", "slot1", "morning"],
+      "plot_tags": [
+        "daily",
+        "day2",
+        "slot1",
+        "morning"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第二天·上午（时段4）。",
       "choices": [
-        {"choice_id": "d2_liu_tea", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "d2_li_clues", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "d2_gui_sit", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "d2_gui_sit_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "d2_explore", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "d2_innkeeper", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "d2_liu_tea",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_li_clues",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_gui_sit",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "d2_gui_sit_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "d2_explore",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_innkeeper",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_day2_02": {
       "node_id": "scene_daily_day2_02",
       "scene_ref": "mvp-inline:scene_daily_day2_02",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·下午",
-      "plot_tags": ["daily", "day2", "slot2", "afternoon"],
+      "plot_tags": [
+        "daily",
+        "day2",
+        "slot2",
+        "afternoon"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第二天·下午（时段5）。",
       "choices": [
-        {"choice_id": "d2_liu_tea_2", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "d2_li_clues_2", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "d2_gui_sit_2", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "d2_gui_sit_2_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "d2_explore_2", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "d2_innkeeper_2", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "d2_liu_tea_2",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_li_clues_2",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_gui_sit_2",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "d2_gui_sit_2_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "d2_explore_2",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_innkeeper_2",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_day2_03": {
       "node_id": "scene_daily_day2_03",
       "scene_ref": "mvp-inline:scene_daily_day2_03",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·夜",
-      "plot_tags": ["daily", "day2", "slot3", "night"],
+      "plot_tags": [
+        "daily",
+        "day2",
+        "slot3",
+        "night"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第二天·夜（时段6）。",
       "choices": [
-        {"choice_id": "d2_liu_tea_3", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "d2_li_clues_3", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "d2_gui_sit_3", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "d2_gui_sit_3_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "d2_explore_3", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "d2_innkeeper_3", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "d2_liu_tea_3",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_li_clues_3",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_gui_sit_3",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "d2_gui_sit_3_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "d2_explore_3",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "d2_innkeeper_3",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_night", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
     },
-
     "scene_daily_day3_01": {
       "node_id": "scene_daily_day3_01",
       "scene_ref": "mvp-inline:scene_daily_day3_01",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·上午",
-      "plot_tags": ["daily", "day3", "slot1", "morning"],
+      "plot_tags": [
+        "daily",
+        "day3",
+        "slot1",
+        "morning"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第三天·上午（时段7）。",
       "choices": [
-        {"choice_id": "d3_liu_tea", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "d3_li_clues", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "d3_gui_sit", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "d3_gui_sit_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "d3_explore", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "d3_innkeeper", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "d3_liu_tea",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_li_clues",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_gui_sit",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "d3_gui_sit_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "d3_explore",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_innkeeper",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_day3_02": {
       "node_id": "scene_daily_day3_02",
       "scene_ref": "mvp-inline:scene_daily_day3_02",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·下午",
-      "plot_tags": ["daily", "day3", "slot2", "afternoon"],
+      "plot_tags": [
+        "daily",
+        "day3",
+        "slot2",
+        "afternoon"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第三天·下午（时段8）。",
       "choices": [
-        {"choice_id": "d3_liu_tea_2", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "d3_li_clues_2", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "d3_gui_sit_2", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "d3_gui_sit_2_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "d3_explore_2", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "d3_innkeeper_2", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "d3_liu_tea_2",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_li_clues_2",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_gui_sit_2",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "d3_gui_sit_2_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "d3_explore_2",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_innkeeper_2",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_day3_03": {
       "node_id": "scene_daily_day3_03",
       "scene_ref": "mvp-inline:scene_daily_day3_03",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·夜",
-      "plot_tags": ["daily", "day3", "slot3", "night"],
+      "plot_tags": [
+        "daily",
+        "day3",
+        "slot3",
+        "night"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "第三天·夜（时段9）。最后一个时段，做完后进入三日收束→结局路由。",
       "choices": [
-        {"choice_id": "d3_liu_tea_3", "text": "跟柳陆书喝茶", "target_node": "scene_daily_liu_tea", "effects": {}},
-        {"choice_id": "d3_li_clues_3", "text": "帮黎客颍整理线索", "target_node": "scene_daily_li_clues", "effects": {}},
-        {"choice_id": "d3_gui_sit_3", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit_first", "effects": {}, "conditions": {"gui_sit_count": {"op": "lt", "value": 1}}},
-        {"choice_id": "d3_gui_sit_3_return", "text": "坐归汉附近", "target_node": "scene_daily_gui_sit", "effects": {}, "conditions": {"gui_sit_count": {"op": "gte", "value": 1}}},
-        {"choice_id": "d3_explore_3", "text": "独自闲逛客栈", "target_node": "scene_daily_explore", "effects": {}},
-        {"choice_id": "d3_innkeeper_3", "text": "跟伙计搭话", "target_node": "scene_daily_innkeeper", "effects": {}}
+        {
+          "choice_id": "d3_liu_tea_3",
+          "text": "跟柳陆书喝茶",
+          "target_node": "scene_daily_liu_tea",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_li_clues_3",
+          "text": "帮黎客颍整理线索",
+          "target_node": "scene_daily_li_clues",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_gui_sit_3",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit_first",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "lte",
+              "value": 0
+            }
+          }
+        },
+        {
+          "choice_id": "d3_gui_sit_3_return",
+          "text": "坐归汉附近",
+          "target_node": "scene_daily_gui_sit",
+          "effects": {},
+          "conditions": {
+            "gui_sit_count": {
+              "op": "gte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "d3_explore_3",
+          "text": "独自闲逛客栈",
+          "target_node": "scene_daily_explore",
+          "effects": {}
+        },
+        {
+          "choice_id": "d3_innkeeper_3",
+          "text": "跟伙计搭话",
+          "target_node": "scene_daily_innkeeper",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_night", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
     },
-
     "scene_daily_liu_tea": {
       "node_id": "scene_daily_liu_tea",
       "scene_ref": "mvp-inline:scene_daily_liu_tea",
       "location": "清风渡客栈·窗边",
       "speaker": "柳陆书",
       "mood_tag": "散漫·对饮",
-      "plot_tags": ["daily", "liu"],
-      "save_point": false,
-      "character_appearances": [{"character": "liu_lushu", "pose": "歪在椅子里", "expression": "散漫带笑"}],
-      "choices": [
-        {"choice_id": "liu_tea_a", "text": "跟他讲笑话", "target_node": "scene_daily_return", "effects": {"liu_affection": 5, "action_count": 1}},
-        {"choice_id": "liu_tea_b", "text": "上次你请客，这次我请回来。", "target_node": "scene_daily_return", "effects": {"liu_affection": 0, "action_count": 1}, "conditions": {"liu_invited": true}},
-        {"choice_id": "liu_tea_c", "text": "地方一共就这么大，我来坐坐怎么了。", "target_node": "scene_daily_return", "effects": {"liu_affection": -10, "action_count": 1}},
-        {"choice_id": "liu_tea_d", "text": "你想起来什么了？", "target_node": "scene_daily_return", "effects": {"liu_affection": 10, "fragments": 1, "action_count": 1}, "note": "后续互动选项"},
-        {"choice_id": "liu_tea_e", "text": "秘境的事，你能再说说吗？", "target_node": "scene_daily_return", "effects": {"liu_affection": -20, "action_count": 1}, "note": "选择后无法再互动"}
+      "plot_tags": [
+        "daily",
+        "liu"
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": ["sfx_fan_open"]}
+      "save_point": false,
+      "character_appearances": [
+        {
+          "character": "liu_lushu",
+          "pose": "歪在椅子里",
+          "expression": "散漫带笑"
+        }
+      ],
+      "choices": [
+        {
+          "choice_id": "liu_tea_a1",
+          "text": "来找你喝茶——坐下和他闲聊，还给他讲了几个笑话。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": 5,
+            "liu_tea_first_done": true,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_tea_first_done": false
+          }
+        },
+        {
+          "choice_id": "liu_tea_b1",
+          "text": "上次你请客，这次我请回来。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": 0,
+            "liu_tea_first_done": true,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_invited": true,
+            "liu_tea_first_done": false
+          }
+        },
+        {
+          "choice_id": "liu_tea_c1",
+          "text": "地方一共就这么大，我来坐坐怎么了。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": -10,
+            "liu_tea_first_done": true,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_tea_first_done": false
+          }
+        },
+        {
+          "choice_id": "liu_tea_a2",
+          "text": "你想起来什么了？",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": 10,
+            "fragments": 1,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_tea_first_done": true
+          }
+        },
+        {
+          "choice_id": "liu_tea_b2",
+          "text": "那你觉得我是哪一种？",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": 10,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_tea_first_done": true
+          }
+        },
+        {
+          "choice_id": "liu_tea_c2",
+          "text": "你自己心底有答案。你只是想看看我有没有在听。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": 15,
+            "insight": 1,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_tea_first_done": true
+          }
+        },
+        {
+          "choice_id": "liu_tea_d2",
+          "text": "这雨确实下太久了，我衣服到现在还没干。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": -10,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_tea_first_done": true
+          }
+        },
+        {
+          "choice_id": "liu_tea_e2",
+          "text": "我记性也不太好……秘境的事，你能再说说吗？",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "liu_affection": -20,
+            "liu_refused": true,
+            "action_count": 1
+          },
+          "conditions": {
+            "liu_tea_first_done": true
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_fan_open"
+        ]
+      }
     },
-
     "scene_daily_li_clues": {
       "node_id": "scene_daily_li_clues",
       "scene_ref": "mvp-inline:scene_daily_li_clues",
       "location": "清风渡客栈·右边桌",
       "speaker": "黎客颍",
       "mood_tag": "安静·互助",
-      "plot_tags": ["daily", "li"],
-      "save_point": false,
-      "character_appearances": [{"character": "li_keying", "pose": "摊开地图", "expression": "认真"}],
-      "choices": [
-        {"choice_id": "li_clue_a", "text": "接过来，顺畅地读出来", "target_node": "scene_daily_return", "effects": {"insight": 1, "fragments": 1, "action_count": 1}},
-        {"choice_id": "li_clue_b", "text": "皱眉：这个字不太清楚", "target_node": "scene_daily_return", "effects": {"li_affection": 15, "fragments": 1, "action_count": 1}},
-        {"choice_id": "li_clue_c", "text": "没看纸先问：你在找人？", "target_node": "scene_daily_return", "effects": {"action_count": 1}},
-        {"choice_id": "li_clue_d", "text": "看了一眼就还给他", "target_node": "scene_daily_return", "effects": {"li_affection": -10, "action_count": 1}}
+      "plot_tags": [
+        "daily",
+        "li"
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "save_point": false,
+      "character_appearances": [
+        {
+          "character": "li_keying",
+          "pose": "摊开地图",
+          "expression": "认真"
+        }
+      ],
+      "choices": [
+        {
+          "choice_id": "li_clue_a",
+          "text": "接过来，顺畅地读出来",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "insight": 1,
+            "fragments": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "li_clue_b",
+          "text": "皱眉：这个字不太清楚",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "li_affection": 15,
+            "fragments": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "li_clue_c",
+          "text": "没看纸先问：你在找人？",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "li_clue_d",
+          "text": "看了一眼就还给他",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "li_affection": -10,
+            "action_count": 1
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_gui_sit_first": {
       "node_id": "scene_daily_gui_sit_first",
       "scene_ref": "mvp-inline:scene_daily_gui_sit_first",
       "location": "清风渡客栈·里侧桌",
       "speaker": "旁白",
       "mood_tag": "安静·沉默",
-      "plot_tags": ["daily", "gui", "gui_sit_1"],
+      "plot_tags": [
+        "daily",
+        "gui",
+        "gui_sit_1"
+      ],
       "save_point": false,
-      "character_appearances": [{"character": "gui_han", "pose": "端坐", "expression": "沉默不语"}],
+      "character_appearances": [
+        {
+          "character": "gui_han",
+          "pose": "端坐",
+          "expression": "沉默不语"
+        }
+      ],
       "note": "第一次坐归汉旁边：她没抬头，各自喝茶。无选项，直接返回。gui_sit_count+1。",
       "choices": [
-        {"choice_id": "gui_sit_first_return", "text": "各自喝茶，坐了一会儿。", "target_node": "scene_daily_return", "effects": {"gui_sit_count": 1, "action_count": 1}}
+        {
+          "choice_id": "gui_sit_first_return",
+          "text": "各自喝茶，坐了一会儿。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "gui_sit_count": 1,
+            "action_count": 1
+          }
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_gui_sit": {
       "node_id": "scene_daily_gui_sit",
       "scene_ref": "mvp-inline:scene_daily_gui_sit",
       "location": "清风渡客栈·里侧桌",
       "speaker": "归汉",
       "mood_tag": "安静·开口",
-      "plot_tags": ["daily", "gui", "gui_sit_2"],
+      "plot_tags": [
+        "daily",
+        "gui",
+        "gui_sit_2"
+      ],
       "save_point": false,
-      "character_appearances": [{"character": "gui_han", "pose": "端坐", "expression": "终于开口"}],
+      "character_appearances": [
+        {
+          "character": "gui_han",
+          "pose": "端坐",
+          "expression": "终于开口"
+        }
+      ],
       "note": "第二次（或以上）坐归汉旁边：她开口说话，出现四选项。",
       "choices": [
-        {"choice_id": "gui_sit_a", "text": "你想说的时候自然会说", "target_node": "scene_daily_return", "effects": {"gui_affection": 10, "fragments": 1, "insight": 1, "action_count": 1}},
-        {"choice_id": "gui_sit_b", "text": "那你来干什么？", "target_node": "scene_daily_return", "effects": {"action_count": 1}},
-        {"choice_id": "gui_sit_c", "text": "我不好奇这个。就是想和你坐一会。", "target_node": "scene_daily_return", "effects": {"gui_affection": 15, "action_count": 1}},
-        {"choice_id": "gui_sit_d", "text": "谁在乎你来做什么。", "target_node": "scene_daily_return", "effects": {"gui_affection": -15, "action_count": 1}}
+        {
+          "choice_id": "gui_sit_a",
+          "text": "你想说的时候自然会说",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "gui_affection": 10,
+            "fragments": 1,
+            "insight": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "gui_sit_b",
+          "text": "那你来干什么？",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "gui_sit_c",
+          "text": "我不好奇这个。就是想和你坐一会。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "gui_affection": 15,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "gui_sit_d",
+          "text": "谁在乎你来做什么。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "gui_affection": -15,
+            "action_count": 1
+          }
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_explore": {
       "node_id": "scene_daily_explore",
       "scene_ref": "mvp-inline:scene_daily_explore",
       "location": "清风渡客栈各处",
       "speaker": "旁白",
       "mood_tag": "警觉·探索",
-      "plot_tags": ["daily", "explore"],
+      "plot_tags": [
+        "daily",
+        "explore"
+      ],
       "save_point": false,
       "character_appearances": [],
       "choices": [
-        {"choice_id": "explore_backyard", "text": "去后院看看", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "action_count": 1}},
-        {"choice_id": "explore_hall", "text": "去大堂看看伙计", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "action_count": 1}},
-        {"choice_id": "explore_upstairs", "text": "上楼转转", "target_node": "scene_daily_return", "effects": {"insight": 1, "action_count": 1}}
+        {
+          "choice_id": "explore_backyard",
+          "text": "去后院看看",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "fragments": 1,
+            "insight": 1,
+            "action_count": 1
+          },
+          "conditions": {
+            "explore_count": {
+              "op": "lte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "explore_firewood",
+          "text": "去柴火堆看看",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "fragments": 1,
+            "insight": 1,
+            "fire_night_warned": true,
+            "action_count": 1
+          },
+          "conditions": {
+            "explore_count": {
+              "op": "eq",
+              "value": 2
+            }
+          }
+        },
+        {
+          "choice_id": "explore_hall",
+          "text": "去大堂看看伙计",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "fragments": 1,
+            "insight": 1,
+            "action_count": 1
+          },
+          "conditions": {
+            "explore_count": {
+              "op": "eq",
+              "value": 2
+            }
+          }
+        },
+        {
+          "choice_id": "explore_upstairs",
+          "text": "上楼转转",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "insight": 1,
+            "action_count": 1
+          },
+          "conditions": {
+            "explore_count": {
+              "op": "eq",
+              "value": 2
+            }
+          }
+        },
+        {
+          "choice_id": "explore_third",
+          "text": "再去走走（第三次）",
+          "target_node": "scene_daily_explore_third",
+          "effects": {
+            "action_count": 1
+          },
+          "conditions": {
+            "explore_count": {
+              "op": "gte",
+              "value": 3
+            }
+          }
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": ["sfx_footstep_wet"]}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      },
+      "on_enter_effects": {
+        "explore_count": {
+          "op": "add",
+          "value": 1
+        }
+      }
     },
-
     "scene_daily_innkeeper": {
       "node_id": "scene_daily_innkeeper",
       "scene_ref": "mvp-inline:scene_daily_innkeeper",
       "location": "清风渡客栈·柜台",
       "speaker": "客栈伙计",
       "mood_tag": "寻常·试探",
-      "plot_tags": ["daily", "innkeeper"],
-      "save_point": false,
-      "character_appearances": [{"character": "innkeeper", "pose": "站在柜台后", "expression": "笑容妥帖"}],
-      "choices": [
-        {"choice_id": "inn_a", "text": "真的？在哪儿？你跟我说说。", "target_node": "scene_daily_return", "effects": {"action_count": 1}, "note": "被标记"},
-        {"choice_id": "inn_b", "text": "是吗，听着怪吓人的，我可不敢。", "target_node": "scene_daily_return", "effects": {"insight": 1, "action_count": 1}},
-        {"choice_id": "inn_c", "text": "你右手虎口那道疤是怎么回事？", "target_node": "scene_daily_return", "effects": {"fragments": 1, "insight": 1, "action_count": 1}},
-        {"choice_id": "inn_d", "text": "我不好奇那些。", "target_node": "scene_daily_return", "effects": {"action_count": 1}}
+      "plot_tags": [
+        "daily",
+        "innkeeper"
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "save_point": false,
+      "character_appearances": [
+        {
+          "character": "innkeeper",
+          "pose": "站在柜台后",
+          "expression": "笑容妥帖"
+        }
+      ],
+      "choices": [
+        {
+          "choice_id": "inn_a",
+          "text": "真的？在哪儿？你跟我说说。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "action_count": 1
+          },
+          "note": "被标记"
+        },
+        {
+          "choice_id": "inn_b",
+          "text": "是吗，听着怪吓人的，我可不敢。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "insight": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "inn_c",
+          "text": "你右手虎口那道疤是怎么回事？",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "fragments": 1,
+            "insight": 1,
+            "action_count": 1
+          }
+        },
+        {
+          "choice_id": "inn_d",
+          "text": "我不好奇那些。",
+          "target_node": "scene_daily_return",
+          "effects": {
+            "action_count": 1
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_daily_return": {
       "node_id": "scene_daily_return",
       "scene_ref": "mvp-inline:scene_daily_return",
       "location": "清风渡客栈",
       "speaker": "旁白",
       "mood_tag": "日常·过渡",
-      "plot_tags": ["daily", "return"],
+      "plot_tags": [
+        "daily",
+        "return"
+      ],
       "save_point": true,
       "character_appearances": [],
       "note": "九时段统一返回节点。根据 action_count 路由到下一时段或日收束。",
       "choices": [
-        {"choice_id": "to_day1_afternoon", "text": "继续下一时段", "target_node": "scene_daily_day1_02", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 1}}},
-        {"choice_id": "to_day1_night", "text": "继续下一时段", "target_node": "scene_daily_day1_03", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 2}}},
-        {"choice_id": "to_day1_close", "text": "夜深了，回房休息", "target_node": "scene_day1_close", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 3}}},
-        {"choice_id": "to_day2_afternoon", "text": "继续下一时段", "target_node": "scene_daily_day2_02", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 4}}},
-        {"choice_id": "to_day2_night", "text": "继续下一时段", "target_node": "scene_daily_day2_03", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 5}}},
-        {"choice_id": "to_day2_close", "text": "夜深了，回房休息", "target_node": "scene_day2_close", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 6}}},
-        {"choice_id": "to_day3_afternoon", "text": "继续下一时段", "target_node": "scene_daily_day3_02", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 7}}},
-        {"choice_id": "to_day3_night", "text": "继续下一时段", "target_node": "scene_daily_day3_03", "effects": {}, "conditions": {"action_count": {"op": "eq", "value": 8}}},
-        {"choice_id": "to_day3_close", "text": "最后一夜了，回房休息", "target_node": "scene_day3_close", "effects": {}, "conditions": {"action_count": {"op": "gte", "value": 9}}}
+        {
+          "choice_id": "to_day1_afternoon",
+          "text": "继续下一时段",
+          "target_node": "scene_daily_day1_02",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "to_day1_night",
+          "text": "继续下一时段",
+          "target_node": "scene_daily_day1_03",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 2
+            }
+          }
+        },
+        {
+          "choice_id": "to_day1_close",
+          "text": "夜深了，回房休息",
+          "target_node": "scene_private_check",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 3
+            }
+          }
+        },
+        {
+          "choice_id": "to_day2_afternoon",
+          "text": "继续下一时段",
+          "target_node": "scene_daily_day2_02",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 4
+            }
+          }
+        },
+        {
+          "choice_id": "to_day2_night",
+          "text": "继续下一时段",
+          "target_node": "scene_daily_day2_03",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 5
+            }
+          }
+        },
+        {
+          "choice_id": "to_day2_close",
+          "text": "夜深了，回房休息",
+          "target_node": "scene_private_check",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 6
+            }
+          }
+        },
+        {
+          "choice_id": "to_day3_afternoon",
+          "text": "继续下一时段",
+          "target_node": "scene_daily_day3_02",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 7
+            }
+          }
+        },
+        {
+          "choice_id": "to_day3_night",
+          "text": "继续下一时段",
+          "target_node": "scene_daily_day3_03",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 8
+            }
+          }
+        },
+        {
+          "choice_id": "to_day3_close",
+          "text": "最后一夜了，回房休息",
+          "target_node": "scene_private_check",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "gte",
+              "value": 9
+            }
+          }
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_day", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
     },
-
     "scene_day1_close": {
       "node_id": "scene_day1_close",
       "scene_ref": "mvp-inline:scene_day1_close",
       "location": "清风渡客栈·客房",
       "speaker": "旁白",
       "mood_tag": "留白·余韵",
-      "plot_tags": ["day_1_close"],
+      "plot_tags": [
+        "day_1_close"
+      ],
       "save_point": true,
       "terminal": false,
       "note": "第一日收束。不消耗行动次数，直接进入第二天。",
       "choices": [
-        {"choice_id": "day1_to_day2", "text": "天亮了，新的一天", "target_node": "scene_daily_day2_01", "effects": {}}
+        {
+          "choice_id": "day1_to_day2",
+          "text": "天亮了，新的一天",
+          "target_node": "scene_daily_day2_01",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_night", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
     },
-
     "scene_day2_close": {
       "node_id": "scene_day2_close",
       "scene_ref": "mvp-inline:scene_day2_close",
       "location": "清风渡客栈·客房",
       "speaker": "旁白",
       "mood_tag": "留白·余韵",
-      "plot_tags": ["day_2_close"],
+      "plot_tags": [
+        "day_2_close"
+      ],
       "save_point": true,
       "terminal": false,
       "note": "第二日收束。不消耗行动次数，直接进入第三天。",
       "choices": [
-        {"choice_id": "day2_to_day3", "text": "天亮了，最后一天", "target_node": "scene_daily_day3_01", "effects": {}}
+        {
+          "choice_id": "day2_to_day3",
+          "text": "天亮了，最后一天",
+          "target_node": "scene_daily_day3_01",
+          "effects": {}
+        }
       ],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_night", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
     },
-
     "scene_day3_close": {
       "node_id": "scene_day3_close",
       "scene_ref": "mvp-inline:scene_day3_close",
       "location": "清风渡客栈·客房",
       "speaker": "旁白",
       "mood_tag": "留白·终章",
-      "plot_tags": ["day_3_close", "ending_gate"],
+      "plot_tags": [
+        "day_3_close",
+        "ending_gate"
+      ],
       "save_point": true,
-      "terminal": true,
+      "terminal": false,
       "note": "第三日收束。三天九时段结束，进入结局判定。",
-      "choices": [],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_night", "sfx": []}
+      "choices": [
+        {
+          "choice_id": "day3_to_summary",
+          "text": "熄灯睡下",
+          "target_node": "scene_day3_summary",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
     },
-
     "scene_021_liu_day1_close": {
       "node_id": "scene_021_liu_day1_close",
       "scene_ref": "mvp-inline:scene_021_liu_day1_close",
@@ -604,14 +2073,22 @@
       "speaker": "旁白",
       "text": "这一日的雨还没有停。你回到自己的房间，记下柳陆书那把扇子，也记下他没有说出口的话。第一日暂告一段落。",
       "mood_tag": "留白·余韵",
-      "plot_tags": ["liu_route", "day_1_close"],
+      "plot_tags": [
+        "liu_route",
+        "day_1_close"
+      ],
       "save_point": true,
       "terminal": true,
-      "on_enter_effects": {"day1_complete": true},
+      "on_enter_effects": {
+        "day1_complete": true
+      },
       "choices": [],
-      "audio": {"bgm": "bgm_inn_daily", "ambient": "amb_inn_night", "sfx": []}
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
     },
-
     "ending_front_no_road": {
       "node_id": "ending_front_no_road",
       "scene_ref": "mvp-inline:ending_front_no_road",
@@ -619,11 +2096,1590 @@
       "speaker": "旁白",
       "text": "你一直走到雨里的尽头。前方没有镇子，只有山雾和一条再也认不出的路。\n\n彩蛋结局：前方无路",
       "mood_tag": "空寂·彩蛋",
-      "plot_tags": ["easter_egg", "ending"],
+      "plot_tags": [
+        "easter_egg",
+        "ending"
+      ],
       "save_point": false,
       "terminal": true,
       "choices": [],
-      "audio": {"bgm": "bgm_rain_intro", "ambient": "sfx_rain_continuous", "sfx": []}
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": []
+      }
+    },
+    "ending_sacrifice": {
+      "node_id": "ending_sacrifice",
+      "scene_ref": "mvp-inline:ending_sacrifice",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "替人挡了刀",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "刀光闪过的时候，你推开了身旁的人。火折子照得你眼前一片白，你没看清刺中你的是谁。倒下的时候你听见有人在喊你的名字。也许不是你的名字。但你听见了。你只知道有人活着出去了。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_betrayed": {
+      "node_id": "ending_betrayed",
+      "scene_ref": "mvp-inline:ending_betrayed",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "信错了人",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你按他说的找到那棵歪脖子老槐树。树下确实有个洞。你探头进去的时候，身后有金属轻轻碰撞的声音。你没有来得及回头。'我提醒过你了。'那是你听到的最后一句话。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_tea": {
+      "node_id": "ending_tea",
+      "scene_ref": "mvp-inline:ending_tea",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "得闲饮茶",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你合上那本账本的时候，回头，伙计正站在柜台外。他手里拎着一个空茶盘，看着你，没有笑。他的表情是你从没见过的一张脸——茫然，空白，像是一个人记了很久的事情突然又被自己忘了。他的声音很平：'你看完了。'他低头看了看茶盘，又看了看你。'我有时候能想起来他是谁，有时候想不起来。但是我一直记得要续茶。'他把茶盘放在柜台上。你看见他的耳后隐约有青黑色的纹路，像藤蔓一样爬进衣领。'你走吧。趁我还能认出你是一个活人。'他顿了顿。'我不想再添一个了。'你连夜从客栈后门走了出去。风很大，吹得灯笼来回晃。跨出后院时你回头看了一眼——大厅里亮着一盏灯。那盏灯放在靠门第三张桌上，灯光透过旧茶壶映出一个很模糊的影子，像是一个人坐在桌边，端着一杯茶慢慢喝。那盏灯亮了两息就灭了。你站着看了很久。两息够一个活人喝完一盏茶吗？够一个死人回来坐上一会儿吗？你不知道。你只是站到天快亮。走了。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_fight": {
+      "node_id": "ending_fight",
+      "scene_ref": "mvp-inline:ending_fight",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "三人反目",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "他们吵起来了——不，他们打起来了。柳陆书的扇骨卡住了归汉的剑刃，黎客颍的刀正要出手挡开的时候已来不及拦住更多的人。没有人听你说话，也没有人再看你一眼。你忽然意识到，他们从来就不是盟友。只是恰好被困在同一个地方。古玉的光越来越亮。后来，没有人走出那扇门。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_seal_break": {
+      "node_id": "ending_seal_break",
+      "scene_ref": "mvp-inline:ending_seal_break",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "封印破碎",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你不知道发生了什么。你只知道石壁上的光忽然炸开。后来你在废墟中站起来，满身灰，喉咙里全是血腥味。环顾四周的时候，你发现自己找不到任何人了。观澜阁在身后慢慢塌了下去。你没有回头。有些事情，不是你该知道的。知道了也拦不住。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_missed": {
+      "node_id": "ending_missed",
+      "scene_ref": "mvp-inline:ending_missed",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "错过真相",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "三天就这样过去了。你喝了茶，吃了饭，跟人聊了几句，但没有认真听完任何一句话。离开的那天你觉得客栈跟来时一样——青石板路还是湿的，灯笼还是那几盏。你不知道那些灯笼为谁亮着，也不知道那个空座位上为什么永远有一杯没喝过的茶。你只是走了。有些事情，只有认真的人配知道。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_half": {
+      "node_id": "ending_half",
+      "scene_ref": "mvp-inline:ending_half",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "一知半解",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你知道了一些事情。但不够多。在秘境里，你试图做一件事——你想救人，想封印，想毁掉古玉——但你不知道该先做什么。三件事同时做等于一件都没有做。古玉的光吞掉了你的意识之前，你最后看到的画面是归汉的剑掉在了地上。对不起。你知道的还不够多。但这不是你的错。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_crushed": {
+      "node_id": "ending_crushed",
+      "scene_ref": "mvp-inline:ending_crushed",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "被真相压垮",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你终于知道了。所有的事情——二十年前的争吵，封印的裂缝，师叔的被困，古玉的低语——这些信息像决了口的河一样灌进你的脑海。太多太快了。你跪了下去。谢师叔看着你，叹了口气。'不该让小孩子听这些东西的。'你闭上眼睛的时候，好像听见有人在叫你的名字。但你太累了。有些真相，听了就是一辈子。你的一辈子到这里就够了。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_truth": {
+      "node_id": "ending_truth",
+      "scene_ref": "mvp-inline:ending_truth",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "真相达成",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "古玉粉碎的那一瞬间，所有的声音都停了。谢师叔睁开眼睛，看了看碎裂的石壁，又看了看你们四人。他扶着墙慢慢站起来，把手里那截旧刀柄搁在了石台上。'四十年了。'他说。'这破玩意儿耽误我四十年了。'归汉噗嗤一声笑了出来，随即用手捂住嘴。柳陆书用破扇子扇了扇脸上的灰，黎客颍把刀插回鞘里，看了你一眼，点了点头。你们四个人走出观澜阁的时候，天刚放晴。山路上积了浅浅一层雨水，踩上去会溅起细细的水花。你回头看了一眼，观澜阁在晨光里静静地立着——这回，是真的安静了。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_liu_cp": {
+      "node_id": "ending_liu_cp",
+      "scene_ref": "mvp-inline:ending_liu_cp",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "扇底风_liu_cp",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你走的那天，柳陆书在观澜阁的山道上等你。他换了把新扇子——扇面仍旧画着墨竹，只是这次竹节里藏了一行小字，你没看清。他斜倚在老槐树下，扇子挡着半张脸，语气还是懒懒散散的：'这雨终于停了。去哪？带上我。'你没问他为什么跟来。他也没说。山路很长，你们走了很久。风吹过竹林，扇子在他指间转了一圈，像终于找到了一只手，知道这把扇子再也不需要替谁送终。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_li_cp": {
+      "node_id": "ending_li_cp",
+      "scene_ref": "mvp-inline:ending_li_cp",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "归刀入鞘_li_cp",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "事情了结之后，黎客颍在客栈多留了三天。第四天早上，他把刀背在背上，站在门口等你。'我找到人了，也还了恩。现在没什么事了。'他看了你一眼，目光温和得像第一次见面时推过来的那杯茶。'你要去哪？我跟你一起。'他走在你身边，步子很稳。那把刀在背后随着步伐轻轻拍打刀鞘——这么多年了，终于不是一个人到处走了。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_gui_cp": {
+      "node_id": "ending_gui_cp",
+      "scene_ref": "mvp-inline:ending_gui_cp",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "长剑有穗_gui_cp",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "师叔醒了。归汉把手里的剑放在蒲团边，在床边站了很久，没有说话。后来你坐在观澜阁外的石阶上，她走出来坐在你旁边，手里攥着那根淡蓝色的剑穗——那是师叔还回去给她的。'他说他不需要了，说留给我。'她顿了顿，把剑穗轻轻放在你手心。月光落在剑穗上，像一截冻不住的泉水。'你看着它的时候，它就不冷了。'她说完这句话没有看你。但你把剑穗系在自己的剑上，一直戴了很多年。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_liu_cb": {
+      "node_id": "ending_liu_cb",
+      "scene_ref": "mvp-inline:ending_liu_cb",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "旧友新茶_liu_cb",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "后来你每年春天都会收到一封信。信很短，写在一张旧宣纸上，墨迹潦草。'近日新茶上市，来饮。'落款是一个'柳'字，旁边总画着一只歪歪扭扭的小竹笋。你每次赴约，他都坐在窗边那把椅子里，泡两壶茶。茶喝完了，话也聊完了，他扇子一合：'明年见。'明年你真的又来了。你和他之间没有账要还，只是茶一凉就续，这一续便是许多年。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_li_cb": {
+      "node_id": "ending_li_cb",
+      "scene_ref": "mvp-inline:ending_li_cb",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "同路之人_li_cb",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你收拾好行囊下楼，黎客颍正坐在大堂那张老桌子旁。他看见你，把那页旧纸推了过来——是谢前辈的地图，折叠处已经磨出了毛边。'这个给你。'他说。'你知道他最后写了什么？'你翻开地图背面，上面多了一行新的字：'找到了。'你抬头看他，他冲你笑了一下。后来你们各自上路，但每隔一阵子，你就会收到一封夹着干茶叶的信。信上从不写地址。你总觉得，他离得并不远。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_gui_cb": {
+      "node_id": "ending_gui_cb",
+      "scene_ref": "mvp-inline:ending_gui_cb",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "不冻泉_gui_cb",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "最后一夜，归汉把她的剑穗拆成了两半。一半给了柳陆书补扇子，另一半留给了你。'不用还我。'她说完便去收拾行李了。她的白袍在客栈门边一晃，淡得像融进山雾里的一缕光。后来你听说她回了无相宗，接任了掌门之位。她的剑术愈发冷冽，门下弟子都说她是个严肃的大师姐。但你见过她攥着剑穗发抖的手——她不冷。她只是不愿让太多人看见她热的那一面。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_solo": {
+      "node_id": "ending_solo",
+      "scene_ref": "mvp-inline:ending_solo",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "独行者",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "你比他们先到。观澜阁地下的秘境比他们描述的更暗，更冷。你没有带剑，只带了那把揣了三个月的短刀。古玉的光在地底像一颗不会闭的眼睛。你走进去，刀尖挑开封口，没有看它。一刀下去的时候，古玉发出了一声细细的裂响——像是什么东西终于想通了。三个人赶到的时候，地上只有一摊碎石和半跪着喘气的你。柳陆书沉默了两秒，轻声说了句：'……你一个人居然都干完了。'黎客颍上前把你架起来，归汉的剑还在手里，但她先低头看了一眼碎掉的古玉，才看向你。三个人都没有说恭喜。但他们的目光已经说了很多。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_pass": {
+      "node_id": "ending_pass",
+      "scene_ref": "mvp-inline:ending_pass",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "清风过客",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "他们解决了这一切。你站在边上，看完了整场对峙。归汉靠着石壁休息，左肩的伤还在渗血。柳陆书蹲在地上捡扇骨的碎片，捡了两片，剩下的懒得拾了。黎客颍在石阶上坐了一会儿，然后起身往外走。你跟在最后面。出了观澜阁，天刚蒙蒙亮。他们三个人朝不同的方向走了。你没有追。你回了客栈，吃了碗面，收拾好行李。伙计少收了你一天的房钱。你走了。有些人的故事，你不必知道结尾。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "ending_stranger": {
+      "node_id": "ending_stranger",
+      "scene_ref": "mvp-inline:ending_stranger",
+      "location": "观澜阁·结局",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "陌生人",
+        "p2"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "terminal": true,
+      "text": "三天不知不觉就结束了。你跟他们说过几句话，喝过几次茶，但从来没有真正坐下来听过谁的故事。走的那天早晨雨停了。窗边的青衫人还在转他的扇子，右边的红发刀客还是低头看那张泛黄的纸，里侧的白衣女子仍旧目不斜视地喝茶。你背起行囊，推开门。没有人抬头。山路被雨水洗得很干净。走了很远你才想起来——你甚至不知道他们叫什么名字。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "scene_day3_summary": {
+      "node_id": "scene_day3_summary",
+      "scene_ref": "mvp-inline:scene_day3_summary",
+      "location": "清风渡客栈·客房",
+      "speaker": "旁白",
+      "mood_tag": "结算·余韵",
+      "plot_tags": [
+        "settlement",
+        "summary",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "三日结算页：数值统计由 SettlementPanel 展示，此处仅旁白标题。选项由面板按钮触发（choice_id=day3_to_fire_night）。",
+      "choices": [
+        {
+          "choice_id": "day3_to_fire_night",
+          "text": "（结算面板继续）",
+          "target_node": "scene_fire_night_transition",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "scene_fire_night_transition": {
+      "node_id": "scene_fire_night_transition",
+      "scene_ref": "mvp-inline:scene_fire_night_transition",
+      "location": "清风渡客栈·客房",
+      "speaker": "旁白",
+      "mood_tag": "过渡·骤变",
+      "plot_tags": [
+        "fire_night",
+        "transition",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "choices": [
+        {
+          "choice_id": "fn_t_go",
+          "text": "循声出去看看",
+          "target_node": "scene_fire_night",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
+    },
+    "scene_fire_night": {
+      "node_id": "scene_fire_night",
+      "scene_ref": "scenes/fire_night.scene.md",
+      "location": "清风渡客栈·二楼走廊 / 楼下院中",
+      "speaker": "旁白",
+      "mood_tag": "火·危急",
+      "plot_tags": [
+        "fire_night",
+        "event",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "choices": [
+        {
+          "choice_id": "fire_help_liu_upstairs",
+          "text": "冲上楼，跟着柳陆书一起把人扶出来。",
+          "target_node": "scene_fire_night_outcome",
+          "effects": {
+            "gui_affection": 5,
+            "liu_affection": 5,
+            "insight": 1
+          }
+        },
+        {
+          "choice_id": "fire_help_li_below",
+          "text": "留在楼下帮黎客颍——搬水、递湿毛巾，接住跳下来的人。",
+          "target_node": "scene_fire_night_outcome",
+          "effects": {
+            "li_affection": 10,
+            "fragments": 1
+          }
+        },
+        {
+          "choice_id": "fire_warn_alerted",
+          "text": "先看了一眼火势：这不是普通的走水。提醒黎客颍看火是从哪儿起来的。",
+          "target_node": "scene_fire_night_outcome",
+          "effects": {
+            "insight": 1,
+            "li_affection": 5
+          },
+          "conditions": {
+            "fire_night_warned": true
+          }
+        },
+        {
+          "choice_id": "fire_find_innkeeper",
+          "text": "跑去找伙计要水桶和灭火的沙土。",
+          "target_node": "scene_fire_night_outcome",
+          "effects": {
+            "action_count": 1
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_door_open",
+          "sfx_candle_crackle"
+        ]
+      }
+    },
+    "scene_fire_night_outcome": {
+      "node_id": "scene_fire_night_outcome",
+      "scene_ref": "mvp-inline:scene_fire_night_outcome",
+      "location": "清风渡客栈·楼下院中",
+      "speaker": "旁白",
+      "mood_tag": "火后·余烬",
+      "plot_tags": [
+        "fire_night",
+        "outcome",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "走水夜结果：若已暴露且三好感均低（无人接应）→ 死亡·替人挡了刀；否则进入后续。",
+      "choices": [
+        {
+          "choice_id": "fn_o_sacrifice",
+          "text": "（火中意外，替人挡了刀）",
+          "target_node": "ending_sacrifice",
+          "effects": {},
+          "conditions": {
+            "exposed": true,
+            "liu_affection": {
+              "op": "lte",
+              "value": -1
+            },
+            "li_affection": {
+              "op": "lte",
+              "value": -1
+            },
+            "gui_affection": {
+              "op": "lte",
+              "value": -1
+            }
+          }
+        },
+        {
+          "choice_id": "fn_o_after",
+          "text": "回房歇下",
+          "target_node": "scene_post_fire_night",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "scene_post_fire_night": {
+      "node_id": "scene_post_fire_night",
+      "scene_ref": "mvp-inline:scene_post_fire_night",
+      "location": "清风渡客栈·大堂",
+      "speaker": "旁白",
+      "mood_tag": "暗涌·余韵",
+      "plot_tags": [
+        "fire_night",
+        "hidden_line",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "走水夜后：已解锁隐藏线可探查第三张桌（得闲饮茶）；否则直接进入路线分歧。",
+      "choices": [
+        {
+          "choice_id": "pfn_tea",
+          "text": "再去看看靠门第三张桌。",
+          "target_node": "ending_tea",
+          "effects": {
+            "observed_account_book": true
+          },
+          "conditions": {
+            "hidden_line_unlocked": true
+          }
+        },
+        {
+          "choice_id": "pfn_route",
+          "text": "回房休息",
+          "target_node": "scene_route_split",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "scene_route_split": {
+      "node_id": "scene_route_split",
+      "scene_ref": "mvp-inline:scene_route_split",
+      "location": "清风渡客栈·大堂",
+      "speaker": "旁白",
+      "mood_tag": "抉择",
+      "plot_tags": [
+        "route_split",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "choices": [
+        {
+          "choice_id": "route_coop",
+          "text": "与三人同行，一起去观澜阁。",
+          "target_node": "scene_confrontation",
+          "effects": {
+            "route_coop": true
+          }
+        },
+        {
+          "choice_id": "route_solo",
+          "text": "独自先行，先到观澜阁一步。",
+          "target_node": "scene_solo_gate",
+          "effects": {
+            "route_solo": true
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": []
+      }
+    },
+    "scene_solo_gate": {
+      "node_id": "scene_solo_gate",
+      "scene_ref": "mvp-inline:scene_solo_gate",
+      "location": "清风渡·后山路口",
+      "speaker": "旁白",
+      "mood_tag": "独行·警觉",
+      "plot_tags": [
+        "solo",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "独行线：被标记诱饵(bait_marked)时可走伙计说的密道（→信错了人）；否则绕大路或独自摸黑。",
+      "choices": [
+        {
+          "choice_id": "solo_trap",
+          "text": "按伙计说的密道走——北走三里，歪脖子老槐树底下。",
+          "target_node": "ending_betrayed",
+          "effects": {
+            "solo_night_explore": true
+          },
+          "conditions": {
+            "bait_marked": true
+          }
+        },
+        {
+          "choice_id": "solo_road",
+          "text": "绕大路，天亮后再走。",
+          "target_node": "scene_confrontation",
+          "effects": {}
+        },
+        {
+          "choice_id": "solo_direct",
+          "text": "独自摸黑进观澜阁。",
+          "target_node": "scene_confrontation",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_rain_intro",
+        "ambient": "sfx_rain_continuous",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
+    },
+    "scene_ending_gate": {
+      "node_id": "scene_ending_gate",
+      "scene_ref": "mvp-inline:scene_ending_gate",
+      "location": "观澜阁",
+      "speaker": "旁白",
+      "mood_tag": "终局·判定",
+      "plot_tags": [
+        "ending_gate",
+        "p2"
+      ],
+      "save_point": true,
+      "auto_route": true,
+      "character_appearances": [],
+      "note": "结局路由：按数值设计优先级（death→hidden→truth→cp→cb→solo→neutral→distant）顺序判定，条件互斥。auto_route=true：不向玩家暴露结局选项，由剧情分支自动收敛为唯一结局。",
+      "choices": [
+        {
+          "choice_id": "to_fight",
+          "text": "（三人反目）",
+          "target_node": "ending_fight",
+          "conditions": {
+            "liu_affection": {
+              "op": "lte",
+              "value": -11
+            },
+            "li_affection": {
+              "op": "lte",
+              "value": -11
+            },
+            "gui_affection": {
+              "op": "lte",
+              "value": -11
+            }
+          }
+        },
+        {
+          "choice_id": "to_missed",
+          "text": "（错过真相）",
+          "target_node": "ending_missed",
+          "conditions": {
+            "fragments": {
+              "op": "lte",
+              "value": 2
+            }
+          }
+        },
+        {
+          "choice_id": "to_crushed",
+          "text": "（被真相压垮）",
+          "target_node": "ending_crushed",
+          "conditions": {
+            "fragments": {
+              "op": "gte",
+              "value": 6
+            },
+            "insight": {
+              "op": "lte",
+              "value": 1
+            }
+          }
+        },
+        {
+          "choice_id": "to_half",
+          "text": "（一知半解）",
+          "target_node": "ending_half",
+          "conditions": {
+            "fragments": {
+              "op": "gte",
+              "value": 3
+            },
+            "insight": {
+              "op": "lte",
+              "value": 3
+            }
+          }
+        },
+        {
+          "choice_id": "to_seal_break",
+          "text": "（封印破碎）",
+          "target_node": "ending_seal_break",
+          "conditions": {
+            "fragments": {
+              "op": "lte",
+              "value": 3
+            }
+          }
+        },
+        {
+          "choice_id": "to_truth",
+          "text": "（真相达成）",
+          "target_node": "ending_truth",
+          "conditions": {
+            "fragments": {
+              "op": "gte",
+              "value": 8
+            },
+            "insight": {
+              "op": "gte",
+              "value": 6
+            }
+          }
+        },
+        {
+          "choice_id": "to_liu_cp",
+          "text": "（扇底风）",
+          "target_node": "ending_liu_cp",
+          "conditions": {
+            "liu_affection": {
+              "op": "gte",
+              "value": 70
+            }
+          }
+        },
+        {
+          "choice_id": "to_li_cp",
+          "text": "（归刀入鞘）",
+          "target_node": "ending_li_cp",
+          "conditions": {
+            "li_affection": {
+              "op": "gte",
+              "value": 70
+            }
+          }
+        },
+        {
+          "choice_id": "to_gui_cp",
+          "text": "（长剑有穗）",
+          "target_node": "ending_gui_cp",
+          "conditions": {
+            "gui_affection": {
+              "op": "gte",
+              "value": 70
+            }
+          }
+        },
+        {
+          "choice_id": "to_liu_cb",
+          "text": "（旧友新茶）",
+          "target_node": "ending_liu_cb",
+          "conditions": {
+            "liu_affection": {
+              "op": "gte",
+              "value": 30
+            }
+          }
+        },
+        {
+          "choice_id": "to_li_cb",
+          "text": "（同路之人）",
+          "target_node": "ending_li_cb",
+          "conditions": {
+            "li_affection": {
+              "op": "gte",
+              "value": 30
+            }
+          }
+        },
+        {
+          "choice_id": "to_gui_cb",
+          "text": "（不冻泉）",
+          "target_node": "ending_gui_cb",
+          "conditions": {
+            "gui_affection": {
+              "op": "gte",
+              "value": 30
+            }
+          }
+        },
+        {
+          "choice_id": "to_solo",
+          "text": "（独行者）",
+          "target_node": "ending_solo",
+          "conditions": {
+            "route_solo": true,
+            "insight": {
+              "op": "gte",
+              "value": 6
+            }
+          }
+        },
+        {
+          "choice_id": "to_pass",
+          "text": "（清风过客）",
+          "target_node": "ending_pass",
+          "conditions": {
+            "fragments": {
+              "op": "lte",
+              "value": 7
+            }
+          }
+        },
+        {
+          "choice_id": "to_stranger",
+          "text": "（陌生人）",
+          "target_node": "ending_stranger",
+          "conditions": {
+            "liu_affection": {
+              "op": "lte",
+              "value": 29
+            },
+            "li_affection": {
+              "op": "lte",
+              "value": 29
+            },
+            "gui_affection": {
+              "op": "lte",
+              "value": 29
+            }
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "scene_daily_explore_third": {
+      "node_id": "scene_daily_explore_third",
+      "scene_ref": "mvp-inline:scene_daily_explore_third",
+      "location": "清风渡客栈·后院",
+      "speaker": "旁白",
+      "mood_tag": "紧绷·生死一线",
+      "plot_tags": [
+        "daily",
+        "explore",
+        "third",
+        "risk_check",
+        "death_gate"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "第三次闲逛风险判定：exposed&&!recognized_scar→死亡【淹死在自己的好奇心里】；watched→逃脱；其余安全；洞察≥4 解锁隐藏线【得闲饮茶】。",
+      "choices": [
+        {
+          "choice_id": "third_drown",
+          "text": "（死亡结局）",
+          "target_node": "ending_drown_curiosity",
+          "effects": {},
+          "conditions": {
+            "exposed": true,
+            "recognized_scar": false
+          }
+        },
+        {
+          "choice_id": "third_escape",
+          "text": "（被盯上，借花瓶反光逃脱）",
+          "target_node": "scene_daily_explore_third_escape",
+          "effects": {
+            "watched": true
+          },
+          "conditions": {
+            "watched": true,
+            "exposed": false
+          }
+        },
+        {
+          "choice_id": "third_safe_unlock",
+          "text": "（安全返回，解锁隐藏线）",
+          "target_node": "scene_daily_explore_third_safe",
+          "effects": {
+            "hidden_line_unlocked": true,
+            "fragments": 1,
+            "insight": 1
+          },
+          "conditions": {
+            "insight": {
+              "op": "gte",
+              "value": 4
+            }
+          }
+        },
+        {
+          "choice_id": "third_safe",
+          "text": "（安全返回）",
+          "target_node": "scene_daily_explore_third_safe",
+          "effects": {},
+          "conditions": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      },
+      "auto_route": true
+    },
+    "scene_daily_explore_third_escape": {
+      "node_id": "scene_daily_explore_third_escape",
+      "scene_ref": "mvp-inline:scene_daily_explore_third_escape",
+      "location": "清风渡客栈·走廊",
+      "speaker": "旁白",
+      "mood_tag": "逃脱·惊险",
+      "plot_tags": [
+        "daily",
+        "explore",
+        "third_escape"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "note": "第三次闲逛·被盯上逃脱：损失一次行动时段（action_count 由选择时已 +1，此处不再补）。",
+      "choices": [
+        {
+          "choice_id": "third_escape_return",
+          "text": "继续",
+          "target_node": "scene_daily_return",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
+    },
+    "scene_daily_explore_third_safe": {
+      "node_id": "scene_daily_explore_third_safe",
+      "scene_ref": "mvp-inline:scene_daily_explore_third_safe",
+      "location": "清风渡客栈·后院",
+      "speaker": "旁白",
+      "mood_tag": "安全·余悸",
+      "plot_tags": [
+        "daily",
+        "explore",
+        "third_safe",
+        "hidden_line"
+      ],
+      "save_point": false,
+      "character_appearances": [],
+      "note": "第三次闲逛·安全返回：洞察≥4 时已由上一节点解锁隐藏线【得闲饮茶】。",
+      "choices": [
+        {
+          "choice_id": "third_safe_return",
+          "text": "继续",
+          "target_node": "scene_daily_return",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_day",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
+    },
+    "ending_drown_curiosity": {
+      "node_id": "ending_drown_curiosity",
+      "scene_ref": "mvp-inline:ending_drown_curiosity",
+      "location": "清风渡客栈·后院",
+      "speaker": "旁白",
+      "mood_tag": "结局·余韵",
+      "plot_tags": [
+        "ending",
+        "淹死在自己的好奇心里",
+        "p2"
+      ],
+      "save_point": false,
+      "terminal": true,
+      "character_appearances": [],
+      "text": "你走在后院，身后脚步声不紧不慢。你回头，看见伙计站在三步之外。他端着茶盘，笑容妥帖。\n\n“客官，您不该上二楼那间房的。”\n\n他手中的火折子亮了。",
+      "choices": [],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_footstep_wet"
+        ]
+      }
+    },
+    "scene_private_check": {
+      "node_id": "scene_private_check",
+      "scene_ref": "mvp-inline:scene_private_check",
+      "location": "清风渡客栈·客房",
+      "speaker": "旁白",
+      "mood_tag": "当夜·私约判定",
+      "plot_tags": [
+        "private",
+        "night",
+        "p2"
+      ],
+      "save_point": true,
+      "auto_route": true,
+      "character_appearances": [],
+      "note": "每晚结算：按 柳→黎→归 顺序选第一个好感≥30 且未触发私约者；无则直接日收束。",
+      "choices": [
+        {
+          "choice_id": "private_check_liu",
+          "text": "（柳私约）",
+          "target_node": "scene_private_liu",
+          "effects": {},
+          "conditions": {
+            "liu_affection": {
+              "op": "gte",
+              "value": 30
+            },
+            "liu_private_done": false
+          }
+        },
+        {
+          "choice_id": "private_check_li",
+          "text": "（黎私约）",
+          "target_node": "scene_private_li",
+          "effects": {},
+          "conditions": {
+            "li_affection": {
+              "op": "gte",
+              "value": 30
+            },
+            "li_private_done": false
+          }
+        },
+        {
+          "choice_id": "private_check_gui",
+          "text": "（归私约）",
+          "target_node": "scene_private_gui",
+          "effects": {},
+          "conditions": {
+            "gui_affection": {
+              "op": "gte",
+              "value": 30
+            },
+            "gui_private_done": false
+          }
+        },
+        {
+          "choice_id": "private_check_none",
+          "text": "（无私约）",
+          "target_node": "scene_private_close",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "scene_private_liu": {
+      "node_id": "scene_private_liu",
+      "scene_ref": "mvp-inline:scene_private_liu",
+      "location": "清风渡客栈·柳陆书房门外",
+      "speaker": "柳陆书",
+      "mood_tag": "当夜·私约",
+      "plot_tags": [
+        "private",
+        "liu",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [
+        {
+          "character": "liu_lushu",
+          "pose": "倚门框",
+          "expression": "含笑"
+        }
+      ],
+      "note": "柳私约：观澜阁看封印。接受+15碎片+1；拒绝-10。",
+      "choices": [
+        {
+          "choice_id": "liu_private_accept",
+          "text": "接受：跟上他，去看看。",
+          "target_node": "scene_private_close",
+          "effects": {
+            "liu_affection": 15,
+            "fragments": 1,
+            "liu_private_done": true
+          }
+        },
+        {
+          "choice_id": "liu_private_refuse",
+          "text": "拒绝：这大半夜的，我要睡觉。",
+          "target_node": "scene_private_close",
+          "effects": {
+            "liu_affection": -10,
+            "liu_private_done": true
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_liu_theme",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_door_open"
+        ]
+      }
+    },
+    "scene_private_li": {
+      "node_id": "scene_private_li",
+      "scene_ref": "mvp-inline:scene_private_li",
+      "location": "清风渡客栈·黎客颍房门外",
+      "speaker": "黎客颍",
+      "mood_tag": "当夜·私约",
+      "plot_tags": [
+        "private",
+        "li",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [
+        {
+          "character": "li_keying",
+          "pose": "持地图",
+          "expression": "温和"
+        }
+      ],
+      "note": "黎私约：托付地图。接受+15碎片+1；拒绝-15。",
+      "choices": [
+        {
+          "choice_id": "li_private_accept",
+          "text": "接受：替他收着这张地图。",
+          "target_node": "scene_private_close",
+          "effects": {
+            "li_affection": 15,
+            "fragments": 1,
+            "li_private_done": true,
+            "li_map_entrusted": true
+          }
+        },
+        {
+          "choice_id": "li_private_refuse",
+          "text": "拒绝：这个忙，我帮不上。",
+          "target_node": "scene_private_close",
+          "effects": {
+            "li_affection": -15,
+            "li_private_done": true
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_door_open"
+        ]
+      }
+    },
+    "scene_private_gui": {
+      "node_id": "scene_private_gui",
+      "scene_ref": "mvp-inline:scene_private_gui",
+      "location": "清风渡客栈·归汉房门外",
+      "speaker": "归汉",
+      "mood_tag": "当夜·私约",
+      "plot_tags": [
+        "private",
+        "gui",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [
+        {
+          "character": "gui_han",
+          "pose": "立于门外",
+          "expression": "平静"
+        }
+      ],
+      "note": "归私约：听故事（旧怨）。接受+15碎片+1+线索【旧怨】+信物【剑穗】；拒绝-20。",
+      "choices": [
+        {
+          "choice_id": "gui_private_accept",
+          "text": "接受：进来说？我一向是个好听众。",
+          "target_node": "scene_private_close",
+          "effects": {
+            "gui_affection": 15,
+            "fragments": 1,
+            "gui_private_done": true,
+            "clue_old_grudge": true,
+            "item_sword_tassel": true
+          }
+        },
+        {
+          "choice_id": "gui_private_refuse",
+          "text": "拒绝：改天吧，我今晚有些累了。",
+          "target_node": "scene_private_close",
+          "effects": {
+            "gui_affection": -20,
+            "gui_private_done": true
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_gui_theme",
+        "ambient": "amb_inn_night",
+        "sfx": [
+          "sfx_door_open"
+        ]
+      }
+    },
+    "scene_private_close": {
+      "node_id": "scene_private_close",
+      "scene_ref": "mvp-inline:scene_private_close",
+      "location": "清风渡客栈·客房",
+      "speaker": "旁白",
+      "mood_tag": "当夜·收束",
+      "plot_tags": [
+        "private",
+        "night_close",
+        "p2"
+      ],
+      "save_point": true,
+      "auto_route": true,
+      "character_appearances": [],
+      "note": "私约后按 action_count 路由到对应日收束。",
+      "choices": [
+        {
+          "choice_id": "pc_day1",
+          "text": "（第一日收束）",
+          "target_node": "scene_day1_close",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 3
+            }
+          }
+        },
+        {
+          "choice_id": "pc_day2",
+          "text": "（第二日收束）",
+          "target_node": "scene_day2_close",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "eq",
+              "value": 6
+            }
+          }
+        },
+        {
+          "choice_id": "pc_day3",
+          "text": "（第三日收束）",
+          "target_node": "scene_day3_close",
+          "effects": {},
+          "conditions": {
+            "action_count": {
+              "op": "gte",
+              "value": 9
+            }
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_inn_daily",
+        "ambient": "amb_inn_night",
+        "sfx": []
+      }
+    },
+    "scene_confrontation": {
+      "node_id": "scene_confrontation",
+      "scene_ref": "scenes/100_confrontation.scene.md",
+      "location": "观澜阁秘境深处",
+      "speaker": "旁白",
+      "mood_tag": "对峙·宿命",
+      "plot_tags": [
+        "confrontation",
+        "climax",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "最终对峙五路 A-E（docx [7]）：A 劝归汉出手 / B 让归汉决定 / C 救谢前辈 / D 指出古玉关键 / E 旁观。A-D→ending_gate 数值路由，E→清风过客。",
+      "choices": [
+        {
+          "choice_id": "confront_a_persuade_gui",
+          "text": "劝归汉出手：“你拦的不是他，是古玉。”",
+          "target_node": "scene_confront_a",
+          "effects": {
+            "gui_affection": 10,
+            "insight": 2
+          }
+        },
+        {
+          "choice_id": "confront_b_let_gui_decide",
+          "text": "让归汉自己做决定",
+          "target_node": "scene_confront_b",
+          "effects": {
+            "gui_affection": 5,
+            "insight": 1
+          }
+        },
+        {
+          "choice_id": "confront_c_save_xie",
+          "text": "趁其他人缠斗时，自己去救谢前辈",
+          "target_node": "scene_confront_c",
+          "effects": {
+            "li_affection": 15,
+            "sacrifice_choice": true
+          },
+          "conditions": {
+            "li_met": true
+          }
+        },
+        {
+          "choice_id": "confront_d_point_jade",
+          "text": "大声喊：“别打他了——打碎古玉！执念散了，他就会醒！”",
+          "target_node": "scene_confront_d",
+          "effects": {
+            "truth_route_ready": true,
+            "insight": 3
+          },
+          "conditions": {
+            "insight": {
+              "op": "gte",
+              "value": 6
+            },
+            "fragments": {
+              "op": "gte",
+              "value": 8
+            }
+          }
+        },
+        {
+          "choice_id": "confront_e_observe",
+          "text": "在一旁看着",
+          "target_node": "scene_confront_e",
+          "effects": {
+            "liu_affection": -5,
+            "li_affection": -5,
+            "gui_affection": -5,
+            "insight": 1
+          }
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_confrontation",
+        "ambient": "amb_cave",
+        "sfx": [
+          "sfx_sword_draw",
+          "sfx_jade_hum"
+        ]
+      }
+    },
+    "scene_confront_a": {
+      "node_id": "scene_confront_a",
+      "scene_ref": "scenes/101_confront_outcome.scene.md",
+      "location": "观澜阁秘境深处",
+      "speaker": "旁白",
+      "mood_tag": "抉择·余震",
+      "plot_tags": [
+        "confrontation",
+        "resolution",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "A 劝归汉出手：归汉提剑向谢师叔走去，古玉发出执念被切断的嘶鸣。",
+      "choices": [
+        {
+          "choice_id": "confront_a_continue",
+          "text": "继续",
+          "target_node": "scene_ending_gate",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_resolution",
+        "ambient": "amb_cave",
+        "sfx": [
+          "sfx_jade_shatter"
+        ]
+      }
+    },
+    "scene_confront_b": {
+      "node_id": "scene_confront_b",
+      "scene_ref": "scenes/101_confront_outcome.scene.md",
+      "location": "观澜阁秘境深处",
+      "speaker": "旁白",
+      "mood_tag": "抉择·余震",
+      "plot_tags": [
+        "confrontation",
+        "resolution",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "B 让归汉决定：归汉下不去手，黎客颍用刀背打晕谢师叔，替他做了决定。",
+      "choices": [
+        {
+          "choice_id": "confront_b_continue",
+          "text": "继续",
+          "target_node": "scene_ending_gate",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_resolution",
+        "ambient": "amb_cave",
+        "sfx": [
+          "sfx_sword_draw"
+        ]
+      }
+    },
+    "scene_confront_c": {
+      "node_id": "scene_confront_c",
+      "scene_ref": "scenes/101_confront_outcome.scene.md",
+      "location": "观澜阁秘境深处",
+      "speaker": "旁白",
+      "mood_tag": "抉择·余震",
+      "plot_tags": [
+        "confrontation",
+        "resolution",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "C 救谢前辈：撬开锁链，谢师叔喊小子，黎客颍在战局中回应嗯，来了。",
+      "choices": [
+        {
+          "choice_id": "confront_c_continue",
+          "text": "继续",
+          "target_node": "scene_ending_gate",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_resolution",
+        "ambient": "amb_cave",
+        "sfx": [
+          "sfx_sword_draw"
+        ]
+      }
+    },
+    "scene_confront_d": {
+      "node_id": "scene_confront_d",
+      "scene_ref": "scenes/101_confront_outcome.scene.md",
+      "location": "观澜阁秘境深处",
+      "speaker": "旁白",
+      "mood_tag": "抉择·余震",
+      "plot_tags": [
+        "confrontation",
+        "resolution",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "D 指出古玉关键：三人合力一击，古玉碎裂，谢师叔睁开眼睛——雨停了吗。",
+      "choices": [
+        {
+          "choice_id": "confront_d_continue",
+          "text": "继续",
+          "target_node": "scene_ending_gate",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_resolution",
+        "ambient": "amb_cave",
+        "sfx": [
+          "sfx_jade_shatter",
+          "sfx_stone_collapse"
+        ]
+      }
+    },
+    "scene_confront_e": {
+      "node_id": "scene_confront_e",
+      "scene_ref": "scenes/101_confront_outcome.scene.md",
+      "location": "观澜阁秘境深处",
+      "speaker": "旁白",
+      "mood_tag": "抉择·余震",
+      "plot_tags": [
+        "confrontation",
+        "resolution",
+        "p2"
+      ],
+      "save_point": true,
+      "character_appearances": [],
+      "note": "E 旁观：代价更大——归汉受轻伤、柳扇子报废、黎刀卷刃，三人对主控失望。→ 清风过客。",
+      "choices": [
+        {
+          "choice_id": "confront_e_continue",
+          "text": "继续",
+          "target_node": "ending_pass",
+          "effects": {}
+        }
+      ],
+      "audio": {
+        "bgm": "bgm_resolution",
+        "ambient": "amb_cave",
+        "sfx": [
+          "sfx_stone_collapse"
+        ]
+      }
     }
   }
 }

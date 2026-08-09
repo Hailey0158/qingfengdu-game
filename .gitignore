@@ -26,3 +26,6 @@ dist/
 
 # Office temp files
 ~$*
+
+# Godot import metadata at repo root (deployment copies, not project files)
+/index.*.import

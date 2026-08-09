@@ -3,216 +3,493 @@
   "task_id": "P2-T4+P2-T5",
   "scope": "全量数值设计：好感度/洞察/碎片/状态标志/结局判定，严格基于《目前8.8.docx》已写文案。",
   "note": "已写文案原样保护，本文档仅定义数值规则和判定条件，不修改任何叙事文本。",
-
   "variables": {
     "affection": {
       "description": "三角色独立好感度，范围 -100 到 +100",
-      "characters": ["liu", "li", "gui"],
-      "range": [-100, 100],
+      "characters": [
+        "liu",
+        "li",
+        "gui"
+      ],
+      "range": [
+        -100,
+        100
+      ],
       "initial": 0,
       "thresholds": {
-        "private_invite": {"min": 30, "description": "触发角色私下邀约（每晚结算时判定，单角色不重复）"},
-        "cp_ending": {"min": 70, "description": "进入CP线（恋人关系）结局"},
-        "cb_ending": {"min": 30, "max": 69, "description": "进入CB线（挚友/知己关系）结局"},
-        "hostile": {"max": -30, "description": "该角色不再主动互动，好感极低时触发疏远文案"},
-        "neutral": {"min": -29, "max": 29, "description": "普通关系，不影响互动"},
-        "trusted": {"min": 30, "max": 49, "description": "愿意分享信息"},
-        "close": {"min": 50, "max": 69, "description": "深层信任，共享关键线索"}
+        "private_invite": {
+          "min": 30,
+          "description": "触发角色私下邀约（每晚结算时判定，单角色不重复）"
+        },
+        "cp_ending": {
+          "min": 70,
+          "description": "进入CP线（恋人关系）结局"
+        },
+        "cb_ending": {
+          "min": 30,
+          "max": 69,
+          "description": "进入CB线（挚友/知己关系）结局"
+        },
+        "hostile": {
+          "max": -30,
+          "description": "该角色不再主动互动，好感极低时触发疏远文案"
+        },
+        "neutral": {
+          "min": -29,
+          "max": 29,
+          "description": "普通关系，不影响互动"
+        },
+        "trusted": {
+          "min": 30,
+          "max": 49,
+          "description": "愿意分享信息"
+        },
+        "close": {
+          "min": 50,
+          "max": 69,
+          "description": "深层信任，共享关键线索"
+        }
       }
     },
-
     "insight": {
       "description": "全局洞察值，累积不可降，解锁隐藏剧情与特殊对话",
-      "range": [0, 99],
+      "range": [
+        0,
+        99
+      ],
       "initial": 0,
       "thresholds": {
-        "hidden_line": {"min": 4, "description": "第三次闲逛安全存活后触发隐藏线【得闲饮茶】入口"},
-        "truth_dialogue": {"min": 2, "description": "解锁古玉追问选项（如 liu_ask_truth）"},
-        "high_perception": {"min": 6, "description": "在结局对峙中解锁D选项'指出古玉才是关键'"}
+        "hidden_line": {
+          "min": 4,
+          "description": "第三次闲逛安全存活后触发隐藏线【得闲饮茶】入口"
+        },
+        "truth_dialogue": {
+          "min": 2,
+          "description": "解锁古玉追问选项（如 liu_ask_truth）"
+        },
+        "high_perception": {
+          "min": 6,
+          "description": "在结局对峙中解锁D选项'指出古玉才是关键'"
+        }
       }
     },
-
     "fragments": {
       "description": "剧情碎片累积数，影响真相达成度",
-      "range": [0, 99],
+      "range": [
+        0,
+        99
+      ],
       "initial": 0,
       "thresholds": {
-        "truth_ending": {"min": 8, "description": "解锁真相达成结局"},
-        "partial_truth": {"min": 4, "max": 7, "description": "一知半解结局"},
-        "missed_truth": {"max": 3, "description": "错过真相结局"}
+        "truth_ending": {
+          "min": 8,
+          "description": "解锁真相达成结局"
+        },
+        "partial_truth": {
+          "min": 4,
+          "max": 7,
+          "description": "一知半解结局"
+        },
+        "missed_truth": {
+          "max": 3,
+          "description": "错过真相结局"
+        }
       }
     },
-
     "action_count": {
       "description": "三天九时段行动计数",
-      "range": [0, 9],
+      "range": [
+        0,
+        9
+      ],
       "initial": 0,
       "max_per_day": 3
     }
   },
-
   "flags": {
-    "watched": {"description": "被伙计盯上", "effect": "后续闲逛触发【被盯上了】状态"},
-    "innkeeper_alert": {"description": "伙计已警觉", "effect": "第三次闲逛非安全路线增加死亡风险"},
-    "exposed": {"description": "已暴露", "effect": "第三次闲逛未识破虎口疤→死亡结局"},
-    "recognized_scar": {"description": "识破虎口疤", "effect": "暴露状态下第三次闲逛可安全脱身"},
-    "bait_marked": {"description": "被标记为可诱饵", "effect": "后续独自夜探秘境→死亡结局【错信了人】"},
-    "liu_met": {"description": "正式接触柳陆书"},
-    "li_met": {"description": "正式接触黎客颍"},
-    "gui_met": {"description": "正式接触归汉"},
-    "liu_observed": {"description": "观察到柳陆书的折扇细节"},
-    "liu_invited": {"description": "以豪客姿态请全场喝茶"},
-    "liu_guarded": {"description": "柳陆书戒心状态", "effect": "额外降低后续柳互动选项收益"},
-    "clue_liu_observation": {"description": "获得柳陆书相关线索"},
-    "liu_refused": {"description": "拒绝柳陆书私下邀约或选疏远选项后无法再与柳互动"},
-    "li_refused": {"description": "拒绝黎客颍互动后无法再与黎互动"},
-    "gui_refused": {"description": "拒绝归汉互动后无法再与归互动"},
-    "hidden_line_unlocked": {"description": "解锁隐藏线【得闲饮茶】"},
-    "observed_account_book": {"description": "已翻阅柜台账本（‘等他回来。等他回来。’）", "effect": "隐藏结局【得闲饮茶】判定前置"},
-    "solo_night_explore": {"description": "独自夜探秘境", "effect": "被标记诱饵后独自夜探→死亡结局【信错了人】"},
-    "sacrifice_choice": {"description": "秘密暴露时选择替他人挡刀", "effect": "→死亡结局【替人挡了刀】"},
-    "survived": {"description": "存活标记（未触发死亡结局）", "effect": "隐藏结局【得闲饮茶】判定前置"},
-    "fire_night_warned": {"description": "走水夜前已发现灯油痕迹→提前警觉"},
-    "day1_liu_complete": {"description": "完成柳陆书第一天"},
-    "route_handoff": {"description": "选择了P2才开放的其他角色路线"},
-    "truth_route_ready": {"description": "满足真相路线前置条件"}
+    "watched": {
+      "description": "被伙计盯上",
+      "effect": "后续闲逛触发【被盯上了】状态"
+    },
+    "innkeeper_alert": {
+      "description": "伙计已警觉",
+      "effect": "第三次闲逛非安全路线增加死亡风险"
+    },
+    "exposed": {
+      "description": "已暴露",
+      "effect": "第三次闲逛未识破虎口疤→死亡结局"
+    },
+    "recognized_scar": {
+      "description": "识破虎口疤",
+      "effect": "暴露状态下第三次闲逛可安全脱身"
+    },
+    "bait_marked": {
+      "description": "被标记为可诱饵",
+      "effect": "后续独自夜探秘境→死亡结局【错信了人】"
+    },
+    "liu_met": {
+      "description": "正式接触柳陆书"
+    },
+    "li_met": {
+      "description": "正式接触黎客颍"
+    },
+    "gui_met": {
+      "description": "正式接触归汉"
+    },
+    "liu_observed": {
+      "description": "观察到柳陆书的折扇细节"
+    },
+    "liu_invited": {
+      "description": "以豪客姿态请全场喝茶"
+    },
+    "liu_guarded": {
+      "description": "柳陆书戒心状态",
+      "effect": "额外降低后续柳互动选项收益"
+    },
+    "clue_liu_observation": {
+      "description": "获得柳陆书相关线索"
+    },
+    "liu_refused": {
+      "description": "拒绝柳陆书私下邀约或选疏远选项后无法再与柳互动"
+    },
+    "li_refused": {
+      "description": "拒绝黎客颍互动后无法再与黎互动"
+    },
+    "gui_refused": {
+      "description": "拒绝归汉互动后无法再与归互动"
+    },
+    "hidden_line_unlocked": {
+      "description": "解锁隐藏线【得闲饮茶】"
+    },
+    "observed_account_book": {
+      "description": "已翻阅柜台账本（‘等他回来。等他回来。’）",
+      "effect": "隐藏结局【得闲饮茶】判定前置"
+    },
+    "solo_night_explore": {
+      "description": "独自夜探秘境",
+      "effect": "被标记诱饵后独自夜探→死亡结局【信错了人】"
+    },
+    "sacrifice_choice": {
+      "description": "秘密暴露时选择替他人挡刀",
+      "effect": "→死亡结局【替人挡了刀】"
+    },
+    "survived": {
+      "description": "存活标记（未触发死亡结局）",
+      "effect": "隐藏结局【得闲饮茶】判定前置"
+    },
+    "fire_night_warned": {
+      "description": "走水夜前已发现灯油痕迹→提前警觉"
+    },
+    "day1_liu_complete": {
+      "description": "完成柳陆书第一天"
+    },
+    "route_handoff": {
+      "description": "选择了P2才开放的其他角色路线"
+    },
+    "truth_route_ready": {
+      "description": "满足真相路线前置条件"
+    },
+    "returned_early": {
+      "description": "A1 折返：错过第一天，感情结局解锁难度上升"
+    },
+    "ach_meet_noise": {
+      "description": "成就【低山臭水遇噪音】"
+    },
+    "liu_tea_first_done": {
+      "description": "柳茶首次互动已完成，后续再来展示重复选项"
+    },
+    "explore_count": {
+      "description": "闲逛次数累计（首次必后院/二次三选一/三次风险判定）"
+    },
+    "liu_private_done": {
+      "description": "柳陆书私下邀约已触发"
+    },
+    "li_private_done": {
+      "description": "黎客颍私下邀约已触发"
+    },
+    "gui_private_done": {
+      "description": "归汉私下邀约已触发"
+    },
+    "clue_old_grudge": {
+      "description": "线索【旧怨】：归汉师父与师叔二十年前决裂"
+    },
+    "item_sword_tassel": {
+      "description": "信物【淡蓝色剑穗】：归汉师叔所赠"
+    },
+    "li_map_entrusted": {
+      "description": "黎客颍托付的旧地图（私约接受）"
+    }
   },
-
   "ending_conditions": {
     "扇底风_liu_cp": {
       "type": "character_cp",
       "description": "柳陆书CP线",
       "conditions": {
-        "liu_affection": {"op": "gte", "value": 70},
-        "liu_refused": {"op": "eq", "value": false}
+        "liu_affection": {
+          "op": "gte",
+          "value": 70
+        },
+        "liu_refused": {
+          "op": "eq",
+          "value": false
+        }
       }
     },
     "旧友新茶_liu_cb": {
       "type": "character_cb",
       "description": "柳陆书CB线",
       "conditions": {
-        "liu_affection": {"op": "gte", "value": 30, "op2": "lt", "value2": 70},
-        "liu_refused": {"op": "eq", "value": false}
+        "liu_affection": {
+          "op": "gte",
+          "value": 30,
+          "op2": "lt",
+          "value2": 70
+        },
+        "liu_refused": {
+          "op": "eq",
+          "value": false
+        }
       }
     },
     "归刀入鞘_li_cp": {
       "type": "character_cp",
       "description": "黎客颍CP线",
       "conditions": {
-        "li_affection": {"op": "gte", "value": 70},
-        "li_refused": {"op": "eq", "value": false}
+        "li_affection": {
+          "op": "gte",
+          "value": 70
+        },
+        "li_refused": {
+          "op": "eq",
+          "value": false
+        }
       }
     },
     "同路之人_li_cb": {
       "type": "character_cb",
       "description": "黎客颍CB线",
       "conditions": {
-        "li_affection": {"op": "gte", "value": 30, "op2": "lt", "value2": 70},
-        "li_refused": {"op": "eq", "value": false}
+        "li_affection": {
+          "op": "gte",
+          "value": 30,
+          "op2": "lt",
+          "value2": 70
+        },
+        "li_refused": {
+          "op": "eq",
+          "value": false
+        }
       }
     },
     "长剑有穗_gui_cp": {
       "type": "character_cp",
       "description": "归汉CP线",
       "conditions": {
-        "gui_affection": {"op": "gte", "value": 70},
-        "gui_refused": {"op": "eq", "value": false}
+        "gui_affection": {
+          "op": "gte",
+          "value": 70
+        },
+        "gui_refused": {
+          "op": "eq",
+          "value": false
+        }
       }
     },
     "不冻泉_gui_cb": {
       "type": "character_cb",
       "description": "归汉CB线",
       "conditions": {
-        "gui_affection": {"op": "gte", "value": 30, "op2": "lt", "value2": 70},
-        "gui_refused": {"op": "eq", "value": false}
+        "gui_affection": {
+          "op": "gte",
+          "value": 30,
+          "op2": "lt",
+          "value2": 70
+        },
+        "gui_refused": {
+          "op": "eq",
+          "value": false
+        }
       }
     },
     "真相达成": {
       "type": "truth",
       "description": "完整揭示观澜阁封印真相",
       "conditions": {
-        "fragments": {"op": "gte", "value": 8},
-        "insight": {"op": "gte", "value": 6},
-        "exposed": {"op": "eq", "value": false},
-        "action_count": {"op": "gte", "value": 9}
+        "fragments": {
+          "op": "gte",
+          "value": 8
+        },
+        "insight": {
+          "op": "gte",
+          "value": 6
+        },
+        "exposed": {
+          "op": "eq",
+          "value": false
+        },
+        "action_count": {
+          "op": "gte",
+          "value": 9
+        }
       }
     },
     "清风过客": {
       "type": "neutral",
       "description": "半途结局——旁观三人解决，自己抽身",
       "conditions": {
-        "fragments": {"op": "gte", "value": 4, "op2": "lt", "value2": 8},
-        "action_count": {"op": "gte", "value": 9}
+        "fragments": {
+          "op": "gte",
+          "value": 4,
+          "op2": "lt",
+          "value2": 8
+        },
+        "action_count": {
+          "op": "gte",
+          "value": 9
+        }
       }
     },
     "独行者": {
       "type": "solo",
       "description": "独自击碎古玉，无需他人帮忙",
       "conditions": {
-        "route_solo": {"op": "eq", "value": true},
-        "insight": {"op": "gte", "value": 6}
+        "route_solo": {
+          "op": "eq",
+          "value": true
+        },
+        "insight": {
+          "op": "gte",
+          "value": 6
+        }
       }
     },
     "陌生人": {
       "type": "distant",
       "description": "与三角色的关系均停留在陌生人水平",
       "conditions": {
-        "liu_affection": {"op": "lt", "value": 30},
-        "li_affection": {"op": "lt", "value": 30},
-        "gui_affection": {"op": "lt", "value": 30}
+        "liu_affection": {
+          "op": "lt",
+          "value": 30
+        },
+        "li_affection": {
+          "op": "lt",
+          "value": 30
+        },
+        "gui_affection": {
+          "op": "lt",
+          "value": 30
+        }
       }
     },
     "得闲饮茶": {
       "type": "hidden",
       "description": "隐藏结局——发现伙计的秘密，连夜离开",
       "conditions": {
-        "hidden_line_unlocked": {"op": "eq", "value": true},
-        "observed_account_book": {"op": "eq", "value": true},
-        "survived": {"op": "eq", "value": true}
+        "hidden_line_unlocked": {
+          "op": "eq",
+          "value": true
+        },
+        "observed_account_book": {
+          "op": "eq",
+          "value": true
+        },
+        "survived": {
+          "op": "eq",
+          "value": true
+        }
       }
     },
     "前方无路": {
       "type": "easter_egg",
       "description": "开场彩蛋结局——坚持走到底",
-      "conditions": {"chose_path_to_end": {"op": "eq", "value": true}}
+      "conditions": {
+        "chose_path_to_end": {
+          "op": "eq",
+          "value": true
+        }
+      }
     },
     "淹死在自己的好奇心里": {
       "type": "death",
       "description": "第三次闲逛暴露且未识破虎口疤",
-      "conditions": {"exposed": true, "recognized_scar": false}
+      "conditions": {
+        "exposed": true,
+        "recognized_scar": false
+      }
     },
     "信错了人": {
       "type": "death",
       "description": "被伙计诱骗，独自夜探秘境",
-      "conditions": {"bait_marked": true, "solo_night_explore": true}
+      "conditions": {
+        "bait_marked": true,
+        "solo_night_explore": true
+      }
     },
     "替人挡了刀": {
       "type": "death",
       "description": "在秘密暴露时替他人挡刀",
-      "conditions": {"exposed": true, "sacrifice_choice": true}
+      "conditions": {
+        "exposed": true,
+        "sacrifice_choice": true
+      }
     },
     "封印破碎": {
       "type": "death",
       "description": "对峙中古玉封印完全崩溃",
-      "conditions": {"fragments": {"op": "lt", "value": 4}, "confrontation_triggered": true}
+      "conditions": {
+        "fragments": {
+          "op": "lt",
+          "value": 4
+        },
+        "confrontation_triggered": true
+      }
     },
     "错过真相": {
       "type": "death",
       "description": "三天结束碎片远远不足以接近真相",
-      "conditions": {"fragments": {"op": "lt", "value": 3}, "action_count": {"op": "gte", "value": 9}}
+      "conditions": {
+        "fragments": {
+          "op": "lt",
+          "value": 3
+        },
+        "action_count": {
+          "op": "gte",
+          "value": 9
+        }
+      }
     },
     "一知半解": {
       "type": "death",
       "description": "知道一些但不够，关键时刻判断错误",
-      "conditions": {"fragments": {"op": "gte", "value": 3, "op2": "lt", "value2": 5}, "insight": {"op": "lt", "value": 4}}
+      "conditions": {
+        "fragments": {
+          "op": "gte",
+          "value": 3,
+          "op2": "lt",
+          "value2": 5
+        },
+        "insight": {
+          "op": "lt",
+          "value": 4
+        }
+      }
     },
     "三人反目": {
       "type": "death",
       "description": "三角色好感均极低，对峙时三方互不信任导致内讧",
       "conditions": {
-        "liu_affection": {"op": "lt", "value": -10},
-        "li_affection": {"op": "lt", "value": -10},
-        "gui_affection": {"op": "lt", "value": -10},
+        "liu_affection": {
+          "op": "lt",
+          "value": -10
+        },
+        "li_affection": {
+          "op": "lt",
+          "value": -10
+        },
+        "gui_affection": {
+          "op": "lt",
+          "value": -10
+        },
         "confrontation_triggered": true
       }
     },
@@ -220,81 +497,213 @@
       "type": "death",
       "description": "碎片足够接近真相，但洞察不足，在真相揭晓时精神崩溃",
       "conditions": {
-        "fragments": {"op": "gte", "value": 6},
-        "insight": {"op": "lt", "value": 2}
+        "fragments": {
+          "op": "gte",
+          "value": 6
+        },
+        "insight": {
+          "op": "lt",
+          "value": 2
+        }
       }
     }
   },
-
   "choice_value_mapping": {
     "chapter1_opening": {
-      "open_enter_inn": {"insight": 1, "action_count": 1},
-      "open_keep_walking": {"flag": "watched", "action_count": 1},
-      "open_pay_all": {"flag": "liu_invited", "action_count": 1}
+      "open_enter_inn": {
+        "insight": 1,
+        "action_count": 1
+      },
+      "open_keep_walking": {
+        "flag": "watched",
+        "action_count": 1
+      },
+      "open_pay_all": {
+        "flag": "liu_invited",
+        "action_count": 1
+      }
     },
     "chapter2_liu": {
-      "liu_a1_joke_back": {"liu_affection": 0, "note": "他记住你了"},
-      "liu_a2_challenge": {"liu_affection": 10, "insight": 1},
-      "liu_a3_ask_secret": {"liu_affection": -20, "flag": "exposed", "note": "触发已暴露"},
-      "liu_a4_silence": {"liu_affection": -10}
+      "liu_a1_joke_back": {
+        "liu_affection": 0,
+        "note": "他记住你了"
+      },
+      "liu_a2_challenge": {
+        "liu_affection": 10,
+        "insight": 1
+      },
+      "liu_a3_ask_secret": {
+        "liu_affection": -20,
+        "flag": "exposed",
+        "note": "触发已暴露"
+      },
+      "liu_a4_silence": {
+        "liu_affection": -10
+      }
     },
     "chapter2_li": {
-      "li_b1_name": {"li_affection": 15},
-      "li_b2_weapon": {"li_affection": 0, "insight": 1},
-      "li_b3_ask_purpose": {"li_affection": -10, "flag": "watched"},
-      "li_b4_silent_tea": {"li_affection": 0}
+      "li_b1_name": {
+        "li_affection": 15
+      },
+      "li_b2_weapon": {
+        "li_affection": 0,
+        "insight": 1
+      },
+      "li_b3_ask_purpose": {
+        "li_affection": -10,
+        "flag": "watched"
+      },
+      "li_b4_silent_tea": {
+        "li_affection": 0
+      }
     },
     "chapter2_gui": {
-      "gui_c1_found_out": {"gui_affection": 5},
-      "gui_c2_sword": {"gui_affection": 10, "insight": 1},
-      "gui_c3_scenery": {"gui_affection": -10, "flag": "watched"},
-      "gui_c4_sit_down": {"gui_affection": 0}
+      "gui_c1_found_out": {
+        "gui_affection": 5
+      },
+      "gui_c2_sword": {
+        "gui_affection": 10,
+        "insight": 1
+      },
+      "gui_c3_scenery": {
+        "gui_affection": -10,
+        "flag": "watched"
+      },
+      "gui_c4_sit_down": {
+        "gui_affection": 0
+      }
     },
     "chapter3_liu_tea": {
-      "first_a_joke": {"liu_affection": 5},
-      "first_b_return_favor": {"liu_affection": 0},
-      "first_c_rude": {"liu_affection": -10},
-      "repeat_a_remember": {"liu_affection": 10, "fragments": 1},
-      "repeat_b_mirror": {"liu_affection": 10},
-      "repeat_c_listen": {"liu_affection": 15, "insight": 1},
-      "repeat_d_weather": {"liu_affection": -10},
-      "repeat_e_ask_secret": {"liu_affection": -20, "flag": "liu_refused"}
+      "first_a_joke": {
+        "liu_affection": 5,
+        "liu_tea_first_done": true
+      },
+      "first_b_return_favor": {
+        "liu_affection": 0,
+        "liu_tea_first_done": true
+      },
+      "first_c_rude": {
+        "liu_affection": -10,
+        "liu_tea_first_done": true
+      },
+      "repeat_a_remember": {
+        "liu_affection": 10,
+        "fragments": 1
+      },
+      "repeat_b_mirror": {
+        "liu_affection": 10
+      },
+      "repeat_c_listen": {
+        "liu_affection": 15,
+        "insight": 1
+      },
+      "repeat_d_weather": {
+        "liu_affection": -10
+      },
+      "repeat_e_ask_secret": {
+        "liu_affection": -20,
+        "flag": "liu_refused"
+      }
     },
     "chapter3_li_clues": {
-      "li_a_read_smooth": {"li_affection": -20, "flag": "watched", "fragments": 1},
-      "li_b_unclear": {"li_affection": 15, "fragments": 1},
-      "li_c_ask_who": {"li_affection": 0},
-      "li_d_cant_read": {"li_affection": -10, "flag": "li_refused"}
+      "li_a_read_smooth": {
+        "li_affection": -20,
+        "flag": "watched",
+        "fragments": 1
+      },
+      "li_b_unclear": {
+        "li_affection": 15,
+        "fragments": 1
+      },
+      "li_c_ask_who": {
+        "li_affection": 0
+      },
+      "li_d_cant_read": {
+        "li_affection": -10,
+        "flag": "li_refused"
+      }
     },
     "chapter3_gui_sit": {
-      "gui_a_when_you_want": {"gui_affection": 10, "fragments": 1, "insight": 1},
-      "gui_b_ask_purpose": {"gui_affection": 0},
-      "gui_c_sit_with": {"gui_affection": 15},
-      "gui_d_rude": {"gui_affection": -15, "flag": "gui_refused"}
+      "gui_a_when_you_want": {
+        "gui_affection": 10,
+        "fragments": 1,
+        "insight": 1
+      },
+      "gui_b_ask_purpose": {
+        "gui_affection": 0
+      },
+      "gui_c_sit_with": {
+        "gui_affection": 15
+      },
+      "gui_d_rude": {
+        "gui_affection": -15,
+        "flag": "gui_refused"
+      }
     },
     "chapter3_explore": {
-      "first_mandatory": {"fragments": 1, "insight": 1, "flag": "watched"},
-      "second_firewood": {"fragments": 1, "insight": 1, "flag": "fire_night_warned"},
-      "second_hall": {"fragments": 1, "insight": 1, "flag": "recognized_scar"},
-      "second_corridor": {"fragments": 1, "insight": 1},
-      "third_trigger": {"note": "根据初识阶段状态分叉，参见branch-tree"}
+      "first_mandatory": {
+        "fragments": 1,
+        "insight": 1,
+        "flag": "watched"
+      },
+      "second_firewood": {
+        "fragments": 1,
+        "insight": 1,
+        "flag": "fire_night_warned"
+      },
+      "second_hall": {
+        "fragments": 1,
+        "insight": 1,
+        "flag": "recognized_scar"
+      },
+      "second_corridor": {
+        "fragments": 1,
+        "insight": 1
+      },
+      "third_trigger": {
+        "note": "根据初识阶段状态分叉，参见branch-tree"
+      }
     },
     "chapter3_innkeeper": {
-      "inn_a_curious": {"flag": "bait_marked"},
-      "inn_b_pretend": {"insight": 1},
-      "inn_c_scar": {"fragments": 1, "insight": 1, "flag": "recognized_scar"},
-      "inn_d_disinterest": {"note": "暂时安全"}
+      "inn_a_curious": {
+        "flag": "bait_marked"
+      },
+      "inn_b_pretend": {
+        "insight": 1
+      },
+      "inn_c_scar": {
+        "fragments": 1,
+        "insight": 1,
+        "flag": "recognized_scar"
+      },
+      "inn_d_disinterest": {
+        "note": "暂时安全"
+      }
     },
     "chapter3_private": {
-      "liu_accept": {"liu_affection": 15, "fragments": 1},
-      "liu_refuse": {"liu_affection": -10},
-      "li_accept": {"li_affection": 15, "fragments": 1},
-      "li_refuse_private": {"li_affection": -15},
-      "gui_accept": {"gui_affection": 15, "fragments": 1},
-      "gui_refuse_private": {"gui_affection": -20}
+      "liu_accept": {
+        "liu_affection": 15,
+        "fragments": 1
+      },
+      "liu_refuse": {
+        "liu_affection": -10
+      },
+      "li_accept": {
+        "li_affection": 15,
+        "fragments": 1
+      },
+      "li_refuse_private": {
+        "li_affection": -15
+      },
+      "gui_accept": {
+        "gui_affection": 15,
+        "fragments": 1
+      },
+      "gui_refuse_private": {
+        "gui_affection": -20
+      }
     }
   },
-
   "ending_resolution_priority": [
     "death",
     "easter_egg",

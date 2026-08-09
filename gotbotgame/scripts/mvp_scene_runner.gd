@@ -90,6 +90,21 @@ func choose(choice_id: String) -> bool:
 		return true
 	return false
 
+## 结局自动收敛：按分支树 choices 声明顺序（即数值设计优先级）自动选择第一个满足条件的选项。
+## 用于 auto_route 节点——结局不是由玩家"选"出来的，而是由剧情分支自然导出。
+func auto_route(scene_id: String = current_scene_id) -> bool:
+	for choice: Dictionary in get_choices(scene_id):
+		if _conditions_met(choice.get("conditions", {})):
+			_apply_effects(choice.get("effects", {}))
+			var next_scene: String = str(choice.get("target_node", scene_id))
+			show_scene(next_scene)
+			return true
+	return false
+
+## 节点是否为自动路由节点（结局判定等不应向玩家暴露选项的节点）。
+func is_auto_route(scene_id: String = current_scene_id) -> bool:
+	return bool(get_scene_data(scene_id).get("auto_route", false))
+
 func is_terminal(scene_id: String = current_scene_id) -> bool:
 	return bool(get_scene_data(scene_id).get("terminal", false))
 

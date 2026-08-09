@@ -11,6 +11,7 @@ extends Control
 @onready var li_portrait: TextureRect = $CharacterLayer/LiPortrait
 @onready var gui_portrait: TextureRect = $CharacterLayer/GuiPortrait
 @onready var innkeeper_portrait: TextureRect = $CharacterLayer/InnkeeperPortrait
+@onready var settlement_panel: Control = $SettlementPanel
 
 const FINAL_DIALOGUE_PATH: String = "res://data/final-dialogue/mvp/liu_lushu_day1.json"
 ## 选项分支回应的"继续"占位选项 ID：选择后先展示分支内容，点击继续再进入目标节点。
@@ -21,8 +22,13 @@ const BACKGROUND_TEXTURES: Dictionary = {
 	"scene_001b_innkeeper": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_001c_choices": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_002_path": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_002_path_return": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"ending_front_no_road": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_003_pay_all": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_003_pay_all_retract": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_003_pay_all_join": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_night2_exposed": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_night2_watched": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"ch2_title": "res://assets/placeholder_sprites/bg_three_characters_scene.png",
 	"scene_010_meet": "res://assets/placeholder_sprites/bg_three_characters_scene.png",
 	"scene_020_liu_day1": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
@@ -37,8 +43,17 @@ const BACKGROUND_TEXTURES: Dictionary = {
 	"scene_daily_gui_sit": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_daily_gui_sit_first": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_daily_explore": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_daily_explore_firewood": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_daily_explore_third": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_daily_explore_third_escape": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_daily_explore_third_safe": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_daily_innkeeper": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_daily_return": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_private_check": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_private_liu": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_private_li": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_private_gui": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_private_close": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_daily_day2_01": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_daily_day2_02": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_daily_day2_03": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
@@ -48,7 +63,40 @@ const BACKGROUND_TEXTURES: Dictionary = {
 	"scene_day1_close": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_day2_close": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
 	"scene_day3_close": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
-	"scene_021_liu_day1_close": "res://assets/placeholder_sprites/bg_inn_hall_clean.png"
+	"scene_021_liu_day1_close": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_day3_summary": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_fire_night_transition": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_fire_night": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_fire_night_outcome": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_post_fire_night": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_route_split": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_solo_gate": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_ending_gate": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_confrontation": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_confront_a": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_confront_b": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_confront_c": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_confront_d": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"scene_confront_e": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_drown_curiosity": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_sacrifice": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_betrayed": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_tea": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_fight": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_seal_break": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_missed": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_half": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_crushed": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_truth": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_liu_cp": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_li_cp": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_gui_cp": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_liu_cb": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_li_cb": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_gui_cb": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_solo": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_pass": "res://assets/placeholder_sprites/bg_inn_hall_clean.png",
+	"ending_stranger": "res://assets/placeholder_sprites/bg_inn_hall_clean.png"
 }
 const BACKGROUND_COLORS: Dictionary = {
 	"ch1_title": Color("0d1b25"),
@@ -56,8 +104,13 @@ const BACKGROUND_COLORS: Dictionary = {
 	"scene_001b_innkeeper": Color("1a2a30"),
 	"scene_001c_choices": Color("122a33"),
 	"scene_002_path": Color("10212c"),
+	"scene_002_path_return": Color("10212c"),
 	"ending_front_no_road": Color("0d1b25"),
 	"scene_003_pay_all": Color("30413b"),
+	"scene_003_pay_all_retract": Color("2b3b37"),
+	"scene_003_pay_all_join": Color("284342"),
+	"scene_night2_exposed": Color("1f3436"),
+	"scene_night2_watched": Color("1f3436"),
 	"ch2_title": Color("2b3b37"),
 	"scene_010_meet": Color("2b3b37"),
 	"scene_020_liu_day1": Color("284342"),
@@ -72,8 +125,17 @@ const BACKGROUND_COLORS: Dictionary = {
 	"scene_daily_gui_sit": Color("2b3b37"),
 	"scene_daily_gui_sit_first": Color("2b3b37"),
 	"scene_daily_explore": Color("1a2a30"),
+	"scene_daily_explore_firewood": Color("1a2a30"),
+	"scene_daily_explore_third": Color("3a2a24"),
+	"scene_daily_explore_third_escape": Color("1a2a30"),
+	"scene_daily_explore_third_safe": Color("2b3b37"),
 	"scene_daily_innkeeper": Color("2b3b37"),
 	"scene_daily_return": Color("2b3b37"),
+	"scene_private_check": Color("1f3436"),
+	"scene_private_liu": Color("284342"),
+	"scene_private_li": Color("2b3b37"),
+	"scene_private_gui": Color("2b3b37"),
+	"scene_private_close": Color("1f3436"),
 	"scene_daily_day2_01": Color("2b3b37"),
 	"scene_daily_day2_02": Color("2b3b37"),
 	"scene_daily_day2_03": Color("1f3436"),
@@ -83,7 +145,40 @@ const BACKGROUND_COLORS: Dictionary = {
 	"scene_day1_close": Color("1f3436"),
 	"scene_day2_close": Color("1f3436"),
 	"scene_day3_close": Color("1f3436"),
-	"scene_021_liu_day1_close": Color("1f3436")
+	"scene_021_liu_day1_close": Color("1f3436"),
+	"scene_day3_summary": Color("2b3b37"),
+	"scene_fire_night_transition": Color("1f3436"),
+	"scene_fire_night": Color("3a2a24"),
+	"scene_fire_night_outcome": Color("2b332f"),
+	"scene_post_fire_night": Color("1f3436"),
+	"scene_route_split": Color("2b3b37"),
+	"scene_solo_gate": Color("122a33"),
+	"scene_ending_gate": Color("122a33"),
+	"scene_confrontation": Color("10212c"),
+	"scene_confront_a": Color("2b3b37"),
+	"scene_confront_b": Color("2b3b37"),
+	"scene_confront_c": Color("2b3b37"),
+	"scene_confront_d": Color("30413b"),
+	"scene_confront_e": Color("1a2a30"),
+	"ending_drown_curiosity": Color("3a2a24"),
+	"ending_sacrifice": Color("10212c"),
+	"ending_betrayed": Color("10212c"),
+	"ending_tea": Color("1f3436"),
+	"ending_fight": Color("3a2a24"),
+	"ending_seal_break": Color("10212c"),
+	"ending_missed": Color("1a2a30"),
+	"ending_half": Color("1a2a30"),
+	"ending_crushed": Color("10212c"),
+	"ending_truth": Color("2b3b37"),
+	"ending_liu_cp": Color("30413b"),
+	"ending_li_cp": Color("30413b"),
+	"ending_gui_cp": Color("30413b"),
+	"ending_liu_cb": Color("2b3b37"),
+	"ending_li_cb": Color("2b3b37"),
+	"ending_gui_cb": Color("2b3b37"),
+	"ending_solo": Color("122a33"),
+	"ending_pass": Color("2b3b37"),
+	"ending_stranger": Color("1a2a30")
 }
 
 var final_dialogue: Dictionary = {}
@@ -94,6 +189,8 @@ func _ready() -> void:
 	choice_panel.use_mvp_runner = true
 	runner.load_branch_tree()
 	_load_final_dialogue()
+	settlement_panel.continue_pressed.connect(_on_settlement_continue)
+	settlement_panel.visible = false
 	_render_current_scene()
 
 func _render_current_scene() -> void:
@@ -105,15 +202,53 @@ func _render_current_scene() -> void:
 	if dialogue_system != null:
 		dialogue_system.type_text(dialogue_text, str(dialogue_data.get("text", scene_data.get("text", ""))))
 	_apply_visuals(node_id)
+	# 结算页：显示独立结算面板（由面板按钮驱动），隐藏常规选项面板。
+	if node_id == "scene_day3_summary":
+		settlement_panel.visible = true
+		settlement_panel.refresh()
+		choice_panel.visible = false
+	else:
+		settlement_panel.visible = false
 	var choices: Array[Dictionary] = runner.get_choices()
+	# 自动路由节点（结局判定等）：不向玩家展示结局选项，直接按剧情分支自动收敛。
+	# 仅显示当前节点旁白（结局判定前的过渡文本），点击"继续"后由 runner 自动路由。
+	if runner.is_auto_route(node_id):
+		settlement_panel.visible = false
+		choice_panel.render_choices(choices)
+		if not runner.is_terminal():
+			var auto_choices: Array[Dictionary] = [
+				{"choice_id": "_auto_route_continue", "text": "继续"}
+			]
+			choice_panel.render_choices(auto_choices)
+			choice_panel.visible = true
+			for child: Node in choice_panel.get_children():
+				if child is Button:
+					var button: Button = child as Button
+					var callable: Callable = _on_auto_route_continue
+					if not button.pressed.is_connected(callable):
+						button.pressed.connect(callable)
+		else:
+			choice_panel.visible = false
+		return
 	choice_panel.render_choices(choices)
-	choice_panel.visible = not runner.is_terminal()
+	if node_id != "scene_day3_summary":
+		choice_panel.visible = not runner.is_terminal()
 	for child: Node in choice_panel.get_children():
 		if child is Button:
 			var button: Button = child as Button
 			var callable: Callable = _on_choice_pressed.bind(str(button.get_meta("choice_id", "")))
 			if not button.pressed.is_connected(callable):
 				button.pressed.connect(callable)
+
+## 自动路由节点「继续」：交给 runner 按优先级自动收敛到唯一结局。
+func _on_auto_route_continue() -> void:
+	if runner.auto_route():
+		_render_current_scene()
+
+## 结算面板「继续」：进入走水夜过渡节点。
+func _on_settlement_continue() -> void:
+	if runner.choose("day3_to_fire_night"):
+		_render_current_scene()
 
 func _on_choice_pressed(choice_id: String) -> void:
 	var audio_manager: QingfengduAudioManager = _audio_manager()
@@ -175,12 +310,15 @@ func _response_node_for(choice_id: String) -> String:
 		"gui_c2_sword": "scene_040_gui_response_c2",
 		"gui_c3_scenery": "scene_040_gui_response_c3",
 		"gui_c4_sit": "scene_040_gui_response_c4",
-		# 第三章 · 柳陆书喝茶
-		"liu_tea_a": "scene_daily_liu_tea_a",
-		"liu_tea_b": "scene_daily_liu_tea_b",
-		"liu_tea_c": "scene_daily_liu_tea_c",
-		"liu_tea_d": "scene_daily_liu_tea_d",
-		"liu_tea_e": "scene_daily_liu_tea_e",
+		# 第三章 · 柳陆书喝茶（首次 a1/b1/c1，后续 a2-e2）
+		"liu_tea_a1": "scene_daily_liu_tea_a1",
+		"liu_tea_b1": "scene_daily_liu_tea_b1",
+		"liu_tea_c1": "scene_daily_liu_tea_c1",
+		"liu_tea_a2": "scene_daily_liu_tea_a2",
+		"liu_tea_b2": "scene_daily_liu_tea_b2",
+		"liu_tea_c2": "scene_daily_liu_tea_c2",
+		"liu_tea_d2": "scene_daily_liu_tea_d2",
+		"liu_tea_e2": "scene_daily_liu_tea_e2",
 		# 第三章 · 黎客颍线索
 		"li_clue_a": "scene_daily_li_clue_a",
 		"li_clue_b": "scene_daily_li_clue_b",
@@ -193,13 +331,21 @@ func _response_node_for(choice_id: String) -> String:
 		"gui_sit_d": "scene_daily_gui_sit_d",
 		# 第三章 · 独自闲逛
 		"explore_backyard": "scene_daily_explore_backyard",
+		"explore_firewood": "scene_daily_explore_firewood",
 		"explore_hall": "scene_daily_explore_hall",
 		"explore_upstairs": "scene_daily_explore_upstairs",
 		# 第三章 · 与伙计搭话
 		"inn_a": "scene_daily_innkeeper_a",
 		"inn_b": "scene_daily_innkeeper_b",
 		"inn_c": "scene_daily_innkeeper_c",
-		"inn_d": "scene_daily_innkeeper_d"
+		"inn_d": "scene_daily_innkeeper_d",
+		# 第三章 · 角色私下邀约（好感≥30 触发）
+		"liu_private_accept": "scene_private_liu_accept",
+		"liu_private_refuse": "scene_private_liu_refuse",
+		"li_private_accept": "scene_private_li_accept",
+		"li_private_refuse": "scene_private_li_refuse",
+		"gui_private_accept": "scene_private_gui_accept",
+		"gui_private_refuse": "scene_private_gui_refuse"
 	}
 	return str(mapping.get(choice_id, ""))
 
