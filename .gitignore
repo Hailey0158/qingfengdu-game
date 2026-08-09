@@ -22,7 +22,6 @@ Thumbs.db
 
 # Build output
 dist/
-build/
 *.log
 
 # Office temp files
