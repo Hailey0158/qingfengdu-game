@@ -1,0 +1,135 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ending_panel.gd" id="1_ending"]
+
+[sub_resource type="StyleBoxFlat" id="StyleEnding"]
+bg_color = Color(0.1, 0.1, 0.1, 0.97)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.53, 0.53, 0.5, 0.8)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+content_margin_left = 40.0
+content_margin_top = 32.0
+content_margin_right = 40.0
+content_margin_bottom = 32.0
+
+[node name="EndingPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ending")
+
+[node name="BgPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 160.0
+offset_top = 40.0
+offset_right = 1120.0
+offset_bottom = 710.0
+theme_override_styles/panel = SubResource("StyleEnding")
+
+[node name="Margin" type="MarginContainer" parent="BgPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Scroll" type="ScrollContainer" parent="BgPanel/Margin"]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="BgPanel/Margin/Scroll"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.8, 0.65, 1)
+theme_override_font_sizes/font_size = 32
+text = "结局名称"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.55, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "类型"
+horizontal_alignment = 1
+
+[node name="EpigraphLabel" type="Label" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.65, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "题记"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Divider1" type="HSeparator" parent="BgPanel/Margin/Scroll/Content"]
+layout_mode = 2
+
+[node name="StatsLabel" type="Label" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.75, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "洞察  0    碎片  0"
+horizontal_alignment = 1
+
+[node name="AffectionLabel" type="Label" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.75, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "柳陆书  0    黎客颍  0    归汉  0"
+horizontal_alignment = 1
+
+[node name="PathLabel" type="Label" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.58, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "关键抉择：无"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.6, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "结局达成  0 / 20"
+horizontal_alignment = 1
+
+[node name="Divider2" type="HSeparator" parent="BgPanel/Margin/Scroll/Content"]
+layout_mode = 2
+
+[node name="NarrationLabel" type="RichTextLabel" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 280)
+theme_override_colors/default_color = Color(0.92, 0.9, 0.85, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "结局叙事"
+fit_content = true
+scroll_active = false
+
+[node name="ReplayButton" type="Button" parent="BgPanel/Margin/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+theme_override_colors/font_color = Color(0.85, 0.8, 0.65, 1)
+theme_override_font_sizes/font_size = 20
+text = "再 玩 一 次"

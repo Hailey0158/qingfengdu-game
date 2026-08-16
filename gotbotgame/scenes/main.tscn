@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/mvp/dehazed/li_keying_calm_transparent.png" id="10_li"]
 [ext_resource type="Texture2D" path="res://assets/sprites/mvp/dehazed/innkeeper_calm_v2.png" id="11_inn"]
 [ext_resource type="PackedScene" path="res://scenes/settlement_panel.tscn" id="12_settle"]
+[ext_resource type="PackedScene" path="res://scenes/ending_panel.tscn" id="13_ending"]
 
 [node name="Main" type="Node" unique_id=1833745335]
 script = ExtResource("8_font")
@@ -103,6 +104,10 @@ offset_right = 1208.0
 offset_bottom = 680.0
 
 [node name="SettlementPanel" parent="CanvasLayer/Root" unique_id=1674803637 instance=ExtResource("12_settle")]
+layout_mode = 1
+mouse_filter = 1
+
+[node name="EndingPanel" parent="CanvasLayer/Root" instance=ExtResource("13_ending")]
 layout_mode = 1
 mouse_filter = 1
 

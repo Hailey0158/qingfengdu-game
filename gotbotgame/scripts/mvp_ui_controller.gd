@@ -12,6 +12,7 @@ extends Control
 @onready var gui_portrait: TextureRect = $CharacterLayer/GuiPortrait
 @onready var innkeeper_portrait: TextureRect = $CharacterLayer/InnkeeperPortrait
 @onready var settlement_panel: Control = $SettlementPanel
+@onready var ending_panel: Control = $EndingPanel
 
 const FINAL_DIALOGUE_PATH: String = "res://data/final-dialogue/mvp/liu_lushu_day1.json"
 ## 选项分支回应的"继续"占位选项 ID：选择后先展示分支内容，点击继续再进入目标节点。
@@ -191,11 +192,22 @@ func _ready() -> void:
 	_load_final_dialogue()
 	settlement_panel.continue_pressed.connect(_on_settlement_continue)
 	settlement_panel.visible = false
+	ending_panel.replay_pressed.connect(_on_ending_replay)
+	ending_panel.visible = false
 	_render_current_scene()
 
 func _render_current_scene() -> void:
 	var scene_data: Dictionary = runner.get_scene_data()
 	var node_id: String = str(scene_data.get("node_id", runner.current_scene_id))
+	# 结局结算面板：terminal ending 节点显示专属结算页面，隐藏常规对话框与选项。
+	if runner.is_terminal(node_id) and node_id.begins_with("ending"):
+		dialogue_box.visible = false
+		choice_panel.visible = false
+		settlement_panel.visible = false
+		ending_panel.refresh(node_id)
+		ending_panel.visible = true
+		return
+	ending_panel.visible = false
 	var dialogue_data: Dictionary = _dialogue_for(node_id)
 	speaker_name.text = str(dialogue_data.get("speaker", scene_data.get("speaker", "旁白")))
 	var dialogue_system: QingfengduDialogueSystem = _dialogue_system()
@@ -403,3 +415,16 @@ func _dialogue_system() -> QingfengduDialogueSystem:
 
 func _audio_manager() -> QingfengduAudioManager:
 	return get_node_or_null("/root/AudioManager") as QingfengduAudioManager
+
+## 「再玩一次」：重置全局状态，回到第一章开篇。
+func _on_ending_replay() -> void:
+	var state: QingfengduGameStateManager = get_node_or_null("/root/GameStateManager") as QingfengduGameStateManager
+	if state != null:
+		# 保留 ending_unlocked 跨周目记录
+		var saved_endings: Array[String] = state.ending_unlocked.duplicate()
+		state.reset()
+		state.ending_unlocked = saved_endings
+	ending_panel.visible = false
+	dialogue_box.visible = true
+	runner.show_scene("ch1_title")
+	_render_current_scene()
